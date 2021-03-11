@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.test.mapper.ComplaintMapper">
+    <resultMap id="BaseResultMap" type="com.example.test.entity.Complaint" >
+        <id column="complaint_id" property="complaintId" jdbcType="INTEGER" />
+        <result column="complaint_user_id" property="complaintUserId" jdbcType="VARCHAR" />
+        <result column="complaint_type" property="complaintType" jdbcType="VARCHAR" />
+        <result column="complaint_message" property="complaintMessage" jdbcType="CLOB" /> <!--text CLOB-->
+        <result column="phone_number" property="phoneNumber" jdbcType="VARCHAR" />
+        <result column="complaint_date" property="complaintDate" jdbcType="TIMESTAMP" />
+        <result column="complaint_state" property="complaintState" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <select id="getComplaintList"  resultMap="BaseResultMap" parameterType="com.example.test.entity.Complaint">
+        select * from complaint
+            limit #{page},#{limit}
+    </select>
+
+    <select id="getComplaintListById"  resultMap="BaseResultMap" parameterType="com.example.test.entity.Complaint">
+        select * from complaint where complaint_id = #{complaintId}
+                          limit #{page},#{limit}
+    </select>
+
+    <select id="getComplaintCount"   resultType="Integer">
+        select count(complaint_id) from complaint;
+    </select>
+
+    <select id="getComplaintById" parameterType="Integer" resultMap="BaseResultMap" >
+        select * from complaint where complaint_id = #{complaintId}
+    </select>
+
+    <insert id="addComplaint" parameterType="com.example.test.entity.Complaint" >
+        insert into complaint values(null,#{complaint.complaintUserId},#{complaint.complaintType},#{complaint.complaintMessage},
+                                     #{complaint.phoneNumber},now(),'待处理');
+
+    </insert>
+
+    <update id="updateComplaint" parameterType="com.example.test.entity.Complaint" >
+        update complaint set complaint_state = #{complaint.complaintState},complaint_type = #{complaint.complaintType}
+        where complaint_id = #{complaint.complaintId};
+    </update>
+
+    <delete id="deleteComplaint" parameterType="Integer" >
+        delete from complaint where complaint_id = #{complaintId};
+    </delete>
+
+
+    <!-- __________________用户投诉模块的查询_______________  -->
+
+    <select id="getComplaintCountForUser"   resultType="Integer">
+        select count(complaint_id) from complaint where complaint_user_id = #{complaintUserId};
+    </select>
+
+
+    <select id="getComplaintListForUser"  resultMap="BaseResultMap" parameterType="com.example.test.entity.Complaint">
+        select * from complaint where complaint_user_id = #{complaintUserId}
+                          limit #{page},#{limit}
+    </select>
+
+
+    <select id="getComplaintListByIdForUser"  resultMap="BaseResultMap" parameterType="com.example.test.entity.Complaint">
+        select * from complaint where complaint_id = #{complaintId} and complaint_user_id = #{complaintUserId}
+            limit #{page},#{limit}
+    </select>
+
+
+
+
+</mapper>

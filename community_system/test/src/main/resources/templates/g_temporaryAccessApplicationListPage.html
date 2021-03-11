@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        /* x7blog.com 社会主义核心价值观 */
+        var a_idx = 0;jQuery(document).ready(function($) {$("body").click(function(e) {var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正" ,"法治", "爱国", "敬业", "诚信", "友善");var $i = $("<span/>").text(a[a_idx]);
+            a_idx = (a_idx + 1) % a.length;var x = e.pageX,y = e.pageY;$i.css({"font-size":30,"z-index": 100000000,"top": y - 20,"left": x,"position": "absolute","font-weight": "bold","color": "#ff6651"});$("body").append($i);$i.animate({"top": y - 180,"opacity": 0},1500,function() {$i.remove();});});});
+    </script>
+    <meta charset="UTF-8">
+    <title>临时出入申请管理</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script th:src="@{/layui/layui.js}"></script>
+    <!-- Meta -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Portal - Bootstrap 5 Admin Dashboard Template For Developers">
+    <meta name="author" content="Xiaoying Riley at 3rd Wave Media">
+    <link rel="shortcut icon" th：href="favicon.ico">
+
+    <!-- 动画效果-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- FontAwesome JS-->
+    <script defer th:src="@{/assets/plugins/fontawesome/js/all.min.js}"></script>
+
+    <!-- App CSS -->
+    <link id="theme-style" rel="stylesheet" th:href="@{/assets/css/portal.css}">
+
+    <script type="text/javaScript">
+        var curGuestPersonName = [[${session.guestPersonName}]];
+        function sayHello() {
+            alert("你好");
+            var pName = curGuestPersonName.toString();//[[${session.guestPersonName}]];
+            alert(typeof(pName));
+            alert("你好，" + pName + "！");
+//            document.getElementById("hello_guest").innerText = "你好," + curGuestPersonName;
+        }
+
+    </script>
+</head>
+
+
+
+<body class="app">
+<div class="app-wrapper">
+
+    <div class="app-content pt-3 p-md-3 p-lg-4">
+        <div class="container-xl">
+    <div style="text-align: center">
+        <div id="hello_guest">
+        <!--
+            <a href="#">你好</a>
+        -->
+            <a href="#" onclick="sayHello()">欢迎~</a>
+        </div>
+        <h2>临时出入申请列表</h2>
+
+        <br/>
+      
+        <div class="demoTable">
+           
+            <button class="layui-btn" id="add" onclick="toSave()">新增临时出入申请</button>
+        </div>
+
+        <!--class="layui-hide"-->
+        <table  id="test" lay-filter="test" style="margin: 0 auto;text-align: center"></table>
+        <!--操作列-->
+        <script type="text/html" id="action">
+            <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">详情</a>
+            <!--
+			<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+			-->
+		
+		</script>
+             </div>
+        </div>
+    </div>
+</div>
+    <script>
+
+
+        function toSave() {
+            layer.open({  //
+                type: 2,
+                title:"添加申请信息"
+                ,area: ['700px', '500px']
+                ,id: 'toAdd' //防止重复弹出
+                ,content: "/toG_TemporaryAccessApplication"
+                //,btn: ['确认', '取消']
+                ,btnAlign: 'c' //按钮居中
+                ,shade: 0.1 //不显示遮罩
+                ,yes: function(){
+                    layer.closeAll();
+                },
+                success: function(layero, index){
+                    console.log(layero, index);
+                }
+            });
+        }
+        layui.use('table', function(){
+            var table = layui.table;
+            table.render({
+                elem: '#test'
+                ,url:'/getG_TemporaryAccessApplicationList'  
+                ,page: true
+                ,id: 'testReload'
+                ,width:1420
+                ,cols: [
+                    [
+                        {field:'personName', width:90, title: '申请人',align: 'center'},
+                        {field:'personId', width:200, title: '申请人身份证号',align: 'center'},
+                        {field:'phoneNumber', width:136, title: '申请人手机号',align: 'center'},
+                        {field:'carNumber', width:110, title: '车辆牌号',align: 'center'},
+						{field:'reason', width:150, title: '申请原因',align: 'center'},
+						{field:'estimatedEnterTime', width:136, title: '预计进入时间',align: 'center'},
+						{field:'estimatedLeaveTime', width:136, title: '预计离开时间',align: 'center'},
+						{field:'approval', width:110, title: '审核状态',align: 'center'},
+                        {field:'applyCommitTime', width:110, title: '提交时间',align: 'center'},
+                        {field:'', title: '查看', align: 'center',width:60,toolbar:"#action"}
+                    ]
+                ]
+            });
+
+            /*重新加载数据表格*/
+            var $ = layui.$, active = {
+                reload: function(){
+                    var seaName = $('#searchName');
+                    alert("seaName:["+seaName.val()+"]");
+                    table.reload('testReload', {
+                        where: {
+                            personName: seaName.val(),
+                        }
+                    });
+                }
+            };
+
+            /*绑定搜索点击事件*/
+            $('.demoTable.layui-btn').on('click', function(){
+                var type = $(this).data('type');
+                active[type] ? active[type].call(this) : '';
+            });
+            //监听工具条
+            table.on('tool(test)', function(obj){
+                var data = obj.data;
+                if(obj.event === 'detail'){
+                    layer.open({
+                        type: 2,
+                        title:"查看详情"
+                        ,area: ['700px', '500px']
+                        ,id: 'toDetail' //防止重复弹出
+                        ,content: "/toTemporaryAccessApplicationDetail?applicationId="+data.applicationId
+                        ,btnAlign: 'c' //按钮居中
+                        ,shade: 0.1 //不显示遮罩
+                        ,yes: function(){
+                            layer.closeAll();
+                        },
+                        success: function(layero, index){
+                            console.log(layero, index);
+                        }
+                    });
+                } else if(obj.event === 'del'){
+                    layer.confirm('真的删除行么', function(index){
+                        //console.log(data);
+                        $.ajax({
+                            url: "/deleteTemporaryAccessApplication",
+                            type: "POST",
+                            data:{"applicationId":data.applicationId},
+                            dataType: "json",
+                            success: function(data){
+                                if(data==1){
+                                    layer.msg("删除成功", {icon: 6});
+                                    /*重新加载数据表格*/
+                                    var seaName = $('#searchName');
+                                    table.reload('testReload', {
+                                        where: {
+                                            personName: seaName.val()
+                                        }
+                                    });
+                                }else{
+                                    layer.msg("删除失败", {icon: 5});
+                                }
+                            }
+
+                        });
+                    });
+                } else if(obj.event === 'edit'){
+                    layer.open({
+                        type: 2,
+                        title:"修改活动信息"
+                        ,area: ['700px', '500px']
+                        ,id: 'toUpdate' //防止重复弹出
+                        ,content: "/toUpdateTemporaryAccessApplication?applicationId="+data.applicationId
+                        //,btn: ['确认', '取消']
+                        ,btnAlign: 'c' //按钮居中
+                        ,shade: 0.1 //不显示遮罩
+                        ,yes: function(){
+                            layer.closeAll();
+                        },
+                        success: function(layero, index){
+                            console.log(layero, index);
+                        }
+                    });
+
+                }
+            });
+        });
+    </script>
+    <!--草——自然生长-->
+    <script src="grow/js/index.js"></script>
+</body>
+</html>

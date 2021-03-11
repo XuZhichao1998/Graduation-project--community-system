@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>商品详情查看</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script th:src="@{/layui/layui.js}"></script>
+</head>
+
+<body>
+   <form class="layui-form"  th:action="@{/edit}" th:object="${product}"  method="post">
+
+
+       <div class="layui-form-item" style="margin-top: 20px;">
+
+           <label class="layui-form-label">商品编号：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="productId" id="productId"  th:value="*{productId}" style="width: 400px;" placeholder="请输入商品编号"  class="layui-input">
+           </div>
+       </div>
+
+        <div class="layui-form-item" style="margin-top: 20px;">
+
+            <label class="layui-form-label">商品名称：</label>
+            <div class="layui-input-block">
+                <input type="text" readonly="readonly" name="productName" id="productName"  th:value="*{productName}" style="width: 400px;" placeholder="请输入商品名称"  class="layui-input">
+            </div>
+        </div>
+
+       <div class="layui-form-item">
+           <label class="layui-form-label">商品单价：</label>
+           <div class="layui-input-block">
+               <input type="number" step="0.01" readonly="readonly" name="unitPrice" id="unitPrice"  th:value="*{unitPrice}" style="width: 400px;" placeholder="请输入单价"  class="layui-input">
+           </div>
+       </div>
+
+       <div class="layui-form-item">
+           <label class="layui-form-label">计量单位：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="unit" id="unit"  th:value="*{unit}" style="width: 400px;" placeholder="请输入计量单位"  class="layui-input">
+           </div>
+       </div>
+
+       <div class="layui-form-item">
+           <label class="layui-form-label">商品类别：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="categoryId" id="categoryId"  th:value="*{categoryId}" style="width: 400px;" placeholder="请输入类别编号"  class="layui-input">
+           </div>
+       </div>
+
+
+
+   </form>
+
+</body>
+</html>

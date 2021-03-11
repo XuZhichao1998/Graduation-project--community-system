@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <title>停车位信息表</title>
+    <script>
+        function deleteProduct(productId) {
+            alert(productId)
+        }
+    </script>
+
+</head>
+
+<body>
+<div style="text-align: center">
+    <h1>车位信息</h1>
+    <br/>
+    <table align="center" border="1px" cellspacing="0" width="500px" style="text-align: center;margin:0 auto;">
+        <tr>
+            <th>车位编号</th>
+            <th>车位描述</th>
+            <th>停车牌号</th>
+            <th colspan="2">操作</th>
+        </tr>
+        <tr th:each="parking : ${parkingList}">
+            <td th:text="${parking.parkingId}"></td>
+            <td th:text="${parking.parkingPlaceDescription}"></td>
+            <td th:text="${parking.parkingCarNumber}"></td>
+            <td>
+               <!-- <a th:href="@{/toEdit(id=${product.productId})}">修改</a>-->
+                <button type="button"  th:onclick="'javascript:updateParking('+${parking.parkingId}+')' ">修改</button>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

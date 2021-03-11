@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>临时出入申请查看</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script th:src="@{/layui/layui.js}"></script>
+</head>
+
+<body>
+   <form class="layui-form"  th:action="@{/edit}" th:object="${temporaryAccessApplication}"  method="post">
+       <div class="layui-form-item" style="margin-top: 20px;">
+
+           <label class="layui-form-label">申请人姓名：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="personName" id="personName"  th:value="*{personName}" style="width: 400px;" placeholder="--"  class="layui-input">
+           </div>
+       </div>
+
+       <div class="layui-form-item" style="margin-top: 20px;">
+
+           <label class="layui-form-label">申请人身份证号：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="personId" id="personId"  th:value="*{personId}" style="width: 400px;" placeholder="活动名称不详"  class="layui-input">
+           </div>
+       </div>
+	   
+	   
+	    <div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">本人手机号：</label>
+           <div class="layui-input-block"> 
+               <input type="text" readonly="readonly" name="phoneNumber" id="phoneNumber"  th:value="*{phoneNumber}" style="width: 400px;" placeholder="活动名称不详"  class="layui-input">
+		   </div>
+       </div>
+
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">进入车辆牌号：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="carNumber" id="carNumber"  th:value="*{carNumber}" style="width: 400px;" placeholder="--"  class="layui-input">
+           </div>
+       </div>
+	   
+	   
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">申请原因：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="reason" id="reason"  th:value="*{reason}" style="width: 400px;" placeholder="--"  class="layui-input">
+           </div>
+       </div>
+	   
+	   
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">预计进入时间：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="estimatedEnterTime" id="estimatedEnterTime"  th:value="*{estimatedEnterTime}" style="width: 400px;" placeholder="--"  class="layui-input">
+           </div>
+       </div>	
+
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">预计离开时间：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="estimatedLeaveTime" id="estimatedLeaveTime"  th:value="*{estimatedLeaveTime}" style="width: 400px;" placeholder="--"  class="layui-input">
+           </div>
+       </div>	
+
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">申请提交时间：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="applyCommitTime" id="applyCommitTime"  th:value="*{applyCommitTime}" style="width: 400px;" placeholder="--"  class="layui-input">
+           </div>
+       </div>	   
+	   
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">审核状态：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="approval" id="approval"  th:value="*{approval}" style="width: 400px;" placeholder="--"  class="layui-input">
+           </div>
+       </div>	 
+	   
+	   <div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">审核人：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="approvalManagerName" id="approvalManagerName"  th:value="*{approvalManagerName}" style="width: 400px;" placeholder="--"  class="layui-input">
+           </div>
+       </div>
+	   
+	   
+	   <div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">实际进入社区时间：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="actualEnterTime" id="actualEnterTime"  th:value="*{actualEnterTime}" style="width: 400px;" placeholder="--"  class="layui-input">
+           </div>
+       </div>
+	   
+	   <div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">实际离开社区时间：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="actualLeaveTime" id="actualLeaveTime"  th:value="*{actualLeaveTime}" style="width: 400px;" placeholder="--"  class="layui-input">
+           </div>
+       </div>
+	   	   
+   </form>
+
+</body>
+</html>

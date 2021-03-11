@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>党员信息详情查看</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script th:src="@{/layui/layui.js}"></script>
+</head>
+
+<body>
+   <form class="layui-form"  th:action="@{/edit}" th:object="${partyMemberInfo}"  method="post">
+
+
+       <div class="layui-form-item" style="margin-top: 20px;">
+
+           <label class="layui-form-label">身份证号：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="partyMemberId" id="partyMemberId"  th:value="*{partyMemberId}" style="width: 400px;" placeholder="保密"  class="layui-input">
+           </div>
+       </div>
+	   
+	   
+	    <div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">党员姓名：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="fullName" id="fullName"  th:value="*{fullName}" style="width: 400px;" placeholder="不详"  class="layui-input">
+           </div>
+       </div>
+
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">单位编号：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="unitId" id="unitId"  th:value="*{unitId}" style="width: 400px;" placeholder="不详"  class="layui-input">
+           </div>
+       </div>
+	   
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">性别：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="sex" id="sex"  th:value="*{sex}" style="width: 400px;" placeholder="保密"  class="layui-input">
+           </div>
+       </div>	
+
+   </form>
+
+</body>
+</html>

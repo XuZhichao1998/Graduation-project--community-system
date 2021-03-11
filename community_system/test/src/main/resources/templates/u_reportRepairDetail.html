@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>报修详情查看</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script th:src="@{/layui/layui.js}"></script>
+</head>
+
+<body>
+   <form class="layui-form"  th:action="@{/edit}" th:object="${reportRepair}"  method="post">
+
+
+       <div class="layui-form-item" style="margin-top: 20px;">
+
+           <label class="layui-form-label">报修编号：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="reportRepairId" id="reportRepairId"  th:value="*{reportRepairId}" style="width: 400px;" placeholder="请输入报修编号"  class="layui-input">
+           </div>
+       </div>
+	   
+	   
+	    <div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">报修用户名：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="reportUserId" id="reportUserId"  th:value="*{reportUserId}" style="width: 400px;" placeholder="请输入报修者用户名"  class="layui-input">
+           </div>
+       </div>
+
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">报修问题：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="reportProblem" id="reportProblem"  th:value="*{reportProblem}" style="width: 400px;" placeholder="请输入报修问题"  class="layui-input">
+           </div>
+       </div>
+	   
+	   
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">上报时间：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="reportDatetime" id="reportDatetime"  th:value="*{reportDatetime}" style="width: 400px;" placeholder="请输上报的时间"  class="layui-input">
+           </div>
+       </div>
+	   
+	   
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">处理状态：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="reportState" id="reportState"  th:value="*{reportState}" style="width: 400px;" placeholder="请输入报修的处理状态"  class="layui-input">
+           </div>
+       </div>	
+
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">上门维修日期：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="repairFinishDatetime" id="repairFinishDatetime"  th:value="*{repairFinishDatetime}" style="width: 400px;" placeholder="暂未确定"  class="layui-input">
+           </div>
+       </div>	  
+
+   </form>
+
+</body>
+</html>

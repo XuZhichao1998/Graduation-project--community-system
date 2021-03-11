@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>党员信息更新</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script th:src="@{/layui/layui.js}"></script>
+    <script th:src="@{/jquery-3.3.1/jquery-3.3.1.js}"></script>
+</head>
+
+<body>
+
+   <form class="layui-form"  th:action="@{/edit}" th:object="${activityRegistration}" id="activityRegistrationForm"  method="post">
+
+      	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">活动编号：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="pid" id="pid" style="width: 400px;" th:value="*{pid}"  class="layui-input">
+           </div>
+       </div>
+
+       <div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">活动名称：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="pName" id="pName" style="width: 400px;" th:value="*{pName}"  class="layui-input">
+           </div>
+       </div>
+
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">党员姓名：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="volunteerName" id="volunteerName" style="width: 400px;" th:value="*{volunteerName}"  class="layui-input">
+           </div>
+       </div>
+	
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">身份证号：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="volunteerId" id="volunteerId" style="width: 400px;" th:value="*{volunteerId}"  class="layui-input">
+           </div>
+       </div>
+	   
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">报名时间：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="volunteerRegistTime" id="volunteerRegistTime"  th:value="*{volunteerRegistTime}" style="width: 400px;" placeholder="--"  class="layui-input">
+           </div>
+       </div>	
+	   
+	    <div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">审核状态：</label>
+           <div class="layui-input-block">
+               <input type="text" name="approval" id="approval"  th:value="*{approval}" style="width: 400px;" placeholder="待审核/已通过/人数已满"  class="layui-input">
+           </div>
+       </div>	
+	  
+	  
+	   
+       <div class="layui-form-item">
+           <div class="layui-input-block">
+               <button type="button" class="layui-btn"  th:onclick="'javascript:save()'">确认</button>
+               <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+           </div>
+       </div>
+    </form>
+
+</body>
+
+<script>
+
+    function save(){
+	
+		var pid = $("#pid").val(); // 志愿活动编号
+        var volunteerId = $("#volunteerId").val(); // 党员志愿者的身份证号
+		//var volunteerName = $("#volunteerName").val(); // 党员志愿者的姓名
+        var approval = $("#approval").val(); // 审核状态(报名是否通过审核)
+		
+		if(approval==""){
+			alert('请输入审核状态！');
+            parent.layer.msg("请输入审核状态");
+            return;
+        }
+		if(approval!="待审核" && approval!="已通过" && approval!="人数已满") {
+			alert("审核状态只能为：待审核/已通过/人数已满");
+            parent.layer.msg("审核状态只能为：待审核/已通过/人数已满");
+            return;
+		}
+       
+	
+        //alert('Id:'+complaintId+",uid:"+complaintUserId+",type:"+complaintType+",msg:"+complaintMessage+",phone:"+phoneNumber+",date:"+complaintDate+",state:"+complaintState);
+        $.ajax({
+            url: "/activityRegistrationUpdate",
+            type: "POST",
+            data: {"pid":pid,"volunteerId":volunteerId,"approval":approval},
+            dataType: "json",
+            success: function(data){
+                if(data==1){
+                    var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                    parent.layer.close(index);  // 关闭layer
+                    parent.layer.msg("修改成功", {icon: 6});
+                    parent.location.reload();
+                }else{
+                    parent.layer.msg("修改失败", {icon: 5});
+                }
+            }
+        });
+    }
+
+</script>
+</html>

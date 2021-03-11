@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>活动信息更新</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script th:src="@{/layui/layui.js}"></script>
+    <script th:src="@{/jquery-3.3.1/jquery-3.3.1.js}"></script>
+</head>
+
+<body>
+
+   <form class="layui-form"  th:action="@{/edit}" th:object="${serviceActivity}" id="serviceActivityFrom"  method="post">
+
+       <input type="hidden" name="pid" id="pid" th:value="*{pid}" /><!--活动编号-->
+	   
+	   
+	    <div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">活动名称：</label>
+           <div class="layui-input-block">
+               <input type="text" name="projectName" id="projectName"  th:value="*{projectName}" style="width: 400px;" placeholder="请输入活动名称"  class="layui-input">
+           </div>
+       </div>
+
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">活动内容：</label>
+           <div class="layui-input-block">
+		<!--		<textarea name="content" id="content"  th:value="*{content}" style="width: 400px;" placeholder="请输入活动内容" class="layui-input">
+				
+				</textarea>
+		-->
+           <input type="text" name="content" id="content"  th:value="*{content}" style="width: 400px;" placeholder="请输入活动内容"  class="layui-input">
+
+		   
+		   </div>
+       </div>
+	   
+	   
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">活动开始时间：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="beginTime" id="beginTime"  th:value="*{beginTime}" style="width: 400px;" placeholder="请输入活动开始时间"  class="layui-input">
+           </div>
+       </div>
+	   
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">报名截止时间：</label>
+           <div class="layui-input-block">
+               <input type="test" readonly="readonly" name="registrationDeadline" id="registrationDeadline"  th:value="*{registrationDeadline}" style="width: 400px;" placeholder="报名截止时间"  class="layui-input">
+           </div>
+       </div>
+	   
+	   <div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">招募人数：</label>
+           <div class="layui-input-block">
+               <input type="number" name="recruitmentNumbers" id="recruitmentNumbers"  th:value="*{recruitmentNumbers}" style="width: 400px;" placeholder="招募人数"  class="layui-input">
+           </div>
+       </div>
+	   
+	   <div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">报名要求：</label>
+           <div class="layui-input-block">
+               <input type="text" name="requirement" id="requirement"  th:value="*{requirement}" style="width: 400px;" placeholder="报名要求"  class="layui-input">
+           </div>
+       </div>   
+	   
+	   
+	   
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">活动状态：</label>
+           <div class="layui-input-block">
+               <input type="text" name="projectStatus" id="projectStatus"  th:value="*{projectStatus}" style="width: 400px;" placeholder="招募中/进行中/已结束"  class="layui-input">
+           </div>
+       </div>	
+	   	  
+       <div class="layui-form-item">
+           <div class="layui-input-block">
+               <button type="button" class="layui-btn"  th:onclick="'javascript:save()'">确认</button>
+               <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+           </div>
+       </div>
+    </form>
+
+</body>
+
+<script>
+
+    function save(){
+		var pid = $("#pid").val(); // 活动编号
+        var projectName = $("#projectName").val(); // 活动名称
+        var content = $("#content").val(); // 活动内容
+		//var beginTime = $("#beginTime").val(); // 活动开始时间
+		//var registrationDeadline = $("#registrationDeadline").val(); // 报名截止时间
+		var recruitmentNumbers = $("#recruitmentNumbers").val(); // 招募人数
+		var requirement = $("#requirement").val(); // 报名要求
+		var projectStatus = $("#projectStatus").val(); // 活动状态
+	
+        //alert('Id:'+complaintId+",uid:"+complaintUserId+",type:"+complaintType+",msg:"+complaintMessage+",phone:"+phoneNumber+",date:"+complaintDate+",state:"+complaintState);
+        $.ajax({
+            url: "/serviceActivityUpdate",
+            type: "POST",
+            data: {"pid":pid, "projectName":projectName, "content":content,
+			       "recruitmentNumbers":recruitmentNumbers, "requirement":requirement, "projectStatus":projectStatus},
+            dataType: "json",
+            success: function(data){
+                if(data==1){
+                    var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                    parent.layer.close(index);  // 关闭layer
+                    parent.layer.msg("修改成功", {icon: 6});
+                    parent.location.reload();
+                }else{
+                    parent.layer.msg("修改失败", {icon: 5});
+                }
+            }
+        });
+    }
+
+</script>
+</html>

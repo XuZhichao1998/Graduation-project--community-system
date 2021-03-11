@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <title>报修列表</title>
+    <script>
+        function deleteReportRepair(reportRepairId) {
+            alert(reportRepairId)
+        }
+    </script>
+
+</head>
+
+<body>
+<div style="text-align: center">
+    <h1>报修列表</h1>
+    <br/>
+    <table align="center" border="1px" cellspacing="0" width="500px" style="text-align: center;margin:0 auto;">
+        <tr>
+            <th>报修编号</th>
+            <th>报修者用户名</th>
+            <th>报修问题</th>
+			<th>上报时间</th>
+			<th>处理状态</th>
+			<th>上门维修日期</th>
+            <th colspan="2">操作</th>
+        </tr>
+        <tr th:each="reportRepair : ${reportRepairList}">
+			<td th:text="${reportRepair.reportRepairId}"></td>
+            <td th:text="${reportRepair.reportUserId}"></td>
+            <td th:text="${reportRepair.reportProblem}"></td>
+            <td th:text="${reportRepair.reportDatetime}"></td>
+			<td th:text="${reportRepair.reportState}"></td>
+			<td th:text="${reportRepair.repairFinishDatetime}"></td>
+            <td>
+                <button type="button"  th:onclick="'javascript:updateReportRepair('+${reportRepair.reportRepairId}+')' ">修改</button>
+            </td>
+			
+            <td>
+                <button type="button"  th:onclick="'javascript:deleteReportRepair('+${reportRepair.reportRepairId}+')' ">删除</button>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

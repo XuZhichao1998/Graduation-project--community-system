@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.test.mapper.ServiceActivityMapper">
+    <resultMap id="BaseResultMap" type="com.example.test.entity.ServiceActivity" >
+        <id column="pid" property="pid" jdbcType="INTEGER" /> <!--主键-->
+        <result column="project_name" property="projectName" jdbcType="VARCHAR" />
+        <result column="content" property="content" jdbcType="CLOB" />
+        <result column="begin_time" property="beginTime" jdbcType="TIMESTAMP" />
+        <result column="registration_deadline" property="registrationDeadline" jdbcType="TIMESTAMP" />
+        <result column="recruitment_numbers" property="recruitmentNumbers" jdbcType="INTEGER" />
+        <result column="requirement" property="requirement" jdbcType="VARCHAR" />
+        <result column="project_status" property="projectStatus" jdbcType="VARCHAR" />
+        <result column="hasRegist" property="hasRegist" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <select id="getActivityList"  resultMap="BaseResultMap" parameterType="com.example.test.entity.ServiceActivity">
+        SELECT * FROM service_activity
+        LIMIT #{page},#{limit};
+    </select>
+
+    <select id="getRecruitingActivityList"  resultMap="BaseResultMap" parameterType="com.example.test.entity.ServiceActivity">
+        SELECT * FROM service_activity
+        WHERE project_status = '招募中'
+        LIMIT #{page},#{limit};
+    </select>
+
+    <select id="getFinishActivityList"  resultMap="BaseResultMap" parameterType="com.example.test.entity.ServiceActivity">
+        SELECT * FROM service_activity
+        WHERE project_status = '已结束'
+        LIMIT #{page},#{limit};
+    </select>
+
+    <select id="getOnGoingActivityList"  resultMap="BaseResultMap" parameterType="com.example.test.entity.ServiceActivity">
+        SELECT * from service_activity
+        WHERE project_status = '进行中'
+        LIMIT #{page},#{limit};
+    </select>
+
+
+
+    <select id="getActivityListById"  resultMap="BaseResultMap" parameterType="com.example.test.entity.ServiceActivity">
+        SELECT * FROM service_activity
+        WHERE 1 = 1 AND pid = #{pid}
+        LIMIT #{page},#{limit};
+    </select>
+
+    <select id="getActivityById"  resultMap="BaseResultMap" parameterType="com.example.test.entity.ServiceActivity">
+        SELECT * FROM service_activity
+        WHERE pid = #{pid}
+    </select>
+
+
+    <select id="getActivityCount"   resultType="Integer">
+        SELECT COUNT(pid) FROM service_activity;
+    </select>
+
+    <select id="getFinishActivityCount"   resultType="Integer">
+        SELECT COUNT(pid) FROM service_activity WHERE project_status = '已结束';
+    </select>
+
+    <select id="getOnGoingActivityCount"   resultType="Integer">
+        SELECT COUNT(pid) FROM service_activity WHERE project_status = '进行中';
+    </select>
+
+    <select id="getRecruitingActivityCount"   resultType="Integer">
+        SELECT COUNT(pid) FROM service_activity WHERE project_status = '招募中';
+    </select>
+
+
+    <insert id="addActivity" parameterType="com.example.test.entity.ServiceActivity" >
+        INSERT INTO service_activity(
+            project_name,
+            content,
+            begin_time,
+            registration_deadline,
+            recruitment_numbers,
+            requirement,
+            project_status
+        ) VALUES(
+                    #{activity.projectName},
+                    #{activity.content},
+                    #{activity.beginTime},
+                    #{activity.registrationDeadline},
+                    #{activity.recruitmentNumbers},
+                    #{activity.requirement},
+                    #{activity.projectStatus}
+        );
+
+    </insert>
+
+
+    <update id="updateServiceActivity" parameterType="com.example.test.entity.ServiceActivity" >
+        UPDATE service_activity SET
+            project_name = #{activity.projectName},
+            content = #{activity.content},
+            recruitment_numbers = #{activity.recruitmentNumbers},
+            requirement = #{activity.requirement},
+            project_status = #{activity.projectStatus}
+        WHERE pid = #{activity.pid};
+    </update>
+
+
+    <delete id="deleteActivity" parameterType="Integer" >
+        DELETE FROM service_activity
+        WHERE pid = #{pid};
+    </delete>
+
+    <!-- 以下为党员志愿者查询的活动列表，会多返回一列(是否已报名) -->
+    <select id="getActivityListForVolunteer"  resultMap="BaseResultMap" parameterType="com.example.test.entity.ServiceActivity">
+        SELECT pid, project_name, content, begin_time, registration_deadline,recruitment_numbers, requirement, project_status,
+               CASE WHEN (SELECT COUNT(*)FROM activity_registration ar WHERE  volunteer_id = #{volunteerId} AND sa.pid = ar.pid)>0 THEN '已报名' ELSE '未报名' END AS 'hasRegist'
+        FROM service_activity sa
+        ORDER BY pid
+        LIMIT #{page}, #{limit};
+    </select>
+
+    <select id="getActivityByIdForVolunteer"  resultMap="BaseResultMap" parameterType="com.example.test.entity.ServiceActivity">
+        SELECT pid, project_name, content, begin_time, registration_deadline,recruitment_numbers, requirement, project_status,
+               CASE WHEN (SELECT COUNT(*)FROM activity_registration ar WHERE  volunteer_id = #{volunteerId} AND sa.pid = ar.pid)>0 THEN '已报名' ELSE '未报名' END AS 'hasRegist'
+        FROM service_activity sa
+        WHERE pid = #{pid};
+    </select>
+
+
+</mapper>

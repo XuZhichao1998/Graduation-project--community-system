@@ -1,0 +1,88 @@
+ <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>活动报名信息查看</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script th:src="@{/layui/layui.js}"></script>
+    <script th:src="@{/jquery-3.3.1/jquery-3.3.1.js}"></script>
+</head>
+
+<body>
+   <form class="layui-form"  th:action="@{/edit}" th:object="${activityRegistration}" id="activityRegistrationFrom"  method="post">
+
+       	   <div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">活动编号：</label>
+           <div class="layui-input-block">
+               <input type="number" name="pid" id="pid" style="width: 400px;" placeholder="请输入活动编号"  class="layui-input">
+           </div>
+       </div>
+
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">党员姓名：</label>
+           <div class="layui-input-block">
+               <input type="text" name="volunteerName" id="volunteerName" style="width: 400px;" placeholder="请输入党员姓名"  class="layui-input">
+           </div>
+       </div>
+	
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">身份证号：</label>
+           <div class="layui-input-block">
+               <input type="text" name="volunteerId" id="volunteerId" style="width: 400px;" placeholder="请输入党员身份证号"  class="layui-input">
+           </div>
+       </div>
+
+	   	 
+       <div class="layui-form-item">
+           <div class="layui-input-block">
+               <button type="button" class="layui-btn"  th:onclick="'javascript:save()'">确认</button>
+               <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+           </div>
+       </div>
+    </form>
+
+</body>
+
+<script>
+
+    function save(){
+        var pid = $("#pid").val(); // 志愿活动编号
+        var volunteerId = $("#volunteerId").val(); // 党员志愿者的身份证号
+		var volunteerName = $("#volunteerName").val(); // 党员志愿者的姓名
+	
+		if(pid=="") {
+			alert('请输入活动编号！');
+            parent.layer.msg("请输入活动编号");
+            return;
+		}
+	
+        if(volunteerId==""){
+			alert('请输入党员身份证号！');
+            parent.layer.msg("请输入党员身份证号");
+            return;
+        }
+        if(volunteerName==""){
+			alert('请输入党员姓名！')
+            parent.layer.msg("请输入党员姓名");
+            return;
+        }
+		
+        $.ajax({
+            url: "/activityRegistrationAdd",
+            type: "POST",
+            data:{"pid":pid,"volunteerId":volunteerId,"volunteerName":volunteerName},
+            dataType: "json",
+            success: function(data){
+                if(data==1){
+                    var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                    parent.layer.close(index);  // 关闭layer
+                    parent.layer.msg("新增成功", {icon: 6});
+                    parent.location.reload();
+                }else{
+                    parent.layer.msg("新增失败", {icon: 5});
+                }
+            }
+        });
+    }
+
+</script>
+</html>

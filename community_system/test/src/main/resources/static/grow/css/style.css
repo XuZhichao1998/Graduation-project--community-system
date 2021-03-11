@@ -1,0 +1,21 @@
+
+body {
+  background: #111111;
+}
+
+#canvas_container_div {
+  position: absolute;
+  /* position:fixed; */
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+#canvas {
+	margin-top:70%;
+	margin-left:25%;
+  width: 40%;
+  height: 40%;
+/*   border: solid 3px #000000; */
+  background: #FFFFFF;
+}

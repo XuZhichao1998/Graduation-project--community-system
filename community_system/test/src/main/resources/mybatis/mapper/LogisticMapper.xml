@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.test.mapper.LogisticMapper">
+    <resultMap id="BaseResultMap" type="com.example.test.entity.Logistic" >
+        <id column="logistic_id" property="logisticId" jdbcType="INTEGER" /> <!---->
+        <result column="logistic_order_id" property="logisticOrderId" jdbcType="VARCHAR" />
+        <result column="logistic_submit_date" property="logisticSubmitDate" jdbcType="TIMESTAMP" />
+        <result column="user_id" property="userId" jdbcType="VARCHAR" />
+        <result column="sender_name" property="senderName" jdbcType="VARCHAR" />
+        <result column="logistic_type" property="logisticType" jdbcType="INTEGER" />
+        <result column="sender_phone_number" property="senderPhoneNumber" jdbcType="VARCHAR" />
+        <result column="sender_province" property="senderProvince" jdbcType="VARCHAR" />
+        <result column="sender_city" property="senderCity" jdbcType="VARCHAR" />
+        <result column="sender_district" property="senderDistrict" jdbcType="VARCHAR" />
+        <result column="sender_postal_code" property="senderPostalCode" jdbcType="VARCHAR" />
+        <result column="sender_detailed_address" property="senderDetailedAddress" jdbcType="CLOB" />
+        <result column="receiver_name" property="receiverName" jdbcType="VARCHAR" />
+        <result column="receiver_phone_number" property="receiverPhoneNumber" jdbcType="VARCHAR" />
+        <result column="receiver_province" property="receiverProvince" jdbcType="VARCHAR" />
+        <result column="receiver_city" property="receiverCity" jdbcType="VARCHAR" />
+        <result column="receiver_district" property="receiverDistrict" jdbcType="VARCHAR" />
+        <result column="receiver_postal_code" property="receiverPostalCode" jdbcType="VARCHAR" />
+        <result column="receiver_detailed_address" property="receiverDetailedAddress" jdbcType="CLOB" />
+        <result column="logistic_money" property="logisticMoney" jdbcType="DECIMAL" />
+        <result column="courier_id" property="courierId" jdbcType="INTEGER" />
+        <result column="logistic_last_state" property="logisticLastState" jdbcType="VARCHAR" />
+        <result column="logistic_last_updatetime" property="logisticLastUpdatetime" jdbcType="TIMESTAMP" />
+        <result column="logistic_finish" property="logisticFinish" jdbcType="INTEGER" />
+
+    </resultMap>
+
+    <select id="getLogisticList"  resultMap="BaseResultMap" parameterType="com.example.test.entity.Logistic">
+        select * from logistic order by logistic_id desc
+        limit #{page},#{limit}
+    </select>
+
+    <select id="getLogisticListById"  resultMap="BaseResultMap" parameterType="com.example.test.entity.Logistic">
+        select * from logistic where logistic_id = #{logisticId}
+        limit #{page},#{limit}
+    </select>
+
+    <select id="getLogisticCount"   resultType="Integer">
+        select count(logistic_id) from logistic;
+    </select>
+
+    <select id="getLogisticById" parameterType="Integer" resultMap="BaseResultMap" >
+        select * from logistic where logistic_id = #{logisticId}
+    </select>
+
+    <insert id="addLogistic" parameterType="com.example.test.entity.Logistic" >
+        insert into logistic values(null,'loaded',now(),#{logistic.userId},#{logistic.senderName},#{logistic.logisticType},
+                                    #{logistic.senderPhoneNumber},#{logistic.senderProvince},#{logistic.senderCity},#{logistic.senderDistrict},
+                                    #{logistic.senderPostalCode},#{logistic.senderDetailedAddress},#{logistic.receiverName},#{logistic.receiverPhoneNumber},
+                                    #{logistic.receiverProvince},#{logistic.receiverCity},#{logistic.receiverDistrict},#{logistic.receiverPostalCode},
+                                    #{logistic.receiverDetailedAddress},#{logistic.logisticMoney},null,'待处理',now(),0);
+
+    </insert>
+
+    <update id="updateLogistic" parameterType="com.example.test.entity.Logistic" >
+        update logistic set logistic_money = #{logistic.logisticMoney},courier_id = #{logistic.courierId},
+                            logistic_last_state=#{logistic.logisticLastState},logistic_finish=#{logistic.logisticFinish},
+                            logistic_last_updatetime = now()
+        where logistic_id = #{logistic.logisticId};
+    </update>
+
+    <delete id="deleteLogistic" parameterType="Integer" >
+        delete from logistic where logistic_id = #{logisticId};
+    </delete>
+
+
+   <!-- _________________以下为用户模块调用的查询____________________ -->
+    <select id="getLogisticCountForUser"   resultType="Integer">
+        select count(logistic_id) from logistic where user_id = #{userId};
+    </select>
+
+
+    <select id="getLogisticListForUser"  resultMap="BaseResultMap" parameterType="com.example.test.entity.Logistic">
+        select * from logistic where user_id = #{userId} order by logistic_id desc
+        limit #{page},#{limit}
+    </select>
+
+
+
+    <select id="getLogisticListByIdForUser"  resultMap="BaseResultMap" parameterType="com.example.test.entity.Logistic">
+        select * from logistic where logistic_id = #{logisticId} and user_id = #{userId}
+        limit #{page},#{limit}
+    </select>
+
+
+</mapper>

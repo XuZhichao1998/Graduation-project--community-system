@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>停车位详情查看</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script th:src="@{/layui/layui.js}"></script>
+    <script th:src="@{/jquery-3.3.1/jquery-3.3.1.js}"></script>
+</head>
+
+<body>
+   <form class="layui-form"  th:action="@{/edit}" th:object="${parking}" id="parkingFrom"  method="post">
+
+      <!-- <input type="hidden" name="parkingId" id="parkingId" th:value="*{parkingId}" />-->
+
+       <div class="layui-form-item" style="margin-top: 20px;">
+            <label class="layui-form-label">车位编号：</label>
+            <div class="layui-input-block">
+                <input type="text" th:readonly="readonly" name="parkingId" id="parkingId"  th:value="*{parkingId}" style="width: 400px;" placeholder="请输入车位编号"  class="layui-input">
+            </div>
+        </div>
+       <div class="layui-form-item">
+           <label class="layui-form-label">车位描述：</label>
+           <div class="layui-input-block">
+               <input type="text" th:readonly="readonly" name="parkingPlaceDescription" id="parkingPlaceDescription"  th:value="*{parkingPlaceDescription}" style="width: 400px;" placeholder="请输入车位描述"  class="layui-input">
+           </div>
+
+       </div>
+
+       <div class="layui-form-item">
+           <label class="layui-form-label">车位牌号：</label>
+           <div class="layui-input-block">
+               <input type="text" name="parkingCarNumber" id="parkingCarNumber"  th:value="*{parkingCarNumber}" style="width: 400px;" placeholder="请输入车牌号，无车请输入'none'"  class="layui-input">
+           </div>
+       </div>
+
+       <div class="layui-form-item">
+           <div class="layui-input-block">
+               <button type="button" class="layui-btn"  th:onclick="'javascript:save()'">确认</button>
+               <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+           </div>
+       </div>
+    </form>
+
+</body>
+
+<script>
+
+    function save(){
+        //var productName = $("#productName").val();
+        //var productId = $("#productId").val();
+        //var unitPrice = $("#unitPrice").val();
+        //var unit = $("#unit").val();
+        //var categoryId = $("#categoryId").val();
+		var parkingId = $("#parkingId").val();
+		var parkingPlaceDescription = $("#parkingPlaceDescription").val();
+		var parkingCarNumber = $("#parkingCarNumber").val();
+		
+        //alert('parkingId:'+parkingId+",desc:"+parkingPlaceDescription+",carNumber:"+parkingCarNumber);
+        $.ajax({
+            url: "/parkingUpdate",
+            type: "POST",
+            data: {"parkingId":parkingId,"parkingPlaceDescription":parkingPlaceDescription,"parkingCarNumber":parkingCarNumber},
+            dataType: "json",
+            success: function(data){
+                if(data==1){
+                    var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                    parent.layer.close(index);  // 关闭layer
+                    parent.layer.msg("修改成功", {icon: 6});
+                    parent.location.reload();
+                }else{
+                    parent.layer.msg("修改失败", {icon: 5});
+                }
+            }
+        });
+    }
+
+</script>
+</html>

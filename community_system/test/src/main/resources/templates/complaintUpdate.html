@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>投诉信息详情查看</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script th:src="@{/layui/layui.js}"></script>
+    <script th:src="@{/jquery-3.3.1/jquery-3.3.1.js}"></script>
+</head>
+
+<body>
+<!--<script>alert('进入了complaintUpdate页面！')</script>-->
+   <form class="layui-form"  th:action="@{/edit}" th:object="${complaint}" id="complaintFrom"  method="post">
+
+       <input type="hidden" name="complaintId" id="complaintId" th:value="*{complaintId}" />
+
+			    <div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">投诉者用户名：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="complaintUserId" id="complaintUserId"  th:value="*{complaintUserId}" style="width: 400px;" placeholder="请输入投诉者用户名"  class="layui-input">
+           </div>
+       </div>
+
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">投诉类型：</label>
+           <div class="layui-input-block">
+               <input type="text" name="complaintType" id="complaintType"  th:value="*{complaintType}" style="width: 400px;" placeholder="请输入投诉类型(服务/诚信/价格/意外事故投诉)"  class="layui-input">
+           </div>
+       </div>
+	   
+	   
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">投诉内容：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="complaintMessage" id="complaintMessage"  th:value="*{complaintMessage}" style="width: 400px;" placeholder="请输入投诉内容"  class="layui-input">
+           </div>
+       </div>
+	   
+	   
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">联系方式：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="phoneNumber" id="phoneNumber"  th:value="*{phoneNumber}" style="width: 400px;" placeholder="请输入联系方式"  class="layui-input">
+           </div>
+       </div>	
+
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">投诉日期：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="complaintDate" id="complaintDate"  th:value="*{complaintDate}" style="width: 400px;" placeholder="请输入投诉日期"  class="layui-input">
+           </div>
+       </div>	  
+
+		<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">投诉状态：</label>
+           <div class="layui-input-block">
+               <input type="text" name="complaintState" id="complaintState"  th:value="*{complaintState}" style="width: 400px;" placeholder="请输入投诉状态(待处理/处理中/已解决)"  class="layui-input">
+           </div>
+       </div>	 
+
+
+       <div class="layui-form-item">
+           <div class="layui-input-block">
+               <button type="button" class="layui-btn"  th:onclick="'javascript:save()'">确认</button>
+               <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+           </div>
+       </div>
+    </form>
+
+</body>
+
+<script>
+
+    function save(){
+        var complaintId = $("#complaintId").val(); 
+        var complaintUserId = $("#complaintUserId").val();
+        var complaintType = $("#complaintType").val();
+        var complaintMessage = $("#complaintMessage").val();
+		var phoneNumber = $("#phoneNumber").val();
+		var complaintDate = $("#complaintDate").val();
+		var complaintState = $("#complaintState").val();
+	
+        //alert('Id:'+complaintId+",uid:"+complaintUserId+",type:"+complaintType+",msg:"+complaintMessage+",phone:"+phoneNumber+",date:"+complaintDate+",state:"+complaintState);
+        $.ajax({
+            url: "/complaintUpdate",
+            type: "POST",
+            data: {"complaintId":complaintId,"complaintUserId":complaintUserId,"complaintType":complaintType,"complaintMessage":complaintMessage,"phoneNumber":phoneNumber,"complaintDate":complaintDate,"complaintState":complaintState},
+            dataType: "json",
+            success: function(data){
+                if(data==1){
+                    var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                    parent.layer.close(index);  // 关闭layer
+                    parent.layer.msg("修改成功", {icon: 6});
+                    parent.location.reload();
+                }else{
+                    parent.layer.msg("修改失败", {icon: 5});
+                }
+            }
+        });
+    }
+
+</script>
+</html>

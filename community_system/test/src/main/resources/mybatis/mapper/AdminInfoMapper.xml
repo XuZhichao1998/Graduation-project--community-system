@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.test.mapper.AdminInfoMapper">
+    <resultMap id="BaseResultMap" type="com.example.test.entity.AdminInfo" >
+        <!-- 定义主键 ,非常重要。如果是多个字段,则定义多个id -->
+        <!-- property：主键在pojo中的属性名 -->
+        <!-- column：主键在数据库中的列名 -->
+        <id column="admin_name" property="adminName" jdbcType="VARCHAR" />
+        <!-- 定义普通属性 -->
+        <result column="admin_password" property="adminPassword" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Base_Admin_Column_List">
+        admin_name,admin_password
+    </sql>
+
+    <select id="getInfo"  resultMap="BaseResultMap" parameterType="com.example.test.entity.AdminInfo">
+        SELECT
+        <include refid="Base_Admin_Column_List"/>
+        FROM admin_info WHERE admin_name = #{AdminName} AND admin_password = #{AdminPwd}
+    </select>
+</mapper>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>物流单查看</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script th:src="@{/layui/layui.js}"></script>
+    <script th:src="@{/jquery-3.3.1/jquery-3.3.1.js}"></script>
+</head>
+
+<body>
+   <form class="layui-form"  th:action="@{/edit}" th:object="${logistic}" id="paymentFrom"  method="post">
+	   
+	    <div class="layui-form-item">
+           <label class="layui-form-label">寄件类型：</label>
+           <div class="layui-input-block"> <!--layui-input-block-->
+                <!--
+			   <select id = "logisticType" name = "logisticType" style="width:400px;" class="layui-select">
+				  <option value = "1">文件票证</option>
+				  <option value = "2">数码产品</option>
+				  <option value = "3">日用品</option>
+				  <option value = "4">生鲜水果</option>
+				  <option value = "5">休闲食品</option>
+				  <option value = "6">服装鞋帽</option>
+				  <option value = "7">工艺品</option>
+				  <option value = "8">珠宝首饰</option>
+				  <option value = "9">其它</option>
+				</select>
+				-->
+               <input type="number" name="logisticType" id="logisticType"  style="width: 400px;"  placeholder="1文件,2数码,3日用,4生鲜,5零食,6服装,7工艺品,8珠宝,9其它"  class="layui-input">
+           </div>
+        </div>
+
+
+		<div class="layui-form-item">
+           <label class="layui-form-label">寄件人姓名：</label>
+           <div class="layui-input-block">
+               <input type="text" name="senderName" id="senderName"  style="width: 400px;"  placeholder="请输入寄件人姓名"  class="layui-input">
+           </div>
+       </div>
+		
+	   <div class="layui-form-item">
+           <label class="layui-form-label">寄件人手机号：</label>
+           <div class="layui-input-block">
+               <input type="number" name="senderPhoneNumber" id="senderPhoneNumber"  style="width: 400px;"  placeholder="请输入寄件人手机号"  class="layui-input">
+           </div>
+       </div>
+	   
+	   <div class="layui-form-item">
+           <label class="layui-form-label">寄件人所在省：</label>
+           <div class="layui-input-block">
+               <input type="text" name="senderProvince" id="senderProvince"  style="width: 400px;"  placeholder="请输入寄件人所在省"  class="layui-input">
+           </div>
+       </div>
+	   
+	   	<div class="layui-form-item">
+           <label class="layui-form-label">寄件人所在市：</label>
+           <div class="layui-input-block">
+               <input type="text" name="senderCity" id="senderCity"  style="width: 400px;"  placeholder="请输入寄件人所在市"  class="layui-input">
+           </div>
+       </div>
+	   
+	   
+	   <div class="layui-form-item">
+           <label class="layui-form-label">寄件人所在区/县/乡：</label>
+           <div class="layui-input-block">
+               <input type="text" name="senderDistrict" id="senderDistrict"  style="width: 400px;"  placeholder="请输入寄件人所在区"  class="layui-input">
+           </div>
+       </div>
+	   
+	   <div class="layui-form-item">
+           <label class="layui-form-label">寄件人邮政编码：</label>
+           <div class="layui-input-block">
+               <input type="text" name="senderPostalCode" id="senderPostalCode"  style="width: 400px;"  placeholder="请输入寄件人所在区的邮编"  class="layui-input">
+           </div>
+       </div>
+	   
+	   <div class="layui-form-item">
+           <label class="layui-form-label">寄件人详细地址：</label>
+           <div class="layui-input-block">
+               <input type="text" name="senderDetailedAddress" id="senderDetailedAddress"  style="width: 400px;"  placeholder="请输入寄件人详细地址"  class="layui-input">
+           </div>
+       </div>
+	   
+	   
+	   <div class="layui-form-item">
+           <label class="layui-form-label">收件人姓名：</label>
+           <div class="layui-input-block">
+               <input type="text" name="receiverName" id="receiverName"  style="width: 400px;"  placeholder="请输入收件人姓名"  class="layui-input">
+           </div>
+       </div>
+	   
+	   <div class="layui-form-item">
+           <label class="layui-form-label">收件人手机号：</label>
+           <div class="layui-input-block">
+               <input type="number" name="receiverPhoneNumber" id="receiverPhoneNumber"  style="width: 400px;"  placeholder="请输入收件人手机号"  class="layui-input">
+           </div>
+       </div>
+	   
+	   <div class="layui-form-item">
+           <label class="layui-form-label">收件人所在省：</label>
+           <div class="layui-input-block">
+               <input type="text" name="receiverProvince" id="receiverProvince"  style="width: 400px;"  placeholder="请输入收件人所在省"  class="layui-input">
+           </div>
+       </div>
+	   
+	   
+	   <div class="layui-form-item">
+           <label class="layui-form-label">收件人所在市：</label>
+           <div class="layui-input-block">
+               <input type="text" name="receiverCity" id="receiverCity"  style="width: 400px;"  placeholder="请输入收件人所在市"  class="layui-input">
+           </div>
+       </div>
+	   
+	   <div class="layui-form-item">
+           <label class="layui-form-label">收件人所在区/县/乡：</label>
+           <div class="layui-input-block">
+               <input type="text" name="receiverDistrict" id="receiverDistrict"  style="width: 400px;"  placeholder="请输入收件人所在区/县/乡"  class="layui-input">
+           </div>
+       </div>
+	   
+	   
+	   <div class="layui-form-item">
+           <label class="layui-form-label">收件人邮政编码：</label>
+           <div class="layui-input-block">
+               <input type="text" name="receiverPostalCode" id="receiverPostalCode"  style="width: 400px;"  placeholder="请输入收件人所在地区的邮编"  class="layui-input">
+           </div>
+       </div>
+	   
+	   <div class="layui-form-item">
+           <label class="layui-form-label">收件人详细地址：</label>
+           <div class="layui-input-block">
+               <input type="text" name="receiverDetailedAddress" id="receiverDetailedAddress"  style="width: 400px;"  placeholder="请输入收件人详细地址"  class="layui-input">
+           </div>
+       </div>
+	   
+	   
+	   <!--------------------------这是一条分割线------------------------------------------------------------------------------>
+	   
+	   
+
+       <div class="layui-form-item">
+           <div class="layui-input-block">
+               <button type="button" class="layui-btn"  th:onclick="'javascript:save()'">确认</button>
+               <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+           </div>
+       </div>
+    </form>
+
+</body>
+
+<script th:inline="javascript">
+    var curUserId = [[${session.curUserId}]];
+</script>
+<script>
+
+    function save() {
+		var userId = curUserId;
+        var logisticType = $("#logisticType").val(); //寄件类型
+		//var userId = $("#userId").val(); //寄件用户名
+		var senderName = $("#senderName").val(); //寄件人姓名
+        var senderPhoneNumber = $("#senderPhoneNumber").val(); //寄件人手机号
+		var senderProvince = $("#senderProvince").val(); //寄件人所在省
+		var senderCity = $("#senderCity").val(); //寄件人所在市
+		var senderDistrict = $("#senderDistrict").val(); //寄件人所在区
+		var senderPostalCode = $("#senderPostalCode").val(); //寄件人所在区的邮政编码
+		var senderDetailedAddress = $("#senderDetailedAddress").val(); //寄件人的详细地址
+		
+		var receiverName = $("#receiverName").val(); //收件人姓名
+		var receiverPhoneNumber = $("#receiverPhoneNumber").val(); //收件人手机号
+		var receiverProvince = $("#receiverProvince").val(); //收件人所在省
+		var receiverCity = $("#receiverCity").val(); //收件人所在市
+		var receiverDistrict = $("#receiverDistrict").val(); //收件人所在区/县/乡
+		var receiverPostalCode = $("#receiverPostalCode").val(); //收件人所在邮政编码
+		var receiverDetailedAddress = $("#receiverDetailedAddress").val(); //收件人详细地址
+
+		if(userId=="") {
+			alert("请输入寄件用户名");
+			parent.layer.msg("请输入寄件用户名");
+			return;	
+		}
+		
+		if(senderName=="") {
+			alert("请输入寄件人姓名！");
+			parent.layer.msg("请输入寄件人姓名");
+			return;			
+		}
+		
+		if(isNaN(senderPhoneNumber)) {
+			alert("手机号码必须全为数字！");
+			parent.layer.msg("手机号码必须全为数字");
+			return;			
+		}
+		
+		if(senderProvince=="") {
+			alert("请输入寄件人所在省！");
+			parent.layer.msg("请输入寄件人所在省");
+			return;			
+		}
+		
+		if(senderCity=="") {
+			alert("请输入寄件人所在市！");
+			parent.layer.msg("请输入寄件人所在市");
+			return;			
+		}
+		
+		if(senderDistrict=="") {
+			alert("请输入寄件人所在区！");
+			parent.layer.msg("请输入寄件人所在区");
+			return;			
+		}
+		
+		if(senderPostalCode=="") {
+			alert("请输入寄件人所在地区的邮编！");
+			parent.layer.msg("请输入寄件人所在地区的邮编");
+			return;			
+		}
+		
+		if(senderDetailedAddress=="") {
+			alert("请输入寄件人详细地址！");
+			parent.layer.msg("请输入寄件人详细地址");
+			return;			
+		}
+		
+		if(receiverName=="") {
+			alert("请输入收件人姓名！");
+			parent.layer.msg("请输入收件人姓名");
+			return;			
+		}
+		
+		if(isNaN(receiverPhoneNumber)) {
+			alert("收件人手机号必须全为数字！");
+			parent.layer.msg("收件人手机号必须全为数字");
+			return;			
+		}
+		
+		if(receiverProvince=="") {
+			alert("请输入收件人所在省！");
+			parent.layer.msg("请输入收件人所在省");
+			return;			
+		}
+		
+		if(receiverCity=="") {
+			alert("请输入收件人所在市！");
+			parent.layer.msg("请输入收件人所在市");
+			return;			
+		}
+		
+		if(receiverDistrict=="") {
+			alert("请输入收件人所在区！");
+			parent.layer.msg("请输入收件人所在区");
+			return;			
+		}
+		
+		if(receiverPostalCode=="") {
+			alert("请输入收件人所在区的邮编！");
+			parent.layer.msg("请输入收件人所在区的邮编");
+			return;			
+		}
+		
+		if(receiverDetailedAddress=="") {
+			alert("请输入收件人的详细地址！");
+			parent.layer.msg("请输入收件人的详细地址");
+			return;			
+		}
+
+        $.ajax({
+            url: "/logisticAdd",
+            type: "POST",
+            data:{"userId":userId,"senderName":senderName,"senderPhoneNumber":senderPhoneNumber,"senderProvince":senderProvince,
+				"senderCity":senderCity,"senderDistrict":senderDistrict,"senderPostalCode":senderPostalCode,
+				"senderDetailedAddress":senderDetailedAddress,"receiverName":receiverName,"receiverPhoneNumber":receiverPhoneNumber,
+				"receiverProvince":receiverProvince,"receiverCity":receiverCity,"receiverDistrict":receiverDistrict,
+				"receiverPostalCode":receiverPostalCode,"receiverDetailedAddress":receiverDetailedAddress,
+                "logisticType":logisticType
+			},
+            dataType: "json",
+            success: function(data){
+                if(data==1){
+                    var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                    parent.layer.close(index);  // 关闭layer
+                    parent.layer.msg("新增成功", {icon: 6});
+                    parent.location.reload();
+                }else{
+                    parent.layer.msg("新增失败", {icon: 5});
+                }
+            }
+        });
+    }
+
+</script>
+</html>

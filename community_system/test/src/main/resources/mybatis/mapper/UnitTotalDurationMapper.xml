@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.test.mapper.UnitTotalDurationMapper">
+    <resultMap id="BaseResultMap" type="com.example.test.entity.UnitTotalDuration" >
+        <result column="unit_id" property="unitId" jdbcType="INTEGER" />
+        <result column="unit_name" property="unitName" jdbcType="VARCHAR" />
+        <result column="unit_tot_hour" property="unitTotHour" jdbcType="DOUBLE" />
+    </resultMap>
+
+    <select id="getUnitTotalDurationList"  resultMap="BaseResultMap" >
+        SELECT u.unit_id, u.unit_name, IFNULL(sum(tot_hour), 0) AS unit_tot_hour
+        FROM cooperation_unit u LEFT OUTER JOIN (
+            SELECT m.id, m.unit_id, IFNULL(sum(actual_duration),0) AS tot_hour
+            FROM party_member_info m LEFT OUTER JOIN activity_participation p ON (p.vid = m.id)
+            WHERE p.attendance = 'Yes'
+            GROUP BY (m.id)
+        ) vhour
+        ON (u.unit_id = vhour.unit_id)
+        GROUP BY (u.unit_id)
+        ORDER BY unit_tot_hour DESC
+        LIMIT #{page},#{limit};
+
+    </select>
+
+    <select id="getUnitTotalDurationCount" resultType="INTEGER">
+        SELECT COUNT(*) FROM cooperation_unit;
+    </select>
+
+</mapper>

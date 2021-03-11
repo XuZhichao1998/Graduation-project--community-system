@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>用户详情查看</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script th:src="@{/layui/layui.js}"></script>
+    <script th:src="@{/jquery-3.3.1/jquery-3.3.1.js}"></script>
+</head>
+
+<body>
+   <form class="layui-form"  th:action="@{/edit}" th:object="${userInfo}" id="userInfoFrom"  method="post">
+
+
+       <div class="layui-form-item" style="margin-top: 20px;">
+            <label class="layui-form-label">用户昵称(不可修改)：</label>
+            <div class="layui-input-block">
+                <input type="text" th:readonly="readonly" name="userId" id="userId"  th:value="*{userId}" style="width: 400px;" placeholder="请输入用户昵称"  class="layui-input">
+            </div>
+        </div>
+       <div class="layui-form-item">
+           <label class="layui-form-label">用户姓名：</label>
+           <div class="layui-input-block">
+               <input type="text" name="userName" id="userName"  th:value="*{userName}" style="width: 400px;" placeholder="请输入用户姓名"  class="layui-input">
+           </div>
+
+       </div>
+
+       <div class="layui-form-item">
+           <label class="layui-form-label">用户性别：</label>
+           <div class="layui-input-block">
+               <input type="text" name="userSex" id="userSex"  th:value="*{userSex}" style="width: 400px;" placeholder="请输入用户性别"  class="layui-input">
+           </div>
+       </div>
+
+       <div class="layui-form-item">
+           <label class="layui-form-label">手机号：</label>
+           <div class="layui-input-block">
+               <input type="number" name="userPhoneNumber" id="userPhoneNumber"  th:value="*{userPhoneNumber}" style="width: 400px;" placeholder="请输入用户手机号"  class="layui-input">
+           </div>
+       </div>
+	   
+	   <div class="layui-form-item">
+           <label class="layui-form-label">邮箱：</label>
+           <div class="layui-input-block">
+               <input type="email" name="userEmail" id="userEmail"  th:value="*{userEmail}" style="width: 400px;" placeholder="请输入用户邮箱"  class="layui-input">
+           </div>
+       </div>
+	   
+	   	   <div class="layui-form-item">
+           <label class="layui-form-label">密码：</label>
+           <div class="layui-input-block">
+               <input type="text" name="userPassword" id="userPassword"  th:value="*{userPassword}" style="width: 400px;" placeholder="请输入用户密码"  class="layui-input">
+           </div>
+       </div>
+	   
+	   
+	   	   <div class="layui-form-item">
+           <label class="layui-form-label">身份证号：</label>
+           <div class="layui-input-block">
+               <input type="text" name="userIdentityNumber" id="userIdentityNumber"  th:value="*{userIdentityNumber}" style="width: 400px;" placeholder="请输入用户身份证号"  class="layui-input">
+           </div>
+       </div>
+	   
+	   	   <div class="layui-form-item">
+           <label class="layui-form-label">住户号(不可修改)：</label>
+           <div class="layui-input-block">
+               <input type="number" th:readonly="readonly" name="householdId" id="householdId"  th:value="*{householdId}" style="width: 400px;" placeholder="请输入用户的住户号"  class="layui-input">
+           </div>
+       </div>
+	   
+	   
+	   
+
+       <div class="layui-form-item">
+           <div class="layui-input-block">
+               <button type="button" class="layui-btn"  th:onclick="'javascript:save()'">确认</button>
+               <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+           </div>
+       </div>
+    </form>
+
+</body>
+
+<script>
+
+    function save(){
+		var userId = $("#userId").val();  //昵称(登录名)
+        var userName = $("#userName").val(); //用户姓名
+        var userSex = $("#userSex").val(); //用户性别
+        var userPhoneNumber = $("#userPhoneNumber").val(); //用户手机号码
+		var userEmail = $("#userEmail").val(); //用户电子邮箱
+		var userPassword = $("#userPassword").val(); //用户登录密码
+		var userIdentityNumber = $("#userIdentityNumber").val(); //用户身份证号
+		var householdId = $("#householdId").val();
+        //alert('pname:'+productName+",pid:"+productId+",unitPrice:"+unitPrice+",unit:"+unit+",categoryId:"+categoryId);
+        $.ajax({
+            url: "/userInfoUpdate",
+            type: "POST",
+            data: {"userId":userId,"userName":userName,"userSex":userSex,"userPhoneNumber":userPhoneNumber,"userEmail":userEmail,"userPassword":userPassword,"userIdentityNumber":userIdentityNumber,"householdId":householdId},
+            dataType: "json",
+            success: function(data){
+                if(data==1){
+                    var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                    parent.layer.close(index);  // 关闭layer
+                    parent.layer.msg("修改成功", {icon: 6});
+                    parent.location.reload();
+                }else{
+                    parent.layer.msg("修改失败", {icon: 5});
+                }
+            }
+        });
+    }
+
+</script>
+</html>

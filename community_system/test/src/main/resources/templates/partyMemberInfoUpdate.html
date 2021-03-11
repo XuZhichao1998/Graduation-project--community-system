@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>党员信息更新</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script th:src="@{/layui/layui.js}"></script>
+    <script th:src="@{/jquery-3.3.1/jquery-3.3.1.js}"></script>
+</head>
+
+<body>
+
+   <form class="layui-form"  th:action="@{/edit}" th:object="${partyMemberInfo}" id="partyMemberInfoForm"  method="post">
+
+       <div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">身份证号：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="partyMemberId" id="partyMemberId"  th:value="*{partyMemberId}" style="width: 400px;" placeholder="请输入身份证号"  class="layui-input">
+           </div>
+       </div>
+
+
+	    <div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">党员姓名：</label>
+           <div class="layui-input-block">
+               <input type="text" name="fullName" id="fullName"  th:value="*{fullName}" style="width: 400px;" placeholder="请输入党员姓名"  class="layui-input">
+           </div>
+       </div>
+
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">单位编号：</label>
+           <div class="layui-input-block">
+               <input type="number" name="unitId" id="unitId"  th:value="*{unitId}" style="width: 400px;" placeholder="请输入党员所在单位的编号"  class="layui-input">
+           </div>
+       </div>
+	   
+	   
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">性别：</label>
+           <div class="layui-input-block">
+               <input type="text" name="sex" id="sex"  th:value="*{sex}" style="width: 400px;" placeholder="请输入党员性别"  class="layui-input">
+           </div>
+       </div>
+	   
+	   
+       <div class="layui-form-item">
+           <div class="layui-input-block">
+               <button type="button" class="layui-btn"  th:onclick="'javascript:save()'">确认</button>
+               <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+           </div>
+       </div>
+    </form>
+
+</body>
+
+<script>
+
+    function save(){
+        var partyMemberId = $("#partyMemberId").val(); // 党员身份证号
+        var fullName = $("#fullName").val(); // 党员的姓名
+		var unitId = $("#unitId").val(); // 党员所在单位编号
+		var sex = $("#sex").val(); // 党员性别
+		
+		if(partyMemberId==""){
+			alert('请输入党员身份证号！');
+            parent.layer.msg("请输入党员身份证号");
+            return;
+        }
+        if(fullName==""){
+			alert('请输入党员姓名！')
+            parent.layer.msg("请输入党员姓名");
+            return;
+        }
+		if (unitId=="") {
+			alert('请输入党员所在单位的编号！')
+            parent.layer.msg("请输入党员所在单位的编号");
+            return;
+		}
+		if (sex=="") {
+			alert('请输入党员性别！')
+            parent.layer.msg("请输入党员性别");
+            return;
+		}
+		if (sex != "男" && sex != "女") {
+			alert('党员性别格式错误!(男/女)');
+			parent.layer.msg("党员性别格式错误!(男/女)");
+            return;
+		}
+	
+        //alert('Id:'+complaintId+",uid:"+complaintUserId+",type:"+complaintType+",msg:"+complaintMessage+",phone:"+phoneNumber+",date:"+complaintDate+",state:"+complaintState);
+        $.ajax({
+            url: "/partyMemberInfoUpdate",
+            type: "POST",
+            data: {"partyMemberId":partyMemberId,"fullName":fullName,"unitId":unitId,"sex":sex},
+            dataType: "json",
+            success: function(data){
+                if(data==1){
+                    var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                    parent.layer.close(index);  // 关闭layer
+                    parent.layer.msg("修改成功", {icon: 6});
+                    parent.location.reload();
+                }else{
+                    parent.layer.msg("修改失败", {icon: 5});
+                }
+            }
+        });
+    }
+
+</script>
+</html>

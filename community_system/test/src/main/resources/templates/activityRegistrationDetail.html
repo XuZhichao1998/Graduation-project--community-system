@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>活动报名信息查看</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script th:src="@{/layui/layui.js}"></script>
+</head>
+
+<body>
+   <form class="layui-form"  th:action="@{/edit}" th:object="${activityRegistration}"  method="post">
+
+
+       <div class="layui-form-item" style="margin-top: 20px;">
+
+           <label class="layui-form-label">活动编号：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="pid" id="pid"  th:value="*{pid}" style="width: 400px;" placeholder="--"  class="layui-input">
+           </div>
+       </div>
+
+       <div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">活动名称：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="pName" id="pName"  th:value="*{pName}" style="width: 400px;" placeholder="--"  class="layui-input">
+           </div>
+       </div>
+	   
+	   
+	    <div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">党员姓名：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="volunteerName" id="volunteerName"  th:value="*{volunteerName}" style="width: 400px;" placeholder="--"  class="layui-input">
+           </div>
+       </div>
+
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">身份证号：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="volunteerId" id="volunteerId"  th:value="*{volunteerId}" style="width: 400px;" placeholder="--"  class="layui-input">
+           </div>
+       </div>
+	   
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">报名时间：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="volunteerRegistTime" id="volunteerRegistTime"  th:value="*{volunteerRegistTime}" style="width: 400px;" placeholder="--"  class="layui-input">
+           </div>
+       </div>	
+	   
+	    <div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">审核状态：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="approval" id="approval"  th:value="*{approval}" style="width: 400px;" placeholder="--"  class="layui-input">
+           </div>
+       </div>	
+
+   </form>
+
+</body>
+</html>

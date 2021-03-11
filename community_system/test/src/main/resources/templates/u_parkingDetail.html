@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>车位详情查看</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script th:src="@{/layui/layui.js}"></script>
+</head>
+
+<body>
+   <form class="layui-form"  th:action="@{/edit}" th:object="${parking}"  method="post">
+
+
+       <div class="layui-form-item" style="margin-top: 20px;">
+
+           <label class="layui-form-label">车位编号：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="parkingId" id="parkingId"  th:value="*{parkingId}" style="width: 400px;" placeholder="请输入车位编号"  class="layui-input">
+           </div>
+       </div>
+
+        <div class="layui-form-item" style="margin-top: 20px;">
+
+            <label class="layui-form-label">车位描述：</label>
+            <div class="layui-input-block">
+                <input type="text" readonly="readonly" name="parkingPlaceDescription" id="parkingPlaceDescription"  th:value="*{parkingPlaceDescription}" style="width: 400px;" placeholder="请输入车位描述"  class="layui-input">
+            </div>
+        </div>
+
+       <div class="layui-form-item">
+           <label class="layui-form-label">停车牌号：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="parkingCarNumber" id="parkingCarNumber"  th:value="*{parkingCarNumber}" style="width: 400px;" placeholder="请输入停车牌号"  class="layui-input">
+           </div>
+       </div>
+
+   </form>
+
+</body>
+</html>

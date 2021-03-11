@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <title>投诉列表</title>
+    <script>
+        function deleteComplaint(complaintId) {
+            alert(complaintId)
+        }
+    </script>
+
+</head>
+
+<body>
+<div style="text-align: center">
+    <h1>投诉列表</h1>
+    <br/>
+    <table align="center" border="1px" cellspacing="0" width="500px" style="text-align: center;margin:0 auto;">
+        <tr>
+            <th>投诉编号</th>
+            <th>投诉者用户名</th>
+            <th>投诉类型</th>
+			<th>投诉内容</th>
+			<th>联系方式</th>
+			<th>投诉日期</th>
+			<th>投诉状态</th>
+            <th colspan="2">操作</th>
+        </tr>
+        <tr th:each="complaint : ${complaintList}">
+			<td th:text="${complaint.complaintId}"></td>
+            <td th:text="${complaint.complaintUserId}"></td>
+            <td th:text="${complaint.complaintType}"></td>
+            <td th:text="${complaint.complaintMessage}"></td>
+			<td th:text="${complaint.phoneNumber}"></td>
+			<td th:text="${complaint.complaintDate}"></td>
+			<td th:text="${complaint.complaintState}"></td>
+            <td>
+                <button type="button"  th:onclick="'javascript:updateComplaint('+${complaint.complaintId}+')' ">修改</button>
+            </td>
+			
+            <td>
+                <button type="button"  th:onclick="'javascript:deleteComplaint('+${complaint.complaintId}+')' ">删除</button>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

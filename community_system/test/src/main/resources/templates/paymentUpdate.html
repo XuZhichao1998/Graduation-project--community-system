@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>缴费信息详情查看</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script th:src="@{/layui/layui.js}"></script>
+    <script th:src="@{/jquery-3.3.1/jquery-3.3.1.js}"></script>
+</head>
+
+<body>
+   <form class="layui-form"  th:action="@{/edit}" th:object="${payment}" id="paymentFrom"  method="post">
+
+       <div class="layui-form-item" style="margin-top: 20px;">
+            <label class="layui-form-label">缴费编号(不可修改)：</label> <!--缴费流水号不可修改-->
+            <div class="layui-input-block">
+                <input type="text" th:readonly="readonly" name="paymentId" id="paymentId"  th:value="*{paymentId}" style="width: 400px;" placeholder="请输入缴费编号"  class="layui-input">
+            </div>
+        </div>
+       <div class="layui-form-item">
+           <label class="layui-form-label">住户编号(不可修改)：</label> <!--住户编号不可修改-->
+           <div class="layui-input-block">
+               <input type="number" th:readonly="readonly" name="householdId" id="householdId"  th:value="*{householdId}" style="width: 400px;" placeholder="请输入住户编号"  class="layui-input">
+           </div>
+
+       </div>
+
+       <div class="layui-form-item">
+           <label class="layui-form-label">应缴金额：</label>
+           <div class="layui-input-block">
+               <input type="number" step="0.01" name="paymentAmount" id="paymentAmount"  th:value="*{paymentAmount}" style="width: 400px;" placeholder="请输入应当缴费的金额"  class="layui-input">
+           </div>
+       </div>
+
+       <div class="layui-form-item">
+           <label class="layui-form-label">缴费类型：</label>
+           <div class="layui-input-block">
+               <input type="text" name="paymentType" id="paymentType"  th:value="*{paymentType}" style="width: 400px;" placeholder="请输入缴费类型(水/电/天然气/物业费..)"  class="layui-input">
+           </div>
+       </div>
+	   <div class="layui-form-item">
+           <label class="layui-form-label">通知日期(不可修改)：</label>
+           <div class="layui-input-block">
+               <input type="text" th:readonly="readonly" name="paymentSendDate" id="paymentSendDate"  th:value="*{paymentSendDate}" style="width: 400px;" placeholder="请输入缴费通知的日期"  class="layui-input">
+           </div>
+       </div>
+	   
+	   <div class="layui-form-item">
+           <label class="layui-form-label">截止日期：</label>
+           <div class="layui-input-block">
+               <input type="text" th:readonly="readonly" name="paymentDeadline" id="paymentDeadline"  th:value="*{paymentDeadline}" style="width: 400px;" placeholder="请输入缴费截止日期"  class="layui-input">
+           </div>
+       </div>
+	   
+	   <div class="layui-form-item">
+           <label class="layui-form-label">缴费状态：</label>
+           <div class="layui-input-block">
+               <input type="number" name="paymentState" id="paymentState"  th:value="*{paymentState}" style="width: 400px;" placeholder="请输入缴费状态,0表示未缴费，1表示已缴费"  class="layui-input">
+           </div>
+       </div>
+	   
+	   <div class="layui-form-item">
+           <label class="layui-form-label">完成日期：</label>
+           <div class="layui-input-block">
+               <input type="date" name="paymentFinishTime" id="paymentFinishTime"  th:value="*{paymentFinishTime}" style="width: 400px;" placeholder="请输入完成缴费的日期"  class="layui-input">
+           </div>
+       </div>
+	   
+	   
+
+
+       <div class="layui-form-item">
+           <div class="layui-input-block">
+               <button type="button" class="layui-btn"  th:onclick="'javascript:save()'">确认</button>
+               <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+           </div>
+       </div>
+    </form>
+
+</body>
+
+<script>
+
+    function save(){
+		var paymentId = $("#paymentId").val(); //缴费流水号
+        var paymentAmount = $("#paymentAmount").val(); //应缴费金额
+        var paymentType = $("#paymentType").val(); //收费类型(水费/电费/天然气费/物业费...)
+        //var paymentDeadline = $("#paymentDeadline").val(); //缴费截止日期
+		var paymentState = $("#paymentState").val(); //缴费状态
+		var paymentFinishTime = $("#paymentFinishTime").val(); //完成缴费的日期
+	  
+	  
+       // alert('pid:'+paymentId+",pAmount:"+paymentAmount+",ptype:"+paymentType+",state:"+paymentState+",fdt:"+paymentFinishTime);
+        $.ajax({
+            url: "/paymentUpdate",
+            type: "POST",
+            data: {"paymentId":paymentId,"paymentAmount":paymentAmount,"paymentType":paymentType,"paymentState":paymentState,"paymentFinishTime":paymentFinishTime},
+            dataType: "json",
+            success: function(data){
+                if(data==1){
+                    var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                    parent.layer.close(index);  // 关闭layer
+                    parent.layer.msg("修改成功", {icon: 6});
+                    parent.location.reload();
+                }else{
+                    parent.layer.msg("修改失败", {icon: 5});
+                }
+            }
+        });
+    }
+
+</script>
+</html>

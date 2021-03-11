@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>活动详情查看</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script th:src="@{/layui/layui.js}"></script>
+</head>
+
+<body>
+   <form class="layui-form"  th:action="@{/edit}" th:object="${serviceActivity}"  method="post">
+       <div class="layui-form-item" style="margin-top: 20px;">
+
+           <label class="layui-form-label">活动编号：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="pid" id="pid"  th:value="*{pid}" style="width: 400px;" placeholder="--"  class="layui-input">
+           </div>
+       </div>
+
+       <div class="layui-form-item" style="margin-top: 20px;">
+
+           <label class="layui-form-label">活动名称：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="projectName" id="projectName"  th:value="*{projectName}" style="width: 400px;" placeholder="活动名称不详"  class="layui-input">
+           </div>
+       </div>
+	   
+	   
+	    <div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">活动内容：</label>
+           <div class="layui-input-block"> 
+				<!--<textarea readonly = "readonly" id = "content" th:value="*{content}" style="width:400px;" placeholder="活动内容不详"  class="layui-input" ></textarea>
+               -->
+
+               <input type="text" readonly="readonly" name="content" id="content"  th:value="*{content}" style="width: 400px; height : 200px; " placeholder="活动名称不详"  class="layui-input">
+
+		   
+		   </div>
+       </div>
+
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">开始时间：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="beginTime" id="beginTime"  th:value="*{beginTime}" style="width: 400px;" placeholder="--"  class="layui-input">
+           </div>
+       </div>
+	   
+	   
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">报名截止：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="registrationDeadline" id="registrationDeadline"  th:value="*{registrationDeadline}" style="width: 400px;" placeholder="--"  class="layui-input">
+           </div>
+       </div>
+	   
+	   
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">招募人数：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="recruitmentNumbers" id="recruitmentNumbers"  th:value="*{recruitmentNumbers}" style="width: 400px;" placeholder="未确定"  class="layui-input">
+           </div>
+       </div>	
+
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">报名要求：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="requirement" id="requirement"  th:value="*{requirement}" style="width: 400px;" placeholder="无"  class="layui-input">
+           </div>
+       </div>	
+
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">活动状态：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="projectStatus" id="projectStatus"  th:value="*{projectStatus}" style="width: 400px;" placeholder="不知"  class="layui-input">
+           </div>
+       </div>	   
+
+   </form>
+
+</body>
+</html>

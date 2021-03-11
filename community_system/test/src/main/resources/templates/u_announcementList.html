@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <title>公告列表</title>
+
+</head>
+
+<body>
+<div style="text-align: center">
+    <h1>公告列表</h1>
+    <br/>
+    <table align="center" border="1px" cellspacing="0" width="500px" style="text-align: center;margin:0 auto;">
+        <tr>
+            <th>公告编号</th>
+            <th>公告内容</th>
+            <th>发布日期</th>
+            <th colspan="2">操作</th>
+        </tr>
+        <tr th:each="announcement : ${announcementList}">
+			<td th:text="${announcement.announcementId}"></td>
+            <td th:text="${announcement.announcementContent}"></td>
+            <td th:text="${announcement.announcementDate}"></td>
+           
+            <td>
+				<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

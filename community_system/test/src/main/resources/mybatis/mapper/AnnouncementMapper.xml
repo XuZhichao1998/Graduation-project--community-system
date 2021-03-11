@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.test.mapper.AnnouncementMapper">
+    <resultMap id="BaseResultMap" type="com.example.test.entity.Announcement" >
+        <id column="announcement_id" property="announcementId" jdbcType="INTEGER" />
+        <result column="announcement_content" property="announcementContent" jdbcType="CLOB" />
+        <result column="announcement_date" property="announcementDate" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <select id="getAnnouncementList"  resultMap="BaseResultMap" parameterType="com.example.test.entity.Announcement">
+        select * from announcement order by announcement_id desc
+        limit #{page},#{limit}
+    </select>
+
+    <select id="getAnnouncementListById"  resultMap="BaseResultMap" parameterType="com.example.test.entity.Announcement">
+        select * from announcement where announcement_id = #{announcementId}
+        limit #{page},#{limit}
+    </select>
+
+    <select id="getAnnouncementCount"   resultType="Integer">
+        select count(announcement_id) from announcement;
+    </select>
+
+    <select id="getAnnouncementById" parameterType="Integer" resultMap="BaseResultMap" >
+        select * from announcement where announcement_id = #{announcementId}
+    </select>
+
+    <insert id="addAnnouncement" parameterType="com.example.test.entity.Announcement" >
+        insert into announcement values(null,#{announcement.announcementContent},now() );
+
+    </insert>
+
+
+    <delete id="deleteAnnouncement" parameterType="Integer" >
+        delete from announcement where announcement_id = #{announcementId};
+    </delete>
+
+
+</mapper>

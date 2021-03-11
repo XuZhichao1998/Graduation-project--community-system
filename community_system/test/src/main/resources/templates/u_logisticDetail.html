@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>物流表详情查看</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script th:src="@{/layui/layui.js}"></script>
+</head>
+
+<body>
+   <form class="layui-form"  th:action="@{/edit}" th:object="${logistic}"  method="post">
+
+		<div class="layui-form-item">
+           <label class="layui-form-label">物流订单流水号：</label>
+           <div class="layui-input-block">
+               <input type="text" th:readonly="readonly" name="logisticId" id="logisticId"  style="width: 400px;" th:value="*{logisticId}"  class="layui-input">
+           </div>
+       </div>
+	   
+	   <div class="layui-form-item">
+           <label class="layui-form-label">物流单号：</label>
+           <div class="layui-input-block">
+               <input type="text" th:readonly="readonly" name="logisticOrderId" id="logisticOrderId"  style="width: 400px;" th:value="*{logisticOrderId}"  class="layui-input">
+           </div>
+       </div>
+        
+		<div class="layui-form-item">
+           <label class="layui-form-label">下单用户：</label>
+           <div class="layui-input-block">
+               <input type="text" th:readonly="readonly" name="userId" id="userId"  style="width: 400px;" th:value="*{userId}"  class="layui-input">
+           </div>
+       </div>
+	   
+	   <div class="layui-form-item">
+           <label class="layui-form-label">用户下单时间：</label>
+           <div class="layui-input-block">
+               <input type="text" th:readonly="readonly" name="logisticSubmitDate" id="logisticSubmitDate"  style="width: 400px;" th:value="*{logisticSubmitDate}"  class="layui-input">
+           </div>
+       </div>
+	   <!--------------------------这是一条分割线---------------------------------------------------------------------------------------------------->
+	   
+	   <div class="layui-form-item">
+           <label class="layui-form-label">寄件人姓名：</label>
+           <div class="layui-input-block">
+               <input type="text" th:readonly="readonly" name="senderName" id="senderName"  style="width: 400px;" th:value="*{senderName}"  class="layui-input">
+           </div>
+       </div>
+	   
+	   
+	    <div class="layui-form-item">
+           <label class="layui-form-label">寄件类型：</label>
+           <div class="layui-input-block">
+			   <select th:readonly="readonly" id = "logisticType" name = "logisticType" th:value="*{logisticType}" style="width: 400px;">
+				  <option value = "1">文件票证</option>
+				  <option value = "2">数码产品</option>
+				  <option value = "3">日用品</option>
+				  <option value = "4">生鲜水果</option>
+				  <option value = "5">休闲食品</option>
+				  <option value = "6">服装鞋帽</option>
+				  <option value = "7">工艺品</option>
+				  <option value = "8">珠宝首饰</option>
+				  <option value = "9">其它</option>
+				</select>
+               <!--<input type="number" name="logisticType" id="logisticType"  style="width: 400px;"  placeholder="请输入寄件类型()"  class="layui-input">-->
+           </div>
+        </div>
+
+		
+	   <div class="layui-form-item">
+           <label class="layui-form-label">寄件人手机号：</label>
+           <div class="layui-input-block">
+               <input type="text" th:readonly="readonly" name="senderPhoneNumber" id="senderPhoneNumber"  style="width: 400px;" th:value="*{senderPhoneNumber}" class="layui-input">
+           </div>
+       </div>
+	   
+	   <div class="layui-form-item">
+           <label class="layui-form-label">寄件人所在省：</label>
+           <div class="layui-input-block">
+               <input type="text" th:readonly="readonly" name="senderProvince" id="senderProvince"  style="width: 400px;" th:value="*{senderProvince}" class="layui-input">
+           </div>
+       </div>
+	   
+	   	<div class="layui-form-item">
+           <label class="layui-form-label">寄件人所在市：</label>
+           <div class="layui-input-block">
+               <input type="text" th:readonly="readonly" name="senderCity" id="senderCity"  style="width: 400px;"  th:value="*{senderCity}"  class="layui-input">
+           </div>
+       </div>
+	   
+	   
+	   <div class="layui-form-item">
+           <label class="layui-form-label">寄件人所在区/县/乡：</label>
+           <div class="layui-input-block">
+               <input type="text" th:readonly="readonly" name="senderDistrict" id="senderDistrict"  style="width: 400px;"  th:value="*{senderDistrict}"  class="layui-input">
+           </div>
+       </div>
+	   
+	   <div class="layui-form-item">
+           <label class="layui-form-label">寄件人邮政编码：</label>
+           <div class="layui-input-block">
+               <input type="text" th:readonly="readonly" name="senderPostalCode" id="senderPostalCode"  style="width: 400px;" th:value="*{senderPostalCode}"  class="layui-input">
+           </div>
+       </div>
+	   
+	   <div class="layui-form-item">
+           <label class="layui-form-label">寄件人详细地址：</label>
+           <div class="layui-input-block">
+               <input type="text" th:readonly="readonly" name="senderDetailedAddress" id="senderDetailedAddress"  style="width: 400px;"  th:value="*{senderDetailedAddress}"  class="layui-input">
+           </div>
+       </div>
+	   
+	   
+	   <div class="layui-form-item">
+           <label class="layui-form-label">收件人姓名：</label>
+           <div class="layui-input-block">
+               <input type="text" th:readonly="readonly" name="receiverName" id="receiverName"  style="width: 400px;" th:value="*{receiverName}"  class="layui-input">
+           </div>
+       </div>
+	   
+	   <div class="layui-form-item">
+           <label class="layui-form-label">收件人手机号：</label>
+           <div class="layui-input-block">
+               <input type="text" th:readonly="readonly" name="receiverPhoneNumber" id="receiverPhoneNumber"  style="width: 400px;"  th:value="*{receiverPhoneNumber}"  class="layui-input">
+           </div>
+       </div>
+	   
+	   <div class="layui-form-item">
+           <label class="layui-form-label">收件人所在省：</label>
+           <div class="layui-input-block">
+               <input type="text" th:readonly="readonly" name="receiverProvince" id="receiverProvince"  style="width: 400px;"  th:value="*{receiverProvince}"  class="layui-input">
+           </div>
+       </div>
+	   
+	   
+	   <div class="layui-form-item">
+           <label class="layui-form-label">收件人所在市：</label>
+           <div class="layui-input-block">
+               <input type="text" th:readonly="readonly" name="receiverCity" id="receiverCity"  style="width: 400px;"  th:value="*{receiverCity}"  class="layui-input">
+           </div>
+       </div>
+	   
+	   <div class="layui-form-item">
+           <label class="layui-form-label">收件人所在区/县/乡：</label>
+           <div class="layui-input-block">
+               <input type="text" th:readonly="readonly" name="receiverDistrict" id="receiverDistrict"  style="width: 400px;" th:value="*{receiverDistrict}"  class="layui-input">
+           </div>
+       </div>
+	   
+	   
+	   <div class="layui-form-item">
+           <label class="layui-form-label">收件人邮政编码：</label>
+           <div class="layui-input-block">
+               <input type="text" th:readonly="readonly" name="receiverPostalCode" id="receiverPostalCode"  style="width: 400px;"  th:value="*{receiverPostalCode}"  class="layui-input">
+           </div>
+       </div>
+	   
+	   <div class="layui-form-item">
+           <label class="layui-form-label">收件人详细地址：</label>
+           <div class="layui-input-block">
+               <input type="text" th:readonly="readonly" name="receiverDetailedAddress" id="receiverDetailedAddress"  style="width: 400px;"  th:value="*{receiverDetailedAddress}"  class="layui-input">
+           </div>
+       </div>
+	   
+	   <!---------------------------------------------这是一条分割线-------------------------------------------------------------->
+		<div class="layui-form-item">
+           <label class="layui-form-label">寄件费用：</label>
+           <div class="layui-input-block">
+               <input type="text" th:readonly="readonly" name="logisticMoney" id="logisticMoney"  style="width: 400px;"  th:value="*{logisticMoney}"  class="layui-input">
+           </div>
+       </div>
+	   
+	   <div class="layui-form-item">
+           <label class="layui-form-label">处理订单的快递员编号：</label>
+           <div class="layui-input-block">
+               <input type="text" th:readonly="readonly" name="courierId" id="courierId"  style="width: 400px;"  th:value="*{courierId}"  class="layui-input">
+           </div>
+       </div>
+
+		<div class="layui-form-item">
+           <label class="layui-form-label">最新物流状态信息：</label>
+           <div class="layui-input-block">
+               <input type="text" th:readonly="readonly" name="logisticLastState" id="logisticLastState"  style="width: 400px;"  th:value="*{logisticLastState}"  class="layui-input">
+           </div>
+       </div>
+	   
+	   <div class="layui-form-item">
+           <label class="layui-form-label">物流状态信息最后更新时间：</label>
+           <div class="layui-input-block">
+               <input type="text" th:readonly="readonly" name="logisticLastUpdatetime" id="logisticLastUpdatetime"  style="width: 400px;"  th:value="*{logisticLastUpdatetime}"  class="layui-input">
+           </div>
+       </div>
+	   
+	   <div class="layui-form-item">
+           <label class="layui-form-label">是否已经成功签收(否0/是1)：</label>
+           <div class="layui-input-block">
+               <input type="text" th:readonly="readonly" name="logisticFinish" id="logisticFinish"  style="width: 400px;"  th:value="*{logisticFinish}"  class="layui-input">
+           </div>
+       </div>
+
+
+   </form>
+
+</body>
+</html>

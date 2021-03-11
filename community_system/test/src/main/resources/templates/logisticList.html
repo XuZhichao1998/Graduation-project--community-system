@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <title>物流信息列表</title>
+    <script>
+        function deleteLogistic(logisticId) {
+            alert(logisticId)
+        }
+    </script>
+
+</head>
+
+<body>
+<div style="text-align: center">
+    <h1>缴费列表</h1>
+    <br/>
+    <table align="center" border="1px" cellspacing="0" width="1400px" style="text-align: center;margin:0 auto;">
+        <tr>
+            <th>物流信息编号</th>
+            <th>物流单号</th>
+            <th>下单用户</th>
+			<th>下单时间</th>
+			<th>寄件人姓名</th>
+			<th>寄件类型</th>
+			<th>寄件人手机号</th>
+			<th>寄件人所在省</th>
+			<th>寄件人所在市</th>
+			<th>寄件人所在区</th>
+			<th>寄件人邮政编码</th>
+			<th>寄件人详细地址</th>
+			<th>收件人姓名</th>
+			<th>收件人手机号</th>
+			<th>收件人所在省</th>
+			<th>收件人所在市</th>
+			<th>收件人所在区</th>
+			<th>收件人邮政编码</th>
+			<th>收件人详细地址</th>
+			<th>寄件费用</th>
+			<th>快递员号</th>
+			<th>最新状态</th>
+			<th>状态最后更新时间</th>
+			<th>是否已经成功接收(1是/0否)</th>
+			
+            <th colspan="2">操作</th>
+        </tr>
+        <tr th:each="logistic : ${logisticList}">
+            <td th:text="${logistic.logisticId}"></td>              <!--流水号-->
+			<td th:text="${logistic.logisticOrderId}"></td>         <!--物流单号-->
+			<td th:text="${logistic.userId}"></td>                  <!--下单的用户-->
+			<td th:text="${logistic.logisticSubmitDate}"></td>      <!--用户下单时间-->
+			<td th:text="${logistic.senderName}"></td>              <!--寄件人姓名-->
+			<td th:text="${logistic.logisticTypeName}"></td>        <!--寄件类型名称-->
+			<td th:text="${logistic.senderPhoneNumber}"></td>       <!--寄件人手机号-->
+			<td th:text="${logistic.senderProvince}"></td>          <!--寄件人所在省-->
+			<td th:text="${logistic.senderCity}"></td>              <!--寄件人所在市-->
+			<td th:text="${logistic.senderDistrict}"></td>          <!--寄件人所在区-->
+			<td th:text="${logistic.senderPostalCode}"></td>        <!--寄件人邮政编码-->
+			<td th:text="${logistic.senderDetailedAddress}"></td>   <!--寄件人详细地址-->
+			<td th:text="${logistic.receiverName}"></td>            <!--收件人姓名-->
+			<td th:text="${logistic.receiverPhoneNumber}"></td>     <!--收件人手机号-->
+			<td th:text="${logistic.receiverProvince}"></td>        <!--收件人所在省-->
+			<td th:text="${logistic.receiverCity}"></td>            <!--收件人所在市-->
+			<td th:text="${logistic.receiverDistrict}"></td>        <!--收件人所在区-->
+			<td th:text="${logistic.receiverPostalCode}"></td>      <!--收件人邮政编码-->
+			<td th:text="${logistic.receiverDetailedAddress}"></td> <!--收件人详细地址-->
+			<td th:text="${logistic.logisticMoney}"></td>           <!--寄件费用-->
+			<td th:text="${logistic.courierId}"></td>               <!--快递员号-->    
+			<td th:text="${logistic.logisticLastState}"></td>       <!--最新状态-->
+			<td th:text="${logistic.logisticLastUpdatetime}"></td>  <!--物流状态最后更新时间-->
+			<td th:text="${logistic.logisticFinish}"></td>          <!--是否已经成功签收-->
+           
+			
+            <td>
+               <!-- <a th:href="@{/toEdit(id=${payment.paymentId})}">修改</a>-->
+                <button type="button"  th:onclick="'javascript:updateLogistic('+${logistic.logisticId}+')' ">修改</button>
+            </td>
+            <!--  <td><a th:href="@{/delete(id=${product.productId})}">删除</a></td>-->
+            <td>
+                <button type="button"  th:onclick="'javascript:deleteLogistic('+${logistic.logisticId}+')' ">删除</button>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <title>用户列表</title>
+    <script>
+        function deleteUserInfo(userId) {
+            alert(userId)
+        }
+    </script>
+
+</head>
+
+<body>
+<div style="text-align: center">
+    <h1>用户列表</h1>
+    <br/>
+    <table align="center" border="1px" cellspacing="0" width="500px" style="text-align: center;margin:0 auto;">
+        <tr>
+            <th>昵称</th>
+            <th>姓名</th>
+            <th>性别</th>
+			<th>手机号</th>
+			<th>邮箱</th>
+			<th>密码</th>
+			<th>身份证号</th>
+			<th>住户号</th>
+            <th colspan="2">操作</th>
+        </tr>
+        <tr th:each="userInfo : ${userInfoList}">
+            <td th:text="${userInfo.userId}"></td>
+            <td th:text="${userInfo.userName}"></td>
+            <td th:text="${userInfo.userSex}"></td>
+			<td th:text="${userInfo.userPhoneNumber}"></td>
+			<td th:text="${userInfo.userEmail}"></td>
+			<td th:text="${userInfo.userPassword}"></td>
+			<td th:text="${userInfo.userIdentityNumber}"></td>
+			<td th:text="${userInfo.householdId}"></td>
+			
+            <td>
+               <!-- <a th:href="@{/toEdit(id=${product.productId})}">修改</a>-->
+                <button type="button"  th:onclick="'javascript:updateUserInfo('+${userInfo.userId}+')' ">修改</button>
+            </td>
+            <!--  <td><a th:href="@{/delete(id=${product.productId})}">删除</a></td>-->
+            <td>
+                <button type="button"  th:onclick="'javascript:deleteUserInfo('+${userInfo.userId}+')' ">删除</button>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

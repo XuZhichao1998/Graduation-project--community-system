@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        /* x7blog.com 社会主义核心价值观 */
+        var a_idx = 0;jQuery(document).ready(function($) {$("body").click(function(e) {var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正" ,"法治", "爱国", "敬业", "诚信", "友善");var $i = $("<span/>").text(a[a_idx]);
+            a_idx = (a_idx + 1) % a.length;var x = e.pageX,y = e.pageY;$i.css({"font-size":30,"z-index": 100000000,"top": y - 20,"left": x,"position": "absolute","font-weight": "bold","color": "#ff6651"});$("body").append($i);$i.animate({"top": y - 180,"opacity": 0},1500,function() {$i.remove();});});});
+    </script>
+    <meta charset="UTF-8">
+    <title>党员志愿服务时长排行榜</title>
+ 
+</head>
+
+<body>
+<div style="text-align: center">
+    <h1>总时长排行(前三)</h1>
+    <br/>
+    <table align="center" border="1px" cellspacing="0" width="500px" style="text-align: center;margin:0 auto;">
+        <tr>
+            <th>姓名</th>
+            <th>总时长(小时)</th>
+        </tr>
+        <tr th:each="volunteerTotalDuration : ${volunteerTotalDurationList}">
+			<td th:text="${volunteerTotalDuration.fullName}"></td>
+            <td th:text="${volunteerTotalDuration.totHour}"></td> 
+        </tr>
+    </table>
+</div>
+</body>
+</html>

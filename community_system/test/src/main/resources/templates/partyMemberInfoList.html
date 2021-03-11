@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <title>党员信息查看</title>
+    <script>
+        function deletePartyMemberInfo(partyMemberId) {
+            alert(partyMemberId)
+        }
+    </script>
+
+</head>
+
+<body>
+<div style="text-align: center">
+    <h1>党员信息查看</h1>
+    <br/>
+    <table align="center" border="1px" cellspacing="0" width="500px" style="text-align: center;margin:0 auto;">
+        <tr>
+            <th>党员身份证号</th>
+            <th>姓名</th>
+            <th>单位编号</th>
+			<th>性别</th>
+            <th colspan="2">操作</th>
+        </tr>
+        <tr th:each="partyMemberInfo : ${partyMemberInfoList}">
+			<td th:text="${partyMemberInfo.partyMemberId}"></td>
+            <td th:text="${partyMemberInfo.fullName}"></td>
+            <td th:text="${partyMemberInfo.unitId}"></td>
+            <td th:text="${partyMemberInfo.sex}"></td>
+            <td>
+                <button type="button"  th:onclick="'javascript:updatePartyMemberInfo('+${partyMemberInfo.partyMemberId}+')' ">修改</button>
+            </td>
+			
+            <td>
+                <button type="button"  th:onclick="'javascript:deletePartyMemberInfo('+${partyMemberInfo.partyMemberId}+')' ">删除</button>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

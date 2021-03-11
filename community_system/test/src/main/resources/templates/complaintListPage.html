@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        /* x7blog.com 社会主义核心价值观 */
+        var a_idx = 0;jQuery(document).ready(       function($) {$("body").click(function(e) {var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正" ,"法治", "爱国", "敬业", "诚信", "友善");var $i = $("<span/>").text(a[a_idx]);
+            a_idx = (a_idx + 1) % a.length;var x = e.pageX,y = e.pageY;$i.css({"font-size":30,"z-index": 100000000,"top": y - 20,"left": x,"position": "absolute","font-weight": "bold","color": "#ff6651"});$("body").append($i);$i.animate({"top": y - 180,"opacity": 0},1500,function() {$i.remove();});});});
+    </script>
+    <meta charset="UTF-8">
+    <title>投诉管理</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script th:src="@{/layui/layui.js}"></script>
+
+    <!-- Meta -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Portal - Bootstrap 5 Admin Dashboard Template For Developers">
+    <meta name="author" content="Xiaoying Riley at 3rd Wave Media">
+    <link rel="shortcut icon" th：href="favicon.ico">
+
+    <!-- 动画效果-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- FontAwesome JS-->
+    <script defer th:src="@{/assets/plugins/fontawesome/js/all.min.js}"></script>
+
+    <!-- App CSS -->
+    <link id="theme-style" rel="stylesheet" th:href="@{/assets/css/portal.css}">
+</head>
+
+<body class="app">
+<header class="app-header fixed-top">
+    <div class="app-header-inner">
+        <div class="container-fluid py-2">
+            <div class="app-header-content">
+                <div class="row justify-content-between align-items-center">
+
+                    <div class="col-auto">
+                        <a id="sidepanel-toggler" class="sidepanel-toggler d-inline-block d-xl-none" href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" role="img"><title>Menu</title><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg>
+                        </a>
+                    </div><!--//col-->
+                    <div class="search-mobile-trigger d-sm-none col">
+                        <i class="search-mobile-trigger-icon fas fa-search"></i>
+                    </div><!--//col-->
+                    <div class="app-search-box col">
+                        <form class="app-search-form">
+                            <input type="text" placeholder="Search..." name="search" class="form-control search-input">
+                            <button type="submit" class="btn search-btn btn-primary" value="Search"><i class="fas fa-search"></i></button>
+                        </form>
+                    </div><!--//app-search-box-->
+
+                    <div class="app-utilities col-auto">
+                        <div class="app-utility-item app-notifications-dropdown dropdown">
+                            <a class="dropdown-toggle no-toggle-arrow" id="notifications-dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false" title="Notifications">
+                                <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bell icon" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2z"/>
+                                    <path fill-rule="evenodd" d="M8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+                                </svg>
+                                <span class="icon-badge">3</span>
+                            </a><!--//dropdown-toggle-->
+
+                            <div class="dropdown-menu p-0" aria-labelledby="notifications-dropdown-toggle">
+                                <div class="dropdown-menu-header p-3">
+                                    <h5 class="dropdown-menu-title mb-0">通知</h5>
+                                </div><!--//dropdown-menu-title-->
+                                <div class="dropdown-menu-content">
+                                    <div class="item p-3">
+                                        <div class="row gx-2 justify-content-between align-items-center">
+                                            <div class="col-auto">
+                                                <img class="profile-image" src="assets/images/profiles/profile-1.png" alt="">
+                                            </div><!--//col-->
+                                            <div class="col">
+                                                <div class="info">
+                                                    <div class="desc">Amy shared a file with you. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </div>
+                                                    <div class="meta"> 2 hrs ago</div>
+                                                </div>
+                                            </div><!--//col-->
+                                        </div><!--//row-->
+                                        <a class="link-mask" href="notifications.html"></a>
+                                    </div><!--//item-->
+                                    <div class="item p-3">
+                                        <div class="row gx-2 justify-content-between align-items-center">
+                                            <div class="col-auto">
+                                                <div class="app-icon-holder">
+                                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-receipt" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z"/>
+                                                        <path fill-rule="evenodd" d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"/>
+                                                    </svg>
+                                                </div>
+                                            </div><!--//col-->
+                                            <div class="col">
+                                                <div class="info">
+                                                    <div class="desc">You have a new invoice. Proin venenatis interdum est.</div>
+                                                    <div class="meta"> 1 day ago</div>
+                                                </div>
+                                            </div><!--//col-->
+                                        </div><!--//row-->
+                                        <a class="link-mask" href="notifications.html"></a>
+                                    </div><!--//item-->
+                                    <div class="item p-3">
+                                        <div class="row gx-2 justify-content-between align-items-center">
+                                            <div class="col-auto">
+                                                <div class="app-icon-holder icon-holder-mono">
+                                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bar-chart-line" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2zm1 12h2V2h-2v12zm-3 0V7H7v7h2zm-5 0v-3H2v3h2z"/>
+                                                    </svg>
+                                                </div>
+                                            </div><!--//col-->
+                                            <div class="col">
+                                                <div class="info">
+                                                    <div class="desc">Your report is ready. Proin venenatis interdum est.</div>
+                                                    <div class="meta"> 3 days ago</div>
+                                                </div>
+                                            </div><!--//col-->
+                                        </div><!--//row-->
+                                        <a class="link-mask" href="notifications.html"></a>
+                                    </div><!--//item-->
+                                    <div class="item p-3">
+                                        <div class="row gx-2 justify-content-between align-items-center">
+                                            <div class="col-auto">
+                                                <img class="profile-image" src="assets/images/profiles/profile-2.png" alt="">
+                                            </div><!--//col-->
+                                            <div class="col">
+                                                <div class="info">
+                                                    <div class="desc">James sent you a new message.</div>
+                                                    <div class="meta"> 7 days ago</div>
+                                                </div>
+                                            </div><!--//col-->
+                                        </div><!--//row-->
+                                        <a class="link-mask" href="notifications.html"></a>
+                                    </div><!--//item-->
+                                </div><!--//dropdown-menu-content-->
+
+                                <div class="dropdown-menu-footer p-2 text-center">
+                                    <a href="notifications.html">View all</a>
+                                </div>
+
+                            </div><!--//dropdown-menu-->
+                        </div><!--//app-utility-item-->
+                        <div class="app-utility-item">
+                            <a href="settings.html" title="Settings">
+                                <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-gear icon" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M8.837 1.626c-.246-.835-1.428-.835-1.674 0l-.094.319A1.873 1.873 0 0 1 4.377 3.06l-.292-.16c-.764-.415-1.6.42-1.184 1.185l.159.292a1.873 1.873 0 0 1-1.115 2.692l-.319.094c-.835.246-.835 1.428 0 1.674l.319.094a1.873 1.873 0 0 1 1.115 2.693l-.16.291c-.415.764.42 1.6 1.185 1.184l.292-.159a1.873 1.873 0 0 1 2.692 1.116l.094.318c.246.835 1.428.835 1.674 0l.094-.319a1.873 1.873 0 0 1 2.693-1.115l.291.16c.764.415 1.6-.42 1.184-1.185l-.159-.291a1.873 1.873 0 0 1 1.116-2.693l.318-.094c.835-.246.835-1.428 0-1.674l-.319-.094a1.873 1.873 0 0 1-1.115-2.692l.16-.292c.415-.764-.42-1.6-1.185-1.184l-.291.159A1.873 1.873 0 0 1 8.93 1.945l-.094-.319zm-2.633-.283c.527-1.79 3.065-1.79 3.592 0l.094.319a.873.873 0 0 0 1.255.52l.292-.16c1.64-.892 3.434.901 2.54 2.541l-.159.292a.873.873 0 0 0 .52 1.255l.319.094c1.79.527 1.79 3.065 0 3.592l-.319.094a.873.873 0 0 0-.52 1.255l.16.292c.893 1.64-.902 3.434-2.541 2.54l-.292-.159a.873.873 0 0 0-1.255.52l-.094.319c-.527 1.79-3.065 1.79-3.592 0l-.094-.319a.873.873 0 0 0-1.255-.52l-.292.16c-1.64.893-3.433-.902-2.54-2.541l.159-.292a.873.873 0 0 0-.52-1.255l-.319-.094c-1.79-.527-1.79-3.065 0-3.592l.319-.094a.873.873 0 0 0 .52-1.255l-.16-.292c-.892-1.64.902-3.433 2.541-2.54l.292.159a.873.873 0 0 0 1.255-.52l.094-.319z"/>
+                                    <path fill-rule="evenodd" d="M8 5.754a2.246 2.246 0 1 0 0 4.492 2.246 2.246 0 0 0 0-4.492zM4.754 8a3.246 3.246 0 1 1 6.492 0 3.246 3.246 0 0 1-6.492 0z"/>
+                                </svg>
+                            </a>
+                        </div><!--//app-utility-item-->
+
+                        <div class="app-utility-item app-user-dropdown dropdown">
+                            <a class="dropdown-toggle" id="user-dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"><img src="assets/images/user.png" alt="user profile"></a>
+                            <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
+                                <li><a class="dropdown-item" href="account.html">Account</a></li>
+                                <li><a class="dropdown-item" href="settings.html">Settings</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="adminLogOut">Log Out</a></li>
+                            </ul>
+                        </div><!--//app-user-dropdown-->
+                    </div><!--//app-utilities-->
+                </div><!--//row-->
+            </div><!--//app-header-content-->
+        </div><!--//container-fluid-->
+    </div><!--//app-header-inner-->
+    <div id="app-sidepanel" class="app-sidepanel">
+        <div id="sidepanel-drop" class="sidepanel-drop"></div>
+        <div class="sidepanel-inner d-flex flex-column">
+            <a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
+            <div class="app-branding">
+                <a th:href="@{/to_index_admin}"><img class="logo-image" src="assets/images/app-logo.png" alt=""></a>
+            </div><!--//app-branding-->
+
+            <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1">
+                <ul class="app-menu list-unstyled accordion" id="menu-accordion">
+                    <li class="nav-item">
+                        <a class="nav-link" href="complaintList1">
+						        <span class="nav-icon">
+						        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-door" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+		  <path fill-rule="evenodd" d="M7.646 1.146a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 .146.354v7a.5.5 0 0 1-.5.5H9.5a.5.5 0 0 1-.5-.5v-4H7v4a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .146-.354l6-6zM2.5 7.707V14H6v-4a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v4h3.5V7.707L8 2.207l-5.5 5.5z"/>
+		  <path fill-rule="evenodd" d="M13 2.5V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+		</svg>
+						         </span>
+                            <span class="nav-link-text">投诉管理</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="paymentList1">
+						        <span class="nav-icon">
+						        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-folder" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path d="M9.828 4a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 6.173 2H2.5a1 1 0 0 0-1 .981L1.546 4h-1L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3v1z"/>
+  <path fill-rule="evenodd" d="M13.81 4H2.19a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4zM2.19 3A2 2 0 0 0 .198 5.181l.637 7A2 2 0 0 0 2.826 14h10.348a2 2 0 0 0 1.991-1.819l.637-7A2 2 0 0 0 13.81 3H2.19z"/>
+</svg>
+						         </span>
+                            <span class="nav-link-text">缴费管理</span>
+                        </a><!--//nav-link-->
+                    </li><!--//nav-item-->
+
+                    <li class="nav-item">
+                        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+                        <a class="nav-link" href="volunteerTotalDurationList1">
+						        <span class="nav-icon">
+						         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-files" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+	  <path fill-rule="evenodd" d="M4 2h7a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4z"/>
+	  <path d="M6 0h7a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2v-1a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1H4a2 2 0 0 1 2-2z"/>
+	</svg>
+						         </span>
+                            <span class="nav-link-text">数据统计</span>
+                        </a><!--//nav-link-->
+                    </li><!--//nav-item-->
+
+
+                    <li class="nav-item">
+                        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+                        <a class="nav-link" href="reportRepairList1">
+						        <span class="nav-icon">
+						        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-card-list" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+  <path fill-rule="evenodd" d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5z"/>
+  <circle cx="3.5" cy="5.5" r=".5"/>
+  <circle cx="3.5" cy="8" r=".5"/>
+  <circle cx="3.5" cy="10.5" r=".5"/>
+</svg>
+						         </span>
+
+
+
+
+
+
+                            <span class="nav-link-text">报修管理</span>
+                        </a><!--//nav-link-->
+                    </li><!--//nav-item-->
+
+                    <li class="nav-item has-submenu">
+                        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+                        <a class="nav-link" href="logisticList1">
+						        <span class="nav-icon">
+						        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+						        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-columns-gap" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+	  <path fill-rule="evenodd" d="M6 1H1v3h5V1zM1 0a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1H1zm14 12h-5v3h5v-3zm-5-1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-5zM6 8H1v7h5V8zM1 7a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H1zm14-6h-5v7h5V1zm-5-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1h-5z"/>
+	</svg>
+						         </span>
+                            <span class="nav-link-text">物流管理</span>
+                        </a><!--//nav-link-->
+                    </li><!--//nav-item-->
+
+                    <!----------------------“党员下沉”志愿活动管理--------------------------------------------------------------->
+                    <li class="nav-item has-submenu">
+                        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+                        <a class="nav-link" href="serviceActivityList1">
+						        <span class="nav-icon">
+						        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+						        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-columns-gap" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+	  <path fill-rule="evenodd" d="M6 1H1v3h5V1zM1 0a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1H1zm14 12h-5v3h5v-3zm-5-1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-5zM6 8H1v7h5V8zM1 7a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H1zm14-6h-5v7h5V1zm-5-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1h-5z"/>
+	</svg>
+						         </span>
+                            <span class="nav-link-text">"党员下沉"</span>
+                        </a><!--//nav-link-->
+                    </li><!--//nav-item-->
+                    <!--------------------------------------------------------------------------------------->
+
+                    <!-------------------------合作单位(党支部管理)------------------------------------------->
+                    <li class="nav-item">
+                        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+                        <a class="nav-link" href="cooperationUnitList1">
+		<span class="nav-icon">
+		<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
+		<path fill="#000000" d="M16.8 15.101c-1.144-0.859-1.8-2.172-1.8-3.601v-3c0-2.513-1.694-4.638-4-5.292l-0-0.708c0-0.827-0.673-1.5-1.5-1.5s-1.5 0.673-1.5 1.5v0.708c-2.306 0.655-4 2.779-4 5.292v3c0 1.429-0.656 2.741-1.8 3.601-0.172 0.129-0.242 0.354-0.174 0.558s0.259 0.342 0.474 0.342h4.55c-0.033 0.164-0.051 0.331-0.051 0.5 0 1.378 1.122 2.5 2.5 2.5s2.5-1.122 2.5-2.5c0-0.168-0.017-0.336-0.050-0.5h4.55c0.215 0 0.406-0.138 0.474-0.342s-0.002-0.429-0.174-0.558zM9 2.5c0-0.276 0.224-0.5 0.5-0.5s0.5 0.224 0.5 0.5v0.523c-0.165-0.015-0.331-0.023-0.5-0.023s-0.335 0.008-0.5 0.023v-0.523zM11 16.5c0 0.827-0.673 1.5-1.5 1.5s-1.5-0.673-1.5-1.5c0-0.171 0.030-0.34 0.086-0.5h2.828c0.056 0.16 0.086 0.329 0.086 0.5zM3.742 15c0.255-0.309 0.477-0.646 0.659-1.001 0.398-0.778 0.599-1.619 0.599-2.499v-3c0-2.481 2.019-4.5 4.5-4.5s4.5 2.019 4.5 4.5v3c0 0.88 0.202 1.721 0.599 2.499 0.182 0.356 0.404 0.692 0.659 1.001h-11.517z"></path>
+		</svg>
+		</span>
+                            <span class="nav-link-text">合作单位</span>
+                        </a><!--//nav-link-->
+                    </li><!--//nav-item-->
+
+                    <!------------------------------------------------------------------------------------->
+
+                    <li class="nav-item">
+                        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+                        <a class="nav-link" href="/userInfoList1">
+						        <span class="nav-icon">
+						        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bar-chart-line" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+	  <path fill-rule="evenodd" d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2zm1 12h2V2h-2v12zm-3 0V7H7v7h2zm-5 0v-3H2v3h2z"/>
+	</svg>
+						         </span>
+                            <span class="nav-link-text">住户管理</span>
+                        </a><!--//nav-link-->
+                    </li><!--//nav-item-->
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="parkingList1">
+						        <span class="nav-icon">
+						        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="27" height="27" viewBox="0 0 24 24">
+<path fill="#000000" d="M5.5 16c-0.827 0-1.5-0.673-1.5-1.5s0.673-1.5 1.5-1.5 1.5 0.673 1.5 1.5-0.673 1.5-1.5 1.5zM5.5 14c-0.276 0-0.5 0.224-0.5 0.5s0.224 0.5 0.5 0.5 0.5-0.224 0.5-0.5-0.224-0.5-0.5-0.5z"></path>
+<path fill="#000000" d="M14.5 16c-0.827 0-1.5-0.673-1.5-1.5s0.673-1.5 1.5-1.5 1.5 0.673 1.5 1.5-0.673 1.5-1.5 1.5zM14.5 14c-0.276 0-0.5 0.224-0.5 0.5s0.224 0.5 0.5 0.5 0.5-0.224 0.5-0.5-0.224-0.5-0.5-0.5z"></path>
+<path fill="#000000" d="M16.958 11.907c-0.13-0.792-0.553-3.214-1.011-4.131-0.305-0.61-1.088-1.077-2.326-1.386-1.006-0.251-2.292-0.39-3.621-0.39s-2.615 0.138-3.621 0.39c-1.238 0.31-2.021 0.776-2.326 1.386-0.458 0.916-0.881 3.339-1.011 4.131-0.699 0.479-1.042 1.172-1.042 2.093v2.5c0 0.652 0.418 1.208 1 1.414v1.086c0 0.551 0.449 1 1 1h1c0.551 0 1-0.449 1-1v-1h8v1c0 0.551 0.449 1 1 1h1c0.551 0 1-0.449 1-1v-1.086c0.582-0.206 1-0.762 1-1.414v-2.5c0-0.921-0.343-1.614-1.042-2.093zM4.947 8.224c0.297-0.593 2.168-1.224 5.053-1.224s4.756 0.63 5.053 1.224c0.287 0.575 0.606 2.096 0.803 3.183-0.098-0.029-0.199-0.056-0.303-0.080-0.267-0.063-0.555-0.114-0.863-0.156l-2.899-2.077c-0.224-0.161-0.537-0.109-0.698 0.115s-0.109 0.537 0.115 0.698l1.566 1.122c-0.85-0.028-1.782-0.028-2.775-0.028-0.117 0-0.233 0-0.349 0l-2.874-1.916c-0.23-0.153-0.54-0.091-0.693 0.139s-0.091 0.54 0.139 0.693l1.644 1.096c-1.341 0.024-2.507 0.097-3.42 0.314-0.104 0.025-0.205 0.052-0.303 0.080 0.198-1.087 0.516-2.608 0.804-3.183zM5 19h-1v-1h1v1zM15 19v-1h1v1h-1zM17 16.5c0 0.276-0.224 0.5-0.5 0.5h-13c-0.276 0-0.5-0.224-0.5-0.5v-2.5c0-0.924 0.486-1.417 1.678-1.701 1.255-0.299 3.14-0.299 5.322-0.299s4.066 0 5.322 0.299c1.192 0.284 1.678 0.777 1.678 1.701v2.5z"></path>
+</svg>
+						         </span>
+                            <span class="nav-link-text">停车管理</span>
+                        </a><!--//nav-link-->
+                    </li><!--//nav-item-->
+                    <!---- 我加的----------------------------------------------------------------------------->
+                    <li class="nav-item">
+                        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+                        <a class="nav-link" href="announcementList1">
+						        <span class="nav-icon">
+						        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
+<path fill="#000000" d="M16.8 15.101c-1.144-0.859-1.8-2.172-1.8-3.601v-3c0-2.513-1.694-4.638-4-5.292l-0-0.708c0-0.827-0.673-1.5-1.5-1.5s-1.5 0.673-1.5 1.5v0.708c-2.306 0.655-4 2.779-4 5.292v3c0 1.429-0.656 2.741-1.8 3.601-0.172 0.129-0.242 0.354-0.174 0.558s0.259 0.342 0.474 0.342h4.55c-0.033 0.164-0.051 0.331-0.051 0.5 0 1.378 1.122 2.5 2.5 2.5s2.5-1.122 2.5-2.5c0-0.168-0.017-0.336-0.050-0.5h4.55c0.215 0 0.406-0.138 0.474-0.342s-0.002-0.429-0.174-0.558zM9 2.5c0-0.276 0.224-0.5 0.5-0.5s0.5 0.224 0.5 0.5v0.523c-0.165-0.015-0.331-0.023-0.5-0.023s-0.335 0.008-0.5 0.023v-0.523zM11 16.5c0 0.827-0.673 1.5-1.5 1.5s-1.5-0.673-1.5-1.5c0-0.171 0.030-0.34 0.086-0.5h2.828c0.056 0.16 0.086 0.329 0.086 0.5zM3.742 15c0.255-0.309 0.477-0.646 0.659-1.001 0.398-0.778 0.599-1.619 0.599-2.499v-3c0-2.481 2.019-4.5 4.5-4.5s4.5 2.019 4.5 4.5v3c0 0.88 0.202 1.721 0.599 2.499 0.182 0.356 0.404 0.692 0.659 1.001h-11.517z"></path>
+</svg>
+						         </span>
+                            <span class="nav-link-text">公告管理</span>
+                        </a><!--//nav-link-->
+                    </li><!--//nav-item-->
+                    <!---- 我加的----------------------------------------------------------------------------->
+
+                    <!---------------------------临时出入申请管理------------------------------------------->
+                    <li class="nav-item">
+                        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+                        <a class="nav-link" href="temporaryAccessApplicationList1">
+		<span class="nav-icon">
+		<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
+		<path fill="#000000" d="M16.8 15.101c-1.144-0.859-1.8-2.172-1.8-3.601v-3c0-2.513-1.694-4.638-4-5.292l-0-0.708c0-0.827-0.673-1.5-1.5-1.5s-1.5 0.673-1.5 1.5v0.708c-2.306 0.655-4 2.779-4 5.292v3c0 1.429-0.656 2.741-1.8 3.601-0.172 0.129-0.242 0.354-0.174 0.558s0.259 0.342 0.474 0.342h4.55c-0.033 0.164-0.051 0.331-0.051 0.5 0 1.378 1.122 2.5 2.5 2.5s2.5-1.122 2.5-2.5c0-0.168-0.017-0.336-0.050-0.5h4.55c0.215 0 0.406-0.138 0.474-0.342s-0.002-0.429-0.174-0.558zM9 2.5c0-0.276 0.224-0.5 0.5-0.5s0.5 0.224 0.5 0.5v0.523c-0.165-0.015-0.331-0.023-0.5-0.023s-0.335 0.008-0.5 0.023v-0.523zM11 16.5c0 0.827-0.673 1.5-1.5 1.5s-1.5-0.673-1.5-1.5c0-0.171 0.030-0.34 0.086-0.5h2.828c0.056 0.16 0.086 0.329 0.086 0.5zM3.742 15c0.255-0.309 0.477-0.646 0.659-1.001 0.398-0.778 0.599-1.619 0.599-2.499v-3c0-2.481 2.019-4.5 4.5-4.5s4.5 2.019 4.5 4.5v3c0 0.88 0.202 1.721 0.599 2.499 0.182 0.356 0.404 0.692 0.659 1.001h-11.517z"></path>
+		</svg>
+		</span>
+                            <span class="nav-link-text">出入申请</span>
+                        </a><!--//nav-link-->
+                    </li><!--//nav-item-->
+
+                    <!------------------------------------------------------------------------------------->
+
+
+
+
+
+                    <!----动态草----->
+                    <div id="canvas_container_div" style="z-index:-1">
+                        <canvas id="canvas" width="1000" height="1000"></canvas>
+                    </div>
+                </ul><!--//app-menu-->
+            </nav><!--//app-nav-->
+            <div class="app-sidepanel-footer">
+                <nav class="app-nav app-nav-footer">
+                    <ul class="app-menu footer-menu list-unstyled">
+                        <li class="nav-item">
+                            <a class="nav-link" href="parking.html">
+							        <span class="nav-icon">
+							            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-gear" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+	  <path fill-rule="evenodd" d="M8.837 1.626c-.246-.835-1.428-.835-1.674 0l-.094.319A1.873 1.873 0 0 1 4.377 3.06l-.292-.16c-.764-.415-1.6.42-1.184 1.185l.159.292a1.873 1.873 0 0 1-1.115 2.692l-.319.094c-.835.246-.835 1.428 0 1.674l.319.094a1.873 1.873 0 0 1 1.115 2.693l-.16.291c-.415.764.42 1.6 1.185 1.184l.292-.159a1.873 1.873 0 0 1 2.692 1.116l.094.318c.246.835 1.428.835 1.674 0l.094-.319a1.873 1.873 0 0 1 2.693-1.115l.291.16c.764.415 1.6-.42 1.184-1.185l-.159-.291a1.873 1.873 0 0 1 1.116-2.693l.318-.094c.835-.246.835-1.428 0-1.674l-.319-.094a1.873 1.873 0 0 1-1.115-2.692l.16-.292c.415-.764-.42-1.6-1.185-1.184l-.291.159A1.873 1.873 0 0 1 8.93 1.945l-.094-.319zm-2.633-.283c.527-1.79 3.065-1.79 3.592 0l.094.319a.873.873 0 0 0 1.255.52l.292-.16c1.64-.892 3.434.901 2.54 2.541l-.159.292a.873.873 0 0 0 .52 1.255l.319.094c1.79.527 1.79 3.065 0 3.592l-.319.094a.873.873 0 0 0-.52 1.255l.16.292c.893 1.64-.902 3.434-2.541 2.54l-.292-.159a.873.873 0 0 0-1.255.52l-.094.319c-.527 1.79-3.065 1.79-3.592 0l-.094-.319a.873.873 0 0 0-1.255-.52l-.292.16c-1.64.893-3.433-.902-2.54-2.541l.159-.292a.873.873 0 0 0-.52-1.255l-.319-.094c-1.79-.527-1.79-3.065 0-3.592l.319-.094a.873.873 0 0 0 .52-1.255l-.16-.292c-.892-1.64.902-3.433 2.541-2.54l.292.159a.873.873 0 0 0 1.255-.52l.094-.319z"/>
+	  <path fill-rule="evenodd" d="M8 5.754a2.246 2.246 0 1 0 0 4.492 2.246 2.246 0 0 0 0-4.492zM4.754 8a3.246 3.246 0 1 1 6.492 0 3.246 3.246 0 0 1-6.492 0z"/>
+	</svg>
+							        </span>
+                                <span class="nav-link-text">设置</span>
+                            </a><!--//nav-link-->
+                        </li><!--//nav-item-->
+                    </ul><!--//footer-menu-->
+                </nav>
+            </div><!--//app-sidepanel-footer-->
+
+        </div><!--//sidepanel-inner-->
+    </div><!--//app-sidepanel-->
+</header><!--//app-header-->
+
+<div class="app-wrapper">
+
+    <div class="app-content pt-3 p-md-3 p-lg-4">
+        <div class="container-xl">
+    <div style="text-align: center">
+        <h1>投诉列表</h1>
+
+        <br/>
+        <div class="demoTable">
+            搜索投诉号：
+            <div class="layui-inline">
+                <input class="layui-input" name="searchComplaintId" id="searchComplaintId" autocomplete="off">
+            </div>
+            <button class="layui-btn" data-type="reload">搜索</button>
+        </div>
+
+        <!--class="layui-hide"-->
+        <table  id="test" lay-filter="test" style="margin: 0 auto;text-align: center"></table>
+        <!--操作列-->
+        <script type="text/html" id="action">
+            <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+            <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+        </script>
+
+             </div>
+        </div>
+    </div>
+</div>
+
+
+
+    <script>
+        function toSave() {
+
+            layer.open({  //管理员投诉管理模块不需要新增
+                type: 2,
+                title:"添加投诉"
+                ,area: ['700px', '500px']
+                ,id: 'toAdd' //防止重复弹出
+                ,content: "/toComplaint"
+                //,btn: ['确认', '取消']
+                ,btnAlign: 'c' //按钮居中
+                ,shade: 0.1 //不显示遮罩
+                ,yes: function(){
+                    layer.closeAll();
+                },
+                success: function(layero, index){
+                    console.log(layero, index);
+                }
+            });
+        }
+        layui.use('table', function(){
+            var table = layui.table;
+            table.render({
+                elem: '#test'
+                ,url:'/getComplaintList'   /*url应该和RequestMapping(中的接口方法名称一致)*/
+                ,page: true
+                ,id: 'testReload'
+                ,width:1100
+                ,cols: [
+                    [
+                        {field:'complaintId', width:120, title: '投诉编号',align: 'center'},
+                        {field:'complaintUserId', width:120, title: '投诉者用户名',align: 'center'},
+                        {field:'complaintType', width:120, title: '投诉类型',align: 'center'},
+						{field:'complaintMessage', width:120, title: '投诉内容',align: 'center'},
+						{field:'phoneNumber', width:120, title: '联系方式',align: 'center'},
+						{field:'complaintDate', width:120, title: '投诉日期',align: 'center'},
+						{field:'complaintState', width:120, title: '投诉状态',align: 'center'},
+                        {field:'', title: '操作', align: 'center',width:330,toolbar:"#action"}
+                    ]
+                ]
+            });
+
+            /*重新加载数据表格*/
+            var $ = layui.$, active = {
+                reload: function(){
+                    var seaName = $('#searchComplaintId');
+                   
+                    table.reload('testReload', {
+                        where: {
+                            complaintId: seaName.val(),
+                            
+                        }
+                    });
+                }
+            };
+
+            /*绑定搜索点击事件*/
+            $('.demoTable .layui-btn').on('click', function(){
+                var type = $(this).data('type');
+                active[type] ? active[type].call(this) : '';
+            });
+            //监听工具条
+            table.on('tool(test)', function(obj){
+                var data = obj.data;
+                if(obj.event === 'detail'){
+                    layer.open({
+                        type: 2,
+                        title:"查看详情"
+                        ,area: ['700px', '500px']
+                        ,id: 'toDetail' //防止重复弹出
+                        ,content: "/toComplaintDetail?complaintId="+data.complaintId
+                        ,btnAlign: 'c' //按钮居中
+                        ,shade: 0.1 //不显示遮罩
+                        ,yes: function(){
+                            layer.closeAll();
+                        },
+                        success: function(layero, index){
+                            console.log(layero, index);
+                        }
+                    });
+                } else if(obj.event === 'del'){
+                    layer.confirm('真的删除行么', function(index){
+                        //console.log(data);
+                        $.ajax({
+                            url: "/deleteComplaint",
+                            type: "POST",
+                            data:{"complaintId":data.complaintId},
+                            dataType: "json",
+                            success: function(data){
+                                if(data==1){
+                                    layer.msg("删除成功", {icon: 6});
+                                    /*重新加载数据表格*/
+                                    var seaName = $('#searchComplaintId');
+                                    table.reload('testReload', {
+                                        where: {
+                                            complaintId: seaName.val()
+                                        }
+                                    });
+                                }else{
+                                    layer.msg("删除失败", {icon: 5});
+                                }
+                            }
+
+                        });
+                    });
+                } else if(obj.event === 'edit'){
+                    layer.open({
+                        type: 2,
+                        title:"修改投诉信息"
+                        ,area: ['700px', '500px']
+                        ,id: 'toUpdate' //防止重复弹出
+                        ,content: "/toUpdateComplaint?complaintId="+data.complaintId
+                        //,btn: ['确认', '取消']
+                        ,btnAlign: 'c' //按钮居中
+                        ,shade: 0.1 //不显示遮罩
+                        ,yes: function(){
+                            layer.closeAll();
+                        },
+                        success: function(layero, index){
+                            console.log(layero, index);
+                        }
+                    });
+
+                }
+            });
+        });
+    </script>
+
+    <!--草——自然生长-->
+    <script src="grow/js/index.js"></script>
+</body>
+</html>

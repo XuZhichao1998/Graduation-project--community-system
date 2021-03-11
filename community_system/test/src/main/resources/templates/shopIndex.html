@@ -1,0 +1,2244 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link href="apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="favicon.png" rel="icon">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>S-LIFE商铺</title>
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700&amp;amp;subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/Linearicons/Font/demo-files/demo.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Dogfalo/materialize@master/extras/noUiSlider/nouislider.css">
+    <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="plugins/jquery-bar-rating/dist/themes/fontawesome-stars.css">
+    <link rel="stylesheet" href="plugins/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="plugins/owl-carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="plugins/slick/slick.css">
+    <link rel="stylesheet" href="plugins/lightGallery/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+
+
+</head>
+
+<body>
+<header class="header">
+    <div class="ps-top-bar">
+        <div class="container">
+            <div class="top-bar">
+                <div class="top-bar__left">
+                    <ul class="nav-top">
+                        <li class="nav-top-item"> <a class="nav-top-link" href="#">商品全部在售</a>
+                    </ul>
+                </div>
+                <div class="top-bar__right">
+                    <ul class="nav-top">
+                        <li class="nav-top-item contact"><a class="nav-top-link" href="tel:970978-6290"> <i class="icon-telephone"></i><span>联系电话：</span><span class="text-success font-bold">970 978-6290</span></a></li>
+                        <li class="nav-top-item"><a class="nav-top-link" href="order-tracking.html">在线客服</a></li>
+                        <li class="nav-top-item account"><a class="nav-top-link" href="javascript:void(0);"> <i class="icon-user"></i>Hi! <span class="font-bold">用户名</span></a>
+                            <div class="account--dropdown">
+                                <div class="account-anchor">
+                                    <div class="triangle"></div>
+                                </div>
+                                <div class="account__content">
+                                    <ul class="account-list">
+                                        <li class="title-item"> <a href="javascript:void(0);">My Account</a>
+                                        </li>
+                                        <li> <a href="#">Dasdboard</a>
+                                        </li>
+                                        <li> <a href="#">Account Setting</a>
+                                        </li>
+                                        <li> <a href="shopping-cart.html">Orders</a>
+                                        </li>
+                                        <li> <a href="wishlist.html">想要</a>
+                                        </li>
+                                        <li> <a href="#">Shipping Address</a>
+                                        </li>
+                                    </ul>
+                                    <hr>
+                                    <ul class="account-list">
+                                        <li class="title-item"> <a href="javascript:void(0);">Vendor Settings</a>
+                                        </li>
+                                        <li> <a href="#">Dasdboard</a>
+                                        </li>
+                                        <li> <a href="#">Products</a>
+                                        </li>
+                                        <li> <a href="shopping-cart.html">Orders</a>
+                                        </li>
+                                        <li> <a href="#">Settings</a>
+                                        </li>
+                                        <li> <a href="vendor-store.html">View Store</a>
+                                        </li>
+                                    </ul>
+                                    <hr><a class="account-logout" href="#"><i class="icon-exit-left"></i>Log out</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ps-header--center header--mobile">
+        <div class="container">
+            <div class="header-inner">
+                <div class="header-inner__left">
+                    <button class="navbar-toggler"><i class="icon-menu"></i></button>
+                </div>
+                <div class="header-inner__center"><a class="logo open" href="to_index_user">Farm<span class="text-black">art.</span></a></div>
+                <div class="header-inner__right">
+                    <button class="button-icon icon-sm search-mobile"><i class="icon-magnifier"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="ps-header--center header-desktop">
+        <div class="container">
+            <div class="header-inner">
+                <div class="header-inner__left"><a class="logo" href="to_index_user">S-LIFE<span class="text-black">商铺</span></a>
+                    <ul class="menu">
+                        <li class="menu-item-has-children has-mega-menu">
+                            <button class="category-toggler"><i class="icon-menu"></i></button>
+                            <div class="mega-menu mega-menu-category">
+                                <ul class="menu--mobile menu--horizontal">
+                                    <li class="daily-deals category-item"> <a href="flash-sale.html">每日交易</a>
+                                    </li>
+                                    <li class="has-mega-menu category-item"><a href="javascript:void(0);">生鲜</a><span class="sub-toggle"><i class="icon-chevron-down"></i></span>
+                                        <div class="mega-menu">
+                                            <div class="mega-anchor"></div>
+                                            <div class="mega-menu__column">
+                                                <h4>水果<span class="sub-toggle"></span></h4>
+                                                <ul class="sub-menu--mega">
+                                                    <li> <a href="shop-view-grid.html">苹果</a>
+                                                    </li>
+                                                    <li> <a href="shop-view-grid.html">香蕉</a>
+                                                    </li>
+                                                    <li> <a href="shop-view-grid.html">草莓</a>
+                                                    </li>
+                                                    <li> <a href="shop-view-grid.html">橘子</a>
+                                                    </li>
+                                                    <li> <a href="shop-view-grid.html">葡萄</a>
+                                                    </li>
+                                                    <li> <a href="shop-view-grid.html">柠檬</a>
+                                                    </li>
+                                                    <li> <a href="shop-view-grid.html">桃子</a>
+                                                    </li>
+                                                    <li> <a href="shop-view-grid.html">梨</a>
+                                                    </li>
+                                                    <li> <a href="shop-view-grid.html">西瓜</a>
+                                                    </li>
+
+                                                    <li class="see-all"> <a href="shop-view-grid.html">查看所有商品 <i class='icon-chevron-right'></i></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="mega-menu__column">
+                                                <h4>蔬菜<span class="sub-toggle"></span></h4>
+                                                <ul class="sub-menu--mega">
+                                                    <li> <a href="shop-view-grid.html">土豆</a>
+                                                    </li>
+                                                    <li> <a href="shop-view-grid.html">西红柿</a>
+                                                    </li>
+                                                    <li> <a href="shop-view-grid.html">卷心菜</a>
+                                                    </li>
+                                                    <li> <a href="shop-view-grid.html">洋葱</a>
+                                                    </li>
+                                                    <li> <a href="shop-view-grid.html">蘑菇</a>
+                                                    </li>
+                                                    <li> <a href="shop-view-grid.html">牛肉</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li class="has-mega-menu category-item"><a href="javascript:void(0);">预热餐</a><span class="sub-toggle"><i class="icon-chevron-down"></i></span>
+                                        <div class="mega-menu">
+                                            <div class="mega-anchor"></div>
+                                            <div class="mega-menu__column">
+                                                <h4>炒菜<span class="sub-toggle"></span></h4>
+                                                <ul class="sub-menu--mega">
+                                                    <li> <a href="#">鸡公煲</a>
+                                                    </li>
+                                                    <li> <a href="#">黄焖鸡</a>
+                                                    </li>
+                                                    <li> <a href="#">红烧肉</a>
+                                                    </li>
+                                                    <li> <a href="#">鱼香肉丝</a>
+                                                    </li>
+                                                    <li> <a href="#">火爆鸡丁</a>
+                                                    </li>
+                                                    <li> <a href="#">手撕鸡</a>
+                                                    </li>
+                                                    <li> <a href="#">麻婆豆腐</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="mega-menu__column">
+                                                <h4>西式 &amp; 小食<span class="sub-toggle"></span></h4>
+                                                <ul class="sub-menu--mega">
+                                                    </li>
+                                                    <li> <a href="#">炸鸡</a>
+                                                    </li>
+                                                    <li> <a href="#">汉堡</a>
+                                                    </li>
+                                                    <li> <a href="#">披萨</a>
+                                                    </li>
+                                                    <li> <a href="#">牛排</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="mega-menu__column"><a class="mega-menu__thumbnail" href="flash-sale.html"><img src="img/promotion/mega_ready.jpg" alt="alt" /></a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="category-item"> <a href="shop-categories.html">酒水饮品</a>
+                                    </li>
+                                    <li class="category-item"> <a href="shop-categories.html">厨房用品</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="header-inner__center">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="header-search-select"><span class="current">全部<i class="icon-chevron-down"></i></span>
+                                <ul class="list">
+                                    <li class="category-option"><a>时令蔬菜</a><span class="sub-toggle"><i class="icon-chevron-down"></i></span>
+                                    </li>
+                                    <li class="category-option"><a>新鲜水果</a><span class="sub-toggle"><i class="icon-chevron-down"></i></span>                                                                                 </li>
+                                    <li class="category-option"><a>酒水乳品</a><span class="sub-toggle"><i class="icon-chevron-down"></i></span>                                         </li>
+                                    <li class="category-option" data-value="Frozen Foods"><a href="javascript:void(0);">日用百货</a></li>
+                                    <li class="category-option"><a>优惠券</a><span class="sub-toggle"><i class="icon-chevron-down"></i></span>
+                                    <li class="category-option"><a>其他</a><span class="sub-toggle"><i class="icon-chevron-down"></i></span>										</li>
+                                </ul>
+                            </div><i class="icon-magnifier search"></i>
+                        </div>
+                        <input class="form-control input-search" placeholder="输入要搜索的内容">
+                        <div class="input-group-append">
+                            <button class="btn">搜索</button>
+                        </div>
+                    </div>
+
+                    <div class="result-search">
+                        <ul class="list-result">
+                            <li class="cart-item">
+                                <div class="ps-product--mini-cart"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/01-Fresh/01_18a.jpg" alt="alt" /></a>
+                                    <div class="ps-product__content"><a class="ps-product__name" href="product-default.html"><u>Organic</u> Large Green Bell Pepper</a>
+                                        <p class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3" selected="selected">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </select><span>(5)</span>
+                                        </p>
+                                        <p class="ps-product__meta"> <span class="ps-product__price">￥6.90</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="cart-item">
+                                <div class="ps-product--mini-cart"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/01-Fresh/01_16a.jpg" alt="alt" /></a>
+                                    <div class="ps-product__content"><a class="ps-product__name" href="product-default.html">Avocado <u>Organic</u> Hass Large</a>
+                                        <p class="ps-product__meta"> <span class="ps-product__price">￥12.90</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="cart-item">
+                                <div class="ps-product--mini-cart"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/01-Fresh/01_32a.jpg" alt="alt" /></a>
+                                    <div class="ps-product__content"><a class="ps-product__name" href="product-default.html">Tailgater Ham <u>Organic</u> Sandwich</a>
+                                        <p class="ps-product__meta"> <span class="ps-product__price">￥33.49</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="cart-item">
+                                <div class="ps-product--mini-cart"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/01-Fresh/01_6a.jpg" alt="alt" /></a>
+                                    <div class="ps-product__content"><a class="ps-product__name" href="product-default.html">Extreme <u>Organic</u> Light Can</a>
+                                        <p class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4" selected="selected">4</option>
+                                                <option value="5">5</option>
+                                            </select><span>(16)</span>
+                                        </p>
+                                        <p class="ps-product__meta"> <span class="ps-product__price-sale">￥4.99</span><span class="ps-product__is-sale">￥8.99</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="cart-item">
+                                <div class="ps-product--mini-cart"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/01-Fresh/01_22a.jpg" alt="alt" /></a>
+                                    <div class="ps-product__content"><a class="ps-product__name" href="product-default.html">Extreme <u>Organic</u> Light Can</a>
+                                        <p class="ps-product__meta"> <span class="ps-product__price">￥12.99</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="header-inner__right">
+                    <button class="button-icon icon-md"><i class="icon-repeat"></i></button><a class="button-icon icon-md" href="wishlist.html"><i class="icon-heart"></i><span class="badge bg-warning">2</span></a>
+                    <div class="button-icon btn-cart-header"><i class="icon-cart icon-shop5"></i><span id="text" class="badge bg-warning"></span>
+                        <div class="mini-cart">
+                            <div class="mini-cart--content">
+                                <div class="mini-cart--overlay"></div>
+                                <div class="mini-cart--slidebar cart--box">
+                                    <div class="mini-cart__header">
+                                        <div class="cart-header-title">
+                                            <h5>Shopping Cart(3)</h5><a class="close-cart" href="javascript:void(0);"><i class="icon-arrow-right"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="mini-cart__products">
+                                        <div class="out-box-cart">
+                                            <div class="triangle-box">
+                                                <div class="triangle"></div>
+                                            </div>
+                                        </div>
+                                        <ul class="list-cart">
+                                            <li class="cart-item">
+                                                <div class="ps-product--mini-cart"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/01-Fresh/01_18a.jpg" alt="alt" /></a>
+                                                    <div class="ps-product__content"><a class="ps-product__name" href="product-default.html">芋头</a>
+                                                        <p class="ps-product__unit">500g</p>
+                                                        <p class="ps-product__meta"> <span class="ps-product__price">￥6.90</span><span class="ps-product__quantity">(x1)</span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="ps-product__remove"><i class="icon-trash2"></i></div>
+                                                </div>
+                                            </li>
+                                            <li class="cart-item">
+                                                <div class="ps-product--mini-cart"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/01-Fresh/01_31a.jpg" alt="alt" /></a>
+                                                    <div class="ps-product__content"><a class="ps-product__name" href="product-default.html">莲藕</a>
+                                                        <p class="ps-product__unit">500g</p>
+                                                        <p class="ps-product__meta"> <span class="ps-product__price-sale">￥4.20</span><span class="ps-product__is-sale">￥4.67</span><span class="quantity">(x1)</span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="ps-product__remove"><i class="icon-trash2"></i></div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="mini-cart__footer row">
+                                        <div class="col-6 title">总计</div>
+                                        <div class="col-6 text-right total">11.1元</div>
+                                        <div class="col-12 d-flex"><a class="view-cart" href="shopIndex1">清空购物车</a><a class="checkout" href="shopIndex1" onclick="pay()">付款</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <nav class="navigation">
+        <div class="container">
+            <ul class="menu">
+                <!-- <div class="categories--floating"><a class="floating-item" href="#freshFoodBlock"><i class="icon-apple"></i></a><a class="floating-item" href="#foodCupboardBlock"> -->
+                <!-- <i class="icon-ice-cream2"></i></a><a class="floating-item" href="#readyMealBlock"><i class="icon-platter"></i></a><a class="floating-item" href="#drinkTeaBlock"> -->
+                <!-- <i class="icon-glass2"></i></a><a class="floating-item" href="#kitchenBlock"><i class="icon-dinner"></i></a> -->
+                <li class="menu-item-has-children has-mega-menu active"><a class="floating-item" href="#freshFoodBlock">时令蔬菜</a><span class="sub-toggle"></span>
+
+                </li>
+                <li class="menu-item-has-children has-mega-menu"><a class="floating-item" href="#foodCupboardBlock">新鲜水果</a><span class="sub-toggle"></span>
+
+                </li>
+                <li class="menu-item-has-children has-mega-menu"><a class="floating-item" href="#readyMealBlock">肉类生鲜</a><span class="sub-toggle"></span>
+                </li>
+                <li class="menu-item-has-children has-mega-menu"><a class="floating-item" href="#drinkTeaBlock">酒水饮品</a><span class="sub-toggle"></span>
+                </li>
+                <li class="menu-item-has-children has-mega-menu"><a class="floating-item" href="#kitchenBlock">日用百货</a><span class="sub-toggle"></span>
+                </li>
+                <li class="menu-item-has-children has-mega-menu"><a class="nav-link" href="javascript:void(0);">其他</a><span class="sub-toggle"></span>
+                </li>
+            </ul>
+            <div class="navigation-text">
+                <ul class="menu">
+                    <li class="menu-item-has-children has-mega-menu"><a class="nav-link" href="javascript:void(0);">最近浏览</a><span class="sub-toggle"><i class="icon-chevron-down"></i></span>
+                        <div class="mega-menu recent-view">
+                            <div class="mega-anchor"></div>
+                            <html>
+                            <head></head>
+                            <body>
+                            <div class="container">
+                                <div class="slick-many-item">
+                                    <a class="recent-item" href="shop-categories.html"><img src="img/products/01-Fresh/01_31a.jpg" alt="alt" /></a>
+                                    <a class="recent-item" href="shop-categories.html"><img src="img/products/01-Fresh/01_18a.jpg" alt="alt" /></a>
+                                    <a class="recent-item" href="shop-categories.html"><img src="img/products/01-Fresh/01_30a.jpg" alt="alt" /></a>
+                                    <a class="recent-item" href="shop-categories.html"><img src="img/products/01-Fresh/01_10a.jpg" alt="alt" /></a>
+                                    <a class="recent-item" href="shop-categories.html"><img src="img/products/01-Fresh/01_1a.jpg" alt="alt" /></a>
+                                    <a class="recent-item" href="shop-categories.html"><img src="img/products/01-Fresh/01_28b.jpg" alt="alt" /></a>
+                                    <a class="recent-item" href="shop-categories.html"><img src="img/products/01-Fresh/01_16a.jpg" alt="alt" /></a>
+                                    <a class="recent-item" href="shop-categories.html"><img src="img/products/01-Fresh/01_31a.jpg" alt="alt" /></a>
+                                    <a class="recent-item" href="shop-categories.html"><img src="img/products/01-Fresh/01_15a.jpg" alt="alt" /></a>
+                                    <a class="recent-item" href="shop-categories.html"><img src="img/products/01-Fresh/01_5a.jpg" alt="alt" /></a>
+                                    <a class="recent-item" href="shop-categories.html"><img src="img/products/01-Fresh/01_32a.jpg" alt="alt" /></a>
+                                </div>
+                            </div>
+                            </body>
+                            </html>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="mobile-search--slidebar">
+        <div class="mobile-search--content">
+            <div class="mobile-search__header">
+                <div class="mobile-search-box">
+                    <div class="input-group">
+                        <input class="form-control" placeholder="I'm shopping for..." id="inputSearchMobile">
+                        <div class="input-group-append">
+                            <button class="btn"> <i class="icon-magnifier"></i></button>
+                        </div>
+                    </div>
+                    <button class="cancel-search"><i class="icon-cross"></i></button>
+                </div>
+            </div>
+
+            <div class="mobile-search__history">
+                <h5> <i class="icon-history2"></i>History<a href="javascript:void(0);">Clear all</a></h5>
+                <div class="history-content">
+                    <ul class="history-list">
+                        <li class="history-item"><a class="history-link" href="javascript:void(0);"> <span>apple</span><i class="icon-cross2"></i></a></li>
+                        <li class="history-item"><a class="history-link" href="javascript:void(0);"> <span>organic fruit</span><i class="icon-cross2"></i></a></li>
+                        <li class="history-item"><a class="history-link" href="javascript:void(0);"> <span>meat beef</span><i class="icon-cross2"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mobile-search__result">
+                <h5> <span class="number-result">5</span>搜索结果</h5>
+                <ul class="list-result">
+                    <li class="cart-item">
+                        <div class="ps-product--mini-cart"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/01-Fresh/01_18a.jpg" alt="alt" /></a>
+                            <div class="ps-product__content"><a class="ps-product__name" href="product-default.html"><u>Organic</u> Large Green Bell Pepper</a>
+                                <p class="ps-product__rating">
+                                    <select class="rating-stars">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3" selected="selected">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select><span>(5)</span>
+                                </p>
+                                <p class="ps-product__meta"> <span class="ps-product__price">￥6.90</span>
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="cart-item">
+                        <div class="ps-product--mini-cart"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/01-Fresh/01_16a.jpg" alt="alt" /></a>
+                            <div class="ps-product__content"><a class="ps-product__name" href="product-default.html">Avocado <u>Organic</u> Hass Large</a>
+                                <p class="ps-product__meta"> <span class="ps-product__price">￥12.90</span>
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="cart-item">
+                        <div class="ps-product--mini-cart"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/01-Fresh/01_32a.jpg" alt="alt" /></a>
+                            <div class="ps-product__content"><a class="ps-product__name" href="product-default.html">Tailgater Ham <u>Organic</u> Sandwich</a>
+                                <p class="ps-product__meta"> <span class="ps-product__price">￥33.49</span>
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="cart-item">
+                        <div class="ps-product--mini-cart"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/01-Fresh/01_6a.jpg" alt="alt" /></a>
+                            <div class="ps-product__content"><a class="ps-product__name" href="product-default.html">Extreme <u>Organic</u> Light Can</a>
+                                <p class="ps-product__rating">
+                                    <select class="rating-stars">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4" selected="selected">4</option>
+                                        <option value="5">5</option>
+                                    </select><span>(16)</span>
+                                </p>
+                                <p class="ps-product__meta"> <span class="ps-product__price-sale">￥4.99</span><span class="ps-product__is-sale">￥8.99</span>
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="cart-item">
+                        <div class="ps-product--mini-cart"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/01-Fresh/01_22a.jpg" alt="alt" /></a>
+                            <div class="ps-product__content"><a class="ps-product__name" href="product-default.html">Extreme <u>Organic</u> Light Can</a>
+                                <p class="ps-product__meta"> <span class="ps-product__price">￥12.99</span>
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+<main class="no-main">
+    <div class="section-slide--default">
+        <div class="owl-carousel" data-owl-auto="false" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="0" data-owl-nav="true" data-owl-dots="true" data-owl-item="1" data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="1" data-owl-item-lg="1" data-owl-duration="1000" data-owl-mousedrag="on">
+            <div class="ps-banner"><img class="mobile-only" src="img/slider/home-1/slide_01_mobile.png" alt="alt" /><img class="desktop-only" src="img/slider/home-1/slide_01.png" alt="alt" />
+                <div class="ps-content">
+                    <div class="container">
+                        <div class="ps-content-box">
+                            <div class="ps-title">S-LIFE水果蔬菜当天配送 <br/> <span class='text-danger'>每日优惠.</span></div>
+                            <div class="ps-subtitle">当天送货 <span class='text-success'>100% 新鲜</span></div>
+                            <div class="ps-shopnow"><a href="shoppingCart.html">现在加入购物车<i class="icon-chevron-right"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ps-banner"><img class="mobile-only" src="img/slider/home-1/slide_02_mobile.png" alt="alt" /><img class="desktop-only" src="img/slider/home-1/slide_02.png" alt="alt" />
+                <div class="ps-content">
+                    <div class="container">
+                        <div class="ps-content-box">
+                            <div class="ps-node"><span class='text-success'>NEW ARRIVALS</span></div>
+                            <div class="ps-title">Whole Earth Organic Sparkling Lemonade.</div>
+                            <div class="ps-subtitle">Made with nuatural ingredients</div>
+                            <div class="ps-shopnow"><a href="shopping-cart.html">现在加入购物车<i class="icon-chevron-right"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ps-banner"><img class="mobile-only" src="img/slider/home-1/slide_03_mobile.png" alt="alt" /><img class="desktop-only" src="img/slider/home-1/slide_03.png" alt="alt" />
+                <div class="ps-content">
+                    <div class="container">
+                        <div class="ps-content-box">
+                            <div class="ps-node"><span class='text-danger'>SALE UP TO 30%</span></div>
+                            <div class="ps-title">Whole Earth Maple Frosted Organic Corn Flakes.</div>
+                            <div class="ps-subtitle">Only from <br/> <span class='price'>￥5.99</span></div>
+                            <div class="ps-shopnow"> <a href="shop-view-grid.html">现在<a href="shoppingCart.html">加入购物车<i class="icon-chevron-right"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- </section> -->
+    <section class="section-categories--default">
+        <div class="container">
+            <div class="categories--floating"><a class="floating-item" href="#freshFoodBlock"><i class="icon-ice-cream2"></i></a><a class="floating-item" href="#foodCupboardBlock"><i class="icon-apple"></i></a><a class="floating-item" href="#readyMealBlock"><i class="icon-platter"></i></a><a class="floating-item" href="#drinkTeaBlock"><i class="icon-glass2"></i></a><a class="floating-item" href="#kitchenBlock"><i class="icon-dinner"></i></a>
+            </div>
+            <div class="categories--block">
+                <h3><a class="categories__title" id="freshFoodBlock">时令蔬菜</a></h3>
+                <div class="categories__content">
+                    <div class="categories__promotion">
+                        <div class="slick-single-item">
+                            <div class="categories-carousel"><a href="#"><img class="carousel__thumbnail" src="img/promotion/kitchen_01.jpg" alt="alt" /></a></div>
+                            <div class="categories-carousel"><a href="#"><img class="carousel__thumbnail" src="img/promotion/kitchen_02.jpg" alt="alt" /></a></div>
+                            <div class="categories-carousel"><a href="#"><img class="carousel__thumbnail" src="img/promotion/kitchen_03.png" alt="alt" /></a></div>
+                        </div>
+                        <div class="categories__footer"><a href="shop-categories.html">
+                            <u>查看全部</u><i class="icon-chevron-right"></i></a></div>
+                    </div>
+                    <div class="categories__products">
+                        <div class="row m-0">
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/01-Fresh/01_1a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a>
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>S-LIFE商铺</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">白菜</a></h5>
+                                        <p class="ps-product__unit">1.8元/斤</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </select><span>(0)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__price-default">￥1.8</span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计: <span>￥1.8</span>
+                                        </div>
+                                        <button class="ps-product__addcart" data-toggle="modal" data-target="#popupAddToCart"><i class="icon-cart"></i><a href="shoppingCart.html">加入购物车</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/01-Fresh/01_2a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a><span class="ps-badge ps-product__new">新上架</span>
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>S-Life商铺</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">莴笋</a></h5>
+                                        <p class="ps-product__unit">2.5元/斤</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4" selected="selected">4</option>
+                                                <option value="5">5</option>
+                                            </select><span>(6)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__sale">￥2.5</span><span class="ps-product__price">￥2.5</span><span class="ps-product__off">8折</span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计: <span>￥2.5</span>
+                                        </div>
+                                        <button class="ps-product__addcart" data-toggle="modal" data-target="#popupAddToCart"><i class="icon-cart"></i><a href="shoppingCart.html">加入购物车</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/01-Fresh/01_13a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a>
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>芙蓉兴盛</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">冬瓜</a></h5>
+                                        <p class="ps-product__unit">1.75元/斤</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </select><span>(0)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__price-default">￥1.75</span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计:<span>￥1.75</span>
+                                        </div>
+                                        <button class="ps-product__addcart" data-toggle="modal" data-target="#popupAddToCart"><i class="icon-cart"></i><a href="shoppingCart.html">加入购物车</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/01-Fresh/01_4a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a><span class="ps-badge ps-product__offbadge">七五折</span>
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>有家便利店</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">小米椒</a></h5>
+                                        <p class="ps-product__unit">8元/斤</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4" selected="selected">4</option>
+                                                <option value="5">5</option>
+                                            </select><span>(13)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__sale">￥8.0</span><span class="ps-product__price">￥9.99</span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计:<span>￥8.0</span>
+                                        </div>
+                                        <button class="ps-product__addcart" data-toggle="modal" data-target="#popupAddToCart"><i class="icon-cart"></i><a href="shoppingCart.html">加入购物车</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/01-Fresh/01_16a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a><span class="ps-badge ps-product__offbadge">七五折 </span>
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>有家便利店</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">花菜</a></h5>
+                                        <p class="ps-product__unit">3.9元/斤</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5" selected="selected">5</option>
+                                            </select><span>(4)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__sale">￥5.20</span><span class="ps-product__price">￥3.90</span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计:<span>￥3.90</span>
+                                        </div>
+                                        <button class="ps-product__addcart" data-toggle="modal" data-target="#popupAddToCart"><i class="icon-cart"></i><a href="shoppingCart.html">加入购物车</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/01-Fresh/01_17a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a><span class="ps-badge ps-product__stock">当日售完</span>
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>S-LIFE商铺</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">土豆</a></h5>
+                                        <p class="ps-product__unit">2.6元/斤</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </select><span>(0)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__price-default">￥2.60</span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计:<span>￥2.60</span>
+                                        </div>
+                                        <button class="ps-product__addcart" data-toggle="modal" data-target="#popupAddToCart"><i class="icon-cart"></i><a href="shoppingCart.html">加入购物车</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/01-Fresh/01_18a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a>
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>S-Life商铺</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">芋头</a></h5>
+                                        <p class="ps-product__unit">6.9元/斤</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4" selected="selected">4</option>
+                                                <option value="5">5</option>
+                                            </select><span>(2)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__sale">￥6.90</span><span class="ps-product__price">￥9.99</span><span class="ps-product__off">九折</span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计:<span>￥6.90</span>
+                                        </div>
+                                        <button class="ps-product__addcart" onclick="fun()">加入购物车</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/01-Fresh/01_31a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a><span class="ps-badge ps-product__offbadge">九折 </span>
+                                    <!-- <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/01-Fresh/01_31a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a> -->
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>S-LIFE商铺</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">莲藕</a></h5>
+                                        <p class="ps-product__unit">4.2元/斤</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </select><span>(0)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__sale">￥4.20<span><span class="ps-product__price">￥4.67</span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计:<span>￥4.20</span>
+                                        </div>
+                                        <button class="ps-product__addcart" onclick="fun()">加入购物车</button>
+                                        <!--<i class="icon-cart"></i><a href="shoppingCart.html"> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="categories--block">
+                <h3><a class="categories__title" id="foodCupboardBlock">新鲜水果</a></h3>
+                <div class="categories__content">
+                    <div class="categories__promotion">
+                        <div class="slick-single-item">
+                            <div class="categories-carousel"><a href="#"><img class="carousel__thumbnail" src="img/promotion/food_cupboard_01.jpg" alt="alt" /></a></div>
+                            <div class="categories-carousel"><a href="#"><img class="carousel__thumbnail" src="img/promotion/food_cupboard_02.jpg" alt="alt" /></a></div>
+                            <div class="categories-carousel"><a href="#"><img class="carousel__thumbnail" src="img/promotion/food_cupboard_03.jpg" alt="alt" /></a></div>
+                        </div>
+
+                        <div class="categories__footer"><a href="shop-categories.html">
+                            <u>查看全部</u><i class="icon-chevron-right"></i></a></div>
+                    </div>
+                    <div class="categories__products">
+                        <div class="row m-0">
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/02-FoodCupboard/02_1a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a>
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>S-LIFE商铺</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">苹果</a></h5>
+                                        <p class="ps-product__unit">5.6元/斤</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4" selected="selected">4</option>
+                                                <option value="5">5</option>
+                                            </select><span>(6)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__price-default">￥5.60</span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计:<span>￥5.60</span>
+                                        </div>
+                                        <button class="ps-product__addcart" data-toggle="modal" data-target="#popupAddToCart"><i class="icon-cart"></i><a href="shoppingCart.html">加入购物车</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/02-FoodCupboard/02_2a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a><span class="ps-badge ps-product__offbadge">15% 折扣 </span>
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>S-Life商铺</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">柠檬</a></h5>
+                                        <p class="ps-product__unit">8.6元/斤</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </select><span>(0)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__sale">￥8.6</span><span class="ps-product__price">￥4.90</span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计:<span>￥8.6</span>
+                                        </div>
+                                        <button class="ps-product__addcart" data-toggle="modal" data-target="#popupAddToCart"><i class="icon-cart"></i><a href="shoppingCart.html">加入购物车</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/02-FoodCupboard/02_3a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a><span class="ps-badge ps-product__offbadge">30% 折扣 </span>
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>芙蓉兴盛</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">火龙果</a></h5>
+                                        <p class="ps-product__unit">6元/斤</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </select><span>(0)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__sale">￥6.0</span><span class="ps-product__price">￥8.99</span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计:<span>￥6.0</span>
+                                        </div>
+                                        <button class="ps-product__addcart" data-toggle="modal" data-target="#popupAddToCart"><i class="icon-cart"></i><a href="shoppingCart.html">加入购物车</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/02-FoodCupboard/02_14a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a>
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>有家便利店</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">香蕉</a></h5>
+                                        <p class="ps-product__unit">4.5元/斤</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4" selected="selected">4</option>
+                                                <option value="5">5</option>
+                                            </select><span>(13)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__price-default">￥4.50</span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计:<span>￥4.50</span>
+                                        </div>
+                                        <button class="ps-product__addcart" data-toggle="modal" data-target="#popupAddToCart"><i class="icon-cart"></i><a href="shoppingCart.html">加入购物车</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/02-FoodCupboard/02_5a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a>
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>有家便利店</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">黄桃</a></h5>
+                                        <p class="ps-product__unit">6.9元/斤</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5" selected="selected">5</option>
+                                            </select><span>(4)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__price-default">￥6.90</span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计:<span>￥6.90</span>
+                                        </div>
+                                        <button class="ps-product__addcart" data-toggle="modal" data-target="#popupAddToCart"><i class="icon-cart"></i><a href="shoppingCart.html">加入购物车</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/02-FoodCupboard/02_11a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a>
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>S-LIFE商铺</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">柚子</a></h5>
+                                        <p class="ps-product__unit">6元/斤</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </select><span>(0)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__price-default">￥6.00</span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计:<span>￥6.00</span>
+                                        </div>
+                                        <button class="ps-product__addcart" data-toggle="modal" data-target="#popupAddToCart"><i class="icon-cart"></i><a href="shoppingCart.html">加入购物车</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/02-FoodCupboard/02_12a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a><span class="ps-badge ps-product__new">New </span>
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>S-Life商铺</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">猕猴桃</a></h5>
+                                        <p class="ps-product__unit">7.8元/斤</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5" selected="selected">5</option>
+                                            </select><span>(34)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__sale">￥7.80</span><span class="ps-product__price">￥9.99</span><span class="ps-product__off">35% 折扣</span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计:<span>￥7.80</span>
+                                        </div>
+                                        <button class="ps-product__addcart" data-toggle="modal" data-target="#popupAddToCart"><i class="icon-cart"></i><a href="shoppingCart.html">加入购物车</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/02-FoodCupboard/02_19a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a><span class="ps-badge ps-product__offbadge">50% 折扣 </span>
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>S-LIFE商铺</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">红柚</a></h5>
+                                        <p class="ps-product__unit">6.98元/斤</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </select><span>(0)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__sale">￥6.98</span><span class="ps-product__price">￥8.99</span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计:<span>￥6.98</span>
+                                        </div>
+                                        <button class="ps-product__addcart" data-toggle="modal" data-target="#popupAddToCart"><i class="icon-cart"></i><a href="shoppingCart.html">加入购物车</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="categories--block">
+                <h3><a class="categories__title" id="readyMealBlock">肉类生鲜</a></h3>
+                <div class="categories__content">
+                    <div class="categories__promotion">
+                        <div class="slick-single-item">
+                            <div class="categories-carousel"><a href="#"><img class="carousel__thumbnail" src="img/promotion/ready_meal_01.jpg" alt="alt" /></a></div>
+                            <div class="categories-carousel"><a href="#"><img class="carousel__thumbnail" src="img/promotion/ready_meal_02.jpg" alt="alt" /></a></div>
+                            <div class="categories-carousel"><a href="#"><img class="carousel__thumbnail" src="img/promotion/ready_meal_03.jpg" alt="alt" /></a></div>
+                        </div>
+                        <div class="categories__footer"><a href="shop-categories.html">
+                            <u>查看全部</u><i class="icon-chevron-right"></i></a></div>
+                    </div>
+                    <div class="categories__products">
+                        <div class="row m-0">
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/05-ReadyMeals/05_1a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a>
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>S-LIFE商铺</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">鸭脖子</a></h5>
+                                        <p class="ps-product__unit">20元/斤</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4" selected="selected">4</option>
+                                                <option value="5">5</option>
+                                            </select><span>(6)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__price-default">￥20</span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计:<span>￥20</span>
+                                        </div>
+                                        <button class="ps-product__addcart" data-toggle="modal" data-target="#popupAddToCart"><i class="icon-cart"></i><a href="shoppingCart.html">加入购物车</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/05-ReadyMeals/05_2a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a><span class="ps-badge ps-product__new">新上架</span>
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>S-Life商铺</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">牛肉卷</a></h5>
+                                        <p class="ps-product__unit">18元/斤</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4" selected="selected">4</option>
+                                                <option value="5">5</option>
+                                            </select><span>(6)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__sale">￥18.0</span><span class="ps-product__price">￥4.90</span><span class="ps-product__off"></span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计:<span>￥18.0</span>
+                                        </div>
+                                        <button class="ps-product__addcart" data-toggle="modal" data-target="#popupAddToCart"><i class="icon-cart"></i><a href="shoppingCart.html">加入购物车</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/05-ReadyMeals/05_3a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a><span class="ps-badge ps-product__offbadge">九折</span>
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>芙蓉兴盛</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">鸭翅</a></h5>
+                                        <p class="ps-product__unit">23元/斤</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </select><span>(0)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__sale">￥23.0</span><span class="ps-product__price">￥8.99</span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计:<span>￥23.0</span>
+                                        </div>
+                                        <button class="ps-product__addcart" data-toggle="modal" data-target="#popupAddToCart"><i class="icon-cart"></i><a href="shoppingCart.html">加入购物车</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/05-ReadyMeals/05_4a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a>
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>有家便利店</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">鸡腿</a></h5>
+                                        <p class="ps-product__unit">19.8元/斤</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4" selected="selected">4</option>
+                                                <option value="5">5</option>
+                                            </select><span>(13)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__price-default">￥19.8</span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计:<span>￥19.8</span>
+                                        </div>
+                                        <button class="ps-product__addcart" data-toggle="modal" data-target="#popupAddToCart"><i class="icon-cart"></i><a href="shoppingCart.html">加入购物车</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/05-ReadyMeals/05_5a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a>
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>有家便利店</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">猪里脊</a></h5>
+                                        <p class="ps-product__unit">17.9元/斤</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </select><span>(0)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__price-default">￥17.9</span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计:<span>￥17.9</span>
+                                        </div>
+                                        <button class="ps-product__addcart" data-toggle="modal" data-target="#popupAddToCart"><i class="icon-cart"></i><a href="shoppingCart.html">加入购物车</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/05-ReadyMeals/05_6a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a>
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>S-LIFE商铺</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">猪肉</a></h5>
+                                        <p class="ps-product__unit">16.5元/斤</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5" selected="selected">5</option>
+                                            </select><span>(4)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__price-default">￥16.5</span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计:<span>￥16.5</span>
+                                        </div>
+                                        <button class="ps-product__addcart" data-toggle="modal" data-target="#popupAddToCart"><i class="icon-cart"></i><a href="shoppingCart.html">加入购物车</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/05-ReadyMeals/05_8a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a><span class="ps-badge ps-product__offbadge">五折</span>
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>S-Life商铺</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">牛腩</a></h5>
+                                        <p class="ps-product__unit">28.5元/斤</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </select><span>(0)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__price-default">￥28.5</span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计:<span>￥28.5</span>
+                                        </div>
+                                        <button class="ps-product__addcart" data-toggle="modal" data-target="#popupAddToCart"><i class="icon-cart"></i><a href="shoppingCart.html">加入购物车</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/05-ReadyMeals/05_9a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a>
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>S-LIFE商铺</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">猪腿</a></h5>
+                                        <p class="ps-product__unit">21元/斤</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </select><span>(0)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__price-default">￥21</span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计:<span>￥21</span>
+                                        </div>
+                                        <button class="ps-product__addcart" data-toggle="modal" data-target="#popupAddToCart"><i class="icon-cart"></i><a href="shoppingCart.html">加入购物车</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="categories--block">
+                <h3><a class="categories__title" id="drinkTeaBlock">酒水饮料</a></h3>
+                <div class="categories__content">
+                    <div class="categories__promotion">
+                        <div class="slick-single-item">
+                            <div class="categories-carousel"><a href="#"><img class="carousel__thumbnail" src="img/promotion/drink_tea_01.jpg" alt="alt" /></a></div>
+                            <div class="categories-carousel"><a href="#"><img class="carousel__thumbnail" src="img/promotion/drink_tea_02.jpg" alt="alt" /></a></div>
+                            <div class="categories-carousel"><a href="#"><img class="carousel__thumbnail" src="img/promotion/drink_tea_03.jpg" alt="alt" /></a></div>
+                        </div>
+                        <div class="categories__footer"><a href="shop-categories.html">
+                            <u>查看全部</u><i class="icon-chevron-right"></i></a></div>
+                    </div>
+                    <div class="categories__products">
+                        <div class="row m-0">
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/06-SoftDrinks-TeaCoffee/06_1a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a>
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>S-LIFE商铺</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">起泡酒</a></h5>
+                                        <p class="ps-product__unit">1000ml</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </select><span>(0)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__price-default">￥18</span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计:<span>￥18</span>
+                                        </div>
+                                        <button class="ps-product__addcart" data-toggle="modal" data-target="#popupAddToCart"><i class="icon-cart"></i><a href="shoppingCart.html">加入购物车</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/06-SoftDrinks-TeaCoffee/06_3a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a><span class="ps-badge ps-product__new">新上架 </span>
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>S-Life商铺</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">椰子汁</a></h5>
+                                        <p class="ps-product__unit">550ml</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4" selected="selected">4</option>
+                                                <option value="5">5</option>
+                                            </select><span>(6)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__sale">￥4.90</span><span class="ps-product__price">￥5.5</span><span class="ps-product__off">八五折</span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计:<span>￥4.90</span>
+                                        </div>
+                                        <button class="ps-product__addcart" data-toggle="modal" data-target="#popupAddToCart"><i class="icon-cart"></i><a href="shoppingCart.html">加入购物车</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/06-SoftDrinks-TeaCoffee/06_5a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a><span class="ps-badge ps-product__offbadge">九折</span>
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>芙蓉兴盛</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">苏打水</a></h5>
+                                        <p class="ps-product__unit">550ml</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4" selected="selected">4</option>
+                                                <option value="5">5</option>
+                                            </select><span>(6)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__sale">￥4.99</span><span class="ps-product__price">￥5.99</span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计:<span>￥4.99</span>
+                                        </div>
+                                        <button class="ps-product__addcart" data-toggle="modal" data-target="#popupAddToCart"><i class="icon-cart"></i><a href="shoppingCart.html">加入购物车</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/06-SoftDrinks-TeaCoffee/06_12a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a>
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>有家便利店</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">芬达</a></h5>
+                                        <p class="ps-product__unit">500ml</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </select><span>(0)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__price-default">￥5.90</span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计:<span>￥5.90</span>
+                                        </div>
+                                        <button class="ps-product__addcart" data-toggle="modal" data-target="#popupAddToCart"><i class="icon-cart"></i><a href="shoppingCart.html">加入购物车</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/06-SoftDrinks-TeaCoffee/06_11a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a><span class="ps-badge ps-product__offbadge">六折</span>
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>有家便利店</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">魔爪能力饮料</a></h5>
+                                        <p class="ps-product__unit">250ml</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4" selected="selected">4</option>
+                                                <option value="5">5</option>
+                                            </select><span>(4)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__sale">￥9.99</span><span class="ps-product__price">￥15.90</span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计:<span>￥9.99</span>
+                                        </div>
+                                        <button class="ps-product__addcart" data-toggle="modal" data-target="#popupAddToCart"><i class="icon-cart"></i><a href="shoppingCart.html">加入购物车</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/06-SoftDrinks-TeaCoffee/06_2a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a>
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>S-LIFE商铺</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">元气森林</a></h5>
+                                        <p class="ps-product__unit">350ml</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </select><span>(0)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__price-default">￥5.0</span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计:<span>￥5.00</span>
+                                        </div>
+                                        <button class="ps-product__addcart" data-toggle="modal" data-target="#popupAddToCart"><i class="icon-cart"></i><a href="shoppingCart.html">加入购物车</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/06-SoftDrinks-TeaCoffee/06_9a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a><span class="ps-badge ps-product__new">新上架</span>
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>S-Life商铺</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">可口可乐</a></h5>
+                                        <p class="ps-product__unit">1.5L</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4" selected="selected">4</option>
+                                                <option value="5">5</option>
+                                            </select><span>(2)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__sale">￥6.90</span><span class="ps-product__price">￥9.99</span><span class="ps-product__off">七五折</span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计:<span>￥6.90</span>
+                                        </div>
+                                        <button class="ps-product__addcart" data-toggle="modal" data-target="#popupAddToCart"><i class="icon-cart"></i><a href="shoppingCart.html">加入购物车</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/06-SoftDrinks-TeaCoffee/06_8a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a>
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>S-LIFE商铺</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">牛奶</a></h5>
+                                        <p class="ps-product__unit">330ml</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </select><span>(0)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__price-default">￥6.99</span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计:<span>￥6.99</span>
+                                        </div>
+                                        <button class="ps-product__addcart" data-toggle="modal" data-target="#popupAddToCart"><i class="icon-cart"></i><a href="shoppingCart.html">加入购物车</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="categories--block">
+                <h3><a class="categories__title" id="kitchenBlock">日用百货</a></h3>
+                <div class="categories__content">
+                    <div class="categories__promotion">
+                        <div class="slick-single-item">
+                            <div class="categories-carousel"><a href="#"><img class="carousel__thumbnail" src="img/promotion/finiture_01.jpg" alt="alt" /></a></div>
+                            <div class="categories-carousel"><a href="#"><img class="carousel__thumbnail" src="img/promotion/finiture_02.jpg" alt="alt" /></a></div>
+                            <div class="categories-carousel"><a href="#"><img class="carousel__thumbnail" src="img/promotion/finiture_03.jpg" alt="alt" /></a></div>
+                        </div>
+                        <div class="categories__footer"><a href="shop-categories.html">
+                            <u>查看全部</u><i class="icon-chevron-right"></i></a></div>
+                    </div>
+                    <div class="categories__products">
+                        <div class="row m-0">
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/09-KitchenDining/09_1a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a>
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>S-LIFE商铺</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">陶瓷杯</a></h5>
+                                        <p class="ps-product__unit">1个</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4" selected="selected">4</option>
+                                                <option value="5">5</option>
+                                            </select><span>(6)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__price-default">￥4.49</span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计:<span>￥4.49</span>
+                                        </div>
+                                        <button class="ps-product__addcart" data-toggle="modal" data-target="#popupAddToCart"><i class="icon-cart"></i><a href="shoppingCart.html">加入购物车</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/09-KitchenDining/09_2a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a><span class="ps-badge ps-product__new">新上架</span>
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>S-Life商铺</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">高脚杯</a></h5>
+                                        <p class="ps-product__unit">1个</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4" selected="selected">4</option>
+                                                <option value="5">5</option>
+                                            </select><span>(6)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__sale">￥3.99</span><span class="ps-product__price">￥4.90</span><span class="ps-product__off">15% 折扣</span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计:<span>￥3.99</span>
+                                        </div>
+                                        <button class="ps-product__addcart" data-toggle="modal" data-target="#popupAddToCart"><i class="icon-cart"></i><a href="shoppingCart.html">加入购物车</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/09-KitchenDining/09_3a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a>
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>芙蓉兴盛</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">一次性杯子</a></h5>
+                                        <p class="ps-product__unit">4.99元/包</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </select><span>(0)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__price-default">￥4.99</span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计:<span>￥4.99</span>
+                                        </div>
+                                        <button class="ps-product__addcart" data-toggle="modal" data-target="#popupAddToCart"><i class="icon-cart"></i><a href="shoppingCart.html">加入购物车</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/09-KitchenDining/09_4a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a><span class="ps-badge ps-product__offbadge">八折</span>
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>有家便利店</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">玻璃杯</a></h5>
+                                        <p class="ps-product__unit">3.88元/个</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4" selected="selected">4</option>
+                                                <option value="5">5</option>
+                                            </select><span>(13)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__sale">￥4.85</span><span class="ps-product__price">￥3.88</span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计:<span>￥5.99</span>
+                                        </div>
+                                        <button class="ps-product__addcart" data-toggle="modal" data-target="#popupAddToCart"><i class="icon-cart"></i><a href="shoppingCart.html">加入购物车</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/09-KitchenDining/09_5a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a>
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>有家便利店</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">保温杯</a></h5>
+                                        <p class="ps-product__unit">18.9元/个</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5" selected="selected">5</option>
+                                            </select><span>(4)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__price-default">￥18.90</span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计:<span>￥18.90</span>
+                                        </div>
+                                        <button class="ps-product__addcart" data-toggle="modal" data-target="#popupAddToCart"><i class="icon-cart"></i><a href="shoppingCart.html">加入购物车</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/09-KitchenDining/09_10a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a><span class="ps-badge ps-product__offbadge">七折</span>
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>S-LIFE商铺</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">砧板</a></h5>
+                                        <p class="ps-product__unit">9.9元/个</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </select><span>(0)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__sale">￥14.5</span><span class="ps-product__price">￥20.9</span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计:<span>￥9.9</span>
+                                        </div>
+                                        <button class="ps-product__addcart" data-toggle="modal" data-target="#popupAddToCart"><i class="icon-cart"></i><a href="shoppingCart.html">加入购物车</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/09-KitchenDining/09_11a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a><span class="ps-badge ps-product__new">新上架</span>
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>S-Life商铺</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">电锅</a></h5>
+                                        <p class="ps-product__unit">59元/个</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4" selected="selected">4</option>
+                                                <option value="5">5</option>
+                                            </select><span>(2)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__sale">￥59</span><span class="ps-product__price">￥65.5</span><span class="ps-product__off">9折</span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计:<span>￥59</span>
+                                        </div>
+                                        <button class="ps-product__addcart" data-toggle="modal" data-target="#popupAddToCart"><i class="icon-cart"></i><a href="shoppingCart.html">加入购物车</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3 p-0">
+                                <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/09-KitchenDining/09_13a.jpg" alt="alt" /></a><a class="ps-product__expand" href="javascript:void(0);" data-toggle="modal" data-target="#popupQuickview"><i class="icon-expand"></i></a>
+                                    <div class="ps-product__content">
+                                        <p class="ps-product__type"><i class="icon-store"></i>S-LIFE商铺</p>
+                                        <h5><a class="ps-product__name" href="product-default.html">剪刀</a></h5>
+                                        <p class="ps-product__unit">5元/个</p>
+                                        <div class="ps-product__rating">
+                                            <select class="rating-stars">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5" selected="selected">5</option>
+                                            </select><span>(4)</span>
+                                        </div>
+                                        <p class="ps-product-price-block"><span class="ps-product__price-default">￥5</span>
+                                        </p>
+                                    </div>
+                                    <div class="ps-product__footer">
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number" />
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <div class="ps-product__total">总计:<span>￥5</span>
+                                        </div>
+                                        <button class="ps-product__addcart" data-toggle="modal" data-target="#popupAddToCart"><i class="icon-cart"></i><a href="shoppingCart.html">加入购物车</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section-recommendations--default ps-home--block">
+        <div class="container">
+            <div class="ps-block__header mobile">
+                <h3 class="ps-block__title">热门推荐</h3>
+            </div>
+            <div class="recommendations__content">
+                <div class="owl-carousel" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="0" data-owl-nav="true" data-owl-dots="true" data-owl-item="3" data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="1" data-owl-item-lg="3" data-owl-item-xl="3" data-owl-duration="1000" data-owl-mousedrag="on">
+                    <div class="recommendation-carousel">
+                        <div class="ps-product--vertical"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/05-ReadyMeals/05_4a.jpg" alt="alt" /></a>
+                            <div class="ps-product__content">
+                                <h5><a class="ps-product__name" href="product-default.html">鸡腿</a></h5>
+                                <p class="ps-product__unit">500g</p>
+                                <p class="ps-product-price-block"><span class="ps-product__price-default">￥19.8</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="ps-product--vertical"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/01-Fresh/01_18a.jpg" alt="alt" /></a>
+                            <div class="ps-product__content">
+                                <h5><a class="ps-product__name" href="product-default.html">芋头</a></h5>
+                                <p class="ps-product__unit">500g</p>
+                                <p class="ps-product-price-block"><span class="ps-product__sale">￥6.9</span><span class="ps-product__price">￥7.8</span><span class="ps-product__off">八折</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="ps-product--vertical"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/07-Beer-WineSpirits/07_11a.jpg" alt="alt" /></a>
+                            <div class="ps-product__content">
+                                <h5><a class="ps-product__name" href="product-default.html">有机啤酒</a></h5>
+                                <p class="ps-product__unit">4 个 /包</p>
+                                <p class="ps-product-price-block"><span class="ps-product__price-default">￥39.90</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recommendation-carousel">
+                        <div class="ps-product--vertical"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/01-Fresh/01_27a.jpg" alt="alt" /></a>
+                            <div class="ps-product__content">
+                                <h5><a class="ps-product__name" href="product-default.html">进口肉类</a></h5>
+                                <p class="ps-product__unit">500g</p>
+                                <p class="ps-product-price-block"><span class="ps-product__sale">￥19.99</span><span class="ps-product__price">￥11.90</span><span class="ps-product__off">六折</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="ps-product--vertical"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/01-Fresh/01_7a.jpg" alt="alt" /></a>
+                            <div class="ps-product__content">
+                                <h5><a class="ps-product__name" href="product-default.html">柠檬</a></h5>
+                                <p class="ps-product__unit">500g</p>
+                                <p class="ps-product-price-block"><span class="ps-product__price-default">￥4.49</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="ps-product--vertical"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/07-Beer-WineSpirits/07_8a.jpg" alt="alt" /></a>
+                            <div class="ps-product__content">
+                                <h5><a class="ps-product__name" href="product-default.html">白酒</a></h5>
+                                <p class="ps-product__unit">750ml</p>
+                                <p class="ps-product-price-block"><span class="ps-product__sale">￥5.99</span><span class="ps-product__price">￥11.90</span><span class="ps-product__off">五折</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recommendation-carousel">
+                        <div class="ps-product--vertical"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/01-Fresh/01_1a.jpg" alt="alt" /></a>
+                            <div class="ps-product__content">
+                                <h5><a class="ps-product__name" href="product-default.html">白菜</a></h5>
+                                <p class="ps-product__unit">500g</p>
+                                <p class="ps-product-price-block"><span class="ps-product__price-default">￥1.80</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="ps-product--vertical"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/07-Beer-WineSpirits/07_2a.jpg" alt="alt" /></a>
+                            <div class="ps-product__content">
+                                <h5><a class="ps-product__name" href="product-default.html">酱油</a></h5>
+                                <p class="ps-product__unit">330ml</p>
+                                <p class="ps-product-price-block"><span class="ps-product__sale">￥5.99</span><span class="ps-product__price">￥8.50</span><span class="ps-product__off">七折</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="ps-product--vertical"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/02-FoodCupboard/02_3a.jpg" alt="alt" /></a>
+                            <div class="ps-product__content">
+                                <h5><a class="ps-product__name" href="product-default.html">火龙果</a></h5>
+                                <p class="ps-product__unit">500g</p>
+                                <p class="ps-product-price-block"><span class="ps-product__sale">￥9.99</span><span class="ps-product__price">￥11.90</span><span class="ps-product__off">八折</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recommendation-carousel">
+                        <div class="ps-product--vertical"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/05-ReadyMeals/05_4a.jpg" alt="alt" /></a>
+                            <div class="ps-product__content">
+                                <h5><a class="ps-product__name" href="product-default.html">鸡腿</a></h5>
+                                <p class="ps-product__unit">500g</p>
+                                <p class="ps-product-price-block"><span class="ps-product__price-default">￥19.8</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="ps-product--vertical"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/01-Fresh/01_18a.jpg" alt="alt" /></a>
+                            <div class="ps-product__content">
+                                <h5><a class="ps-product__name" href="product-default.html">芋头</a></h5>
+                                <p class="ps-product__unit">500g</p>
+                                <p class="ps-product-price-block"><span class="ps-product__sale">￥6.9</span><span class="ps-product__price">￥7.9</span><span class="ps-product__off">八折</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="ps-product--vertical"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/07-Beer-WineSpirits/07_11a.jpg" alt="alt" /></a>
+                            <div class="ps-product__content">
+                                <h5><a class="ps-product__name" href="product-default.html">有机啤酒</a></h5>
+                                <p class="ps-product__unit">4 个 /包</p>
+                                <p class="ps-product-price-block"><span class="ps-product__price-default">￥39.90</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--                        <div class="recommendation-carousel">-->
+                    <!--                            <div class="ps-product&#45;&#45;vertical"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/01-Fresh/01_31a.jpg" alt="alt" /></a>-->
+                    <!--                                <div class="ps-product__content">-->
+                    <!--                                    <h5><a class="ps-product__name" href="product-default.html">鸡腿堡</a></h5>-->
+                    <!--                                    <p class="ps-product__unit">1kg</p>-->
+                    <!--                                    <p class="ps-product-price-block"><span class="ps-product__price-default">￥13.99</span>-->
+                    <!--                                    </p>-->
+                    <!--                                </div>-->
+                    <!--                            </div>-->
+                    <!--                            <div class="ps-product&#45;&#45;vertical"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/01-Fresh/01_18a.jpg" alt="alt" /></a>-->
+                    <!--                                <div class="ps-product__content">-->
+                    <!--                                    <h5><a class="ps-product__name" href="product-default.html">无籽葡萄</a></h5>-->
+                    <!--                                    <p class="ps-product__unit">100g</p>-->
+                    <!--                                    <p class="ps-product-price-block"><span class="ps-product__sale">￥5.99</span><span class="ps-product__price">￥11.90</span><span class="ps-product__off">20% 折扣</span>-->
+                    <!--                                    </p>-->
+                    <!--                                </div>-->
+                    <!--                            </div>-->
+                    <!--                            <div class="ps-product&#45;&#45;vertical"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/07-Beer-WineSpirits/07_11a.jpg" alt="alt" /></a>-->
+                    <!--                                <div class="ps-product__content">-->
+                    <!--                                    <h5><a class="ps-product__name" href="product-default.html">有机啤酒</a></h5>-->
+                    <!--                                    <p class="ps-product__unit">4 个 /包</p>-->
+                    <!--                                    <p class="ps-product-price-block"><span class="ps-product__price-default">￥39.90</span>-->
+                    <!--                                    </p>-->
+                    <!--                                </div>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section-recent--default ps-home--block">
+        <div class="container">
+            <div class="ps-block__header">
+                <h3 class="ps-block__title">最近浏览</h3><a class="ps-block__view" href="shop-categories.html">查看全部 <i class="icon-chevron-right"></i></a>
+            </div>
+            <div class="recent__content">
+                <div class="owl-carousel" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="0" data-owl-nav="true" data-owl-dots="true" data-owl-item="8" data-owl-item-xs="3" data-owl-item-sm="3" data-owl-item-md="5" data-owl-item-lg="8" data-owl-item-xl="8" data-owl-duration="1000" data-owl-mousedrag="on"><a class="recent-item" href="shop-categories.html"><img src="img/products/01-Fresh/01_1a.jpg" alt="alt" /></a><a class="recent-item" href="shop-categories.html"><img src="img/products/01-Fresh/01_2a.jpg" alt="alt" /></a><a class="recent-item" href="shop-categories.html"><img src="img/products/01-Fresh/01_30a.jpg" alt="alt" /></a><a class="recent-item" href="shop-categories.html"><img src="img/products/01-Fresh/01_10a.jpg" alt="alt" /></a><a class="recent-item" href="shop-categories.html"><img src="img/products/01-Fresh/01_18a.jpg" alt="alt" /></a><a class="recent-item" href="shop-categories.html"><img src="img/products/01-Fresh/01_28b.jpg" alt="alt" /></a><a class="recent-item" href="shop-categories.html"><img src="img/products/01-Fresh/01_16a.jpg" alt="alt" /></a><a class="recent-item" href="shop-categories.html"><img src="img/products/01-Fresh/01_31a.jpg" alt="alt" /></a><a class="recent-item" href="shop-categories.html"><img src="img/products/01-Fresh/01_15a.jpg" alt="alt" /></a><a class="recent-item" href="shop-categories.html"><img src="img/products/01-Fresh/01_5a.jpg" alt="alt" /></a><a class="recent-item" href="shop-categories.html"><img src="img/products/01-Fresh/01_32a.jpg" alt="alt" /></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="modal fade" id="popupQuickview" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl ps-quickview">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid quickview-body">
+                        <div class="row">
+                            <div class="col-12 col-lg-5">
+                                <div class="owl-carousel" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="0" data-owl-nav="true" data-owl-dots="true" data-owl-item="1" data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="1" data-owl-item-lg="1" data-owl-item-xl="1" data-owl-duration="1000" data-owl-mousedrag="on">
+                                    <div class="quickview-carousel"><img class="carousel__thumbnail" src="img/products/01-Fresh/01_31a.jpg" alt="alt" /></div>
+                                    <!--                                        <div class="quickview-carousel"><img class="carousel__thumbnail" src="img/products/01-Fresh/01_2a.jpg" alt="alt" /></div>-->
+                                    <!--                                        <div class="quickview-carousel"><img class="carousel__thumbnail" src="img/products/01-Fresh/01_4a.jpg" alt="alt" /></div>-->
+                                    <!--                                        <div class="quickview-carousel"><img class="carousel__thumbnail" src="img/products/01-Fresh/01_9a.jpg" alt="alt" /></div>-->
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-7">
+                                <div class="quickview__product">
+                                    <div class="product__header">
+                                        <div class="product__title">S-LIFE商铺</div>
+                                        <div class="product__meta">
+                                            <div class="product__rating">
+                                                <select class="rating-stars">
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4" selected="selected">4</option>
+                                                    <option value="5">5</option>
+                                                </select><span>4 条用户评论</span>
+                                            </div>
+                                            <div class="product__code"><span>商品编号: </span>#VEG20938</div>
+                                        </div>
+                                    </div>
+                                    <div class="product__content">
+                                        <div class="product__price"><span class="sale">￥4.2</span><span class="price">￥4.67</span><span class="off">九折</span></div>
+                                        <p class="product__unit">500g</p>
+                                        <div class="alert__success">34斤 <span>库存</span></div>
+                                        <ul>
+                                            <li>类型: 蔬果</li>
+                                            <li>生产日期: 2020年1月13日</li>
+                                            <li>保质期: 30 天</li>
+                                        </ul>
+                                    </div>
+                                    <div class="product__action">
+                                        <label>数量: </label>
+                                        <div class="def-number-input number-input safari_only">
+                                            <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i class="icon-minus"></i></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number">
+                                            <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="icon-plus"></i></button>
+                                        </div>
+                                        <button class="btn product__addcart"> <i class="icon-cart" onclick="fun()"></i>加入购物车</button>
+                                        <button class="btn button-icon icon-md"><i class="icon-repeat"></i></button>
+                                        <button class="btn button-icon icon-md"><i class="icon-heart"></i></button>
+                                    </div>
+                                    <div class="product__footer">
+                                        <div class="ps-social--share"><a class="ps-social__icon facebook" href="#"><i class="fa fa-thumbs-up"></i><span>喜欢</span><span class="ps-social__number">0</span></a><a class="ps-social__icon facebook" href="#"><i class="fa fa-facebook-square"></i><span>喜欢</span><span class="ps-social__number">0</span></a><a class="ps-social__icon twitter" href="#"><i class="fa fa-twitter"></i><span>Like</span></a><a class="ps-social__icon" href="#"><i class="fa fa-plus-square"></i><span>喜欢</span></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="popupAddToCart" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl ps-addcart">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="alert__success"><i class="icon-checkmark-circle"></i> "Morrisons The Best Beef Topside" successfully added to you cart. <a href="shopping-cart.html">View cart(3)</a></div>
+                        <hr>
+                        <h3 class="cart__title">CUSTOMERS WHO BOUGHT THIS ALSO BOUGHT:</h3>
+                        <div class="cart__content">
+                            <div class="owl-carousel" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="0" data-owl-nav="false" data-owl-dots="true" data-owl-item="4" data-owl-item-xs="2" data-owl-item-sm="2" data-owl-item-md="2" data-owl-item-lg="4" data-owl-item-xl="4" data-owl-duration="1000" data-owl-mousedrag="on">
+                                <div class="cart-item">
+                                    <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/01-Fresh/01_35a.jpg" alt="alt" /></a>
+                                        <div class="ps-product__content">
+                                            <p class="ps-product__type"><i class="icon-store"></i>S-LIFE商铺</p><a href="product-default.html">
+                                            <h5 class="ps-product__name">Extreme Budweiser Light Can</h5>
+                                        </a>
+                                            <p class="ps-product__unit">500g</p>
+                                            <div class="ps-product__rating">
+                                                <select class="rating-stars">
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4" selected="selected">4</option>
+                                                    <option value="5">5</option>
+                                                </select><span>(4)</span>
+                                            </div>
+                                            <p class="ps-product-price-block"><span class="ps-product__sale">￥8.90</span><span class="ps-product__price">￥9.90</span><span class="ps-product__off">15% 折扣</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cart-item">
+                                    <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/01-Fresh/01_16a.jpg" alt="alt" /></a>
+                                        <div class="ps-product__content">
+                                            <p class="ps-product__type"><i class="icon-store"></i>有家便利店</p><a href="product-default.html">
+                                            <h5 class="ps-product__name">Honest Organic Still Lemonade</h5>
+                                        </a>
+                                            <p class="ps-product__unit">100g</p>
+                                            <div class="ps-product__rating">
+                                                <select class="rating-stars">
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5" selected="selected">5</option>
+                                                </select><span>(14)</span>
+                                            </div>
+                                            <p class="ps-product-price-block"><span class="ps-product__price-default">￥1.99</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cart-item">
+                                    <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/01-Fresh/01_12a.jpg" alt="alt" /></a>
+                                        <div class="ps-product__content">
+                                            <p class="ps-product__type"><i class="icon-store"></i>JohnS-Life商铺</p><a href="product-default.html">
+                                            <h5 class="ps-product__name">Natures Own 100% Wheat</h5>
+                                        </a>
+                                            <p class="ps-product__unit">100g</p>
+                                            <div class="ps-product__rating">
+                                                <select class="rating-stars">
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                </select><span>(0)</span>
+                                            </div>
+                                            <p class="ps-product-price-block"><span class="ps-product__price-default">￥4.49</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cart-item">
+                                    <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/01-Fresh/01_15a.jpg" alt="alt" /></a>
+                                        <div class="ps-product__content">
+                                            <p class="ps-product__type"><i class="icon-store"></i>S-LIFE商铺</p><a href="product-default.html">
+                                            <h5 class="ps-product__name">Avocado, Hass Large</h5>
+                                        </a>
+                                            <p class="ps-product__unit">300g</p>
+                                            <div class="ps-product__rating">
+                                                <select class="rating-stars">
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3" selected="selected">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                </select><span>(6)</span>
+                                            </div>
+                                            <p class="ps-product-price-block"><span class="ps-product__sale">￥6.99</span><span class="ps-product__price">￥9.90</span><span class="ps-product__off">25% 折扣</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cart-item">
+                                    <div class="ps-product--standard"><a href="product-default.html"><img class="ps-product__thumbnail" src="img/products/06-SoftDrinks-TeaCoffee/06_3a.jpg" alt="alt" /></a>
+                                        <div class="ps-product__content">
+                                            <p class="ps-product__type"><i class="icon-store"></i>S-Life商铺</p><a href="product-default.html">
+                                            <h5 class="ps-product__name">Kevita Kom Ginger</h5>
+                                        </a>
+                                            <p class="ps-product__unit">200g</p>
+                                            <div class="ps-product__rating">
+                                                <select class="rating-stars">
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4" selected="selected">4</option>
+                                                    <option value="5">5</option>
+                                                </select><span>(6)</span>
+                                            </div>
+                                            <p class="ps-product-price-block"><span class="ps-product__sale">￥4.90</span><span class="ps-product__price">￥3.99</span><span class="ps-product__off">15% 折扣</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</main>
+
+<script>
+    var count=0;
+    function fun(){
+        alert("成功加入购物车!");
+        count=count+1;
+			<!-- document.getElementById('textfield').value = count;//给HTML元素的value属性赋值 -->
+        document.getElementById("text").innerText=count;
+    }
+
+    function pay(){
+        alert("付款成功！");
+    }
+</script>
+
+<script src="plugins/jquery.min.js"></script>
+<script src="plugins/popper.min.js"></script>
+<script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="plugins/owl-carousel/owl.carousel.min.js"></script>
+<script src="plugins/jquery.matchHeight-min.js"></script>
+<script src="plugins/jquery-bar-rating/dist/jquery.barrating.min.js"></script>
+<script src="plugins/select2/dist/js/select2.min.js"></script>
+<script src="plugins/slick/slick.js"></script>
+<script src="plugins/lightGallery/dist/js/lightgallery-all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/Dogfalo/materialize@master/extras/noUiSlider/nouislider.min.js"></script>
+<!-- custom code-->
+<script src="js/main.js"></script>
+</body>
+
+</html>

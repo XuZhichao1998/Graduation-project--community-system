@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.test.mapper.PaymentMapper">
+    <resultMap id="BaseResultMap" type="com.example.test.entity.Payment" >
+        <id column="payment_id" property="paymentId" jdbcType="INTEGER" /> <!---->
+        <result column="payment_send_date" property="paymentSendDate" jdbcType="TIMESTAMP" />
+        <result column="payment_deadline" property="paymentDeadline" jdbcType="TIMESTAMP" />
+        <result column="payment_amount" property="paymentAmount" jdbcType="DECIMAL" /> <!--text CLOB-->
+        <result column="household_id" property="householdId" jdbcType="INTEGER" />
+        <result column="payment_type" property="paymentType" jdbcType="VARCHAR" />
+        <result column="payment_state" property="paymentState" jdbcType="INTEGER" />
+        <result column="payment_finish_time" property="paymentFinishTime" jdbcType="TIMESTAMP" />
+
+    </resultMap>
+
+    <select id="getPaymentList"  resultMap="BaseResultMap" parameterType="com.example.test.entity.Payment">
+        select * from payment
+        limit #{page},#{limit}
+    </select>
+
+    <select id="getPaymentListById"  resultMap="BaseResultMap" parameterType="com.example.test.entity.Payment">
+        select * from payment where payment_id = #{paymentId}
+        limit #{page},#{limit}
+    </select>
+
+    <select id="getPaymentCount"   resultType="Integer">
+        select count(payment_id) from payment;
+    </select>
+
+    <select id="getPaymentById" parameterType="Integer" resultMap="BaseResultMap" >
+        select * from payment where payment_id = #{paymentId}
+    </select>
+
+    <insert id="addPayment" parameterType="com.example.test.entity.Payment" >
+        insert into payment values(null,now(),#{payment.paymentDeadline},#{payment.paymentAmount},#{payment.householdId},#{payment.paymentType},0,null);
+
+    </insert>
+
+    <update id="updatePayment" parameterType="com.example.test.entity.Payment" >
+        update payment set payment_amount = #{payment.paymentAmount},payment_type = #{payment.paymentType},
+                           payment_state=#{payment.paymentState},payment_finish_time=#{payment.paymentFinishTime}
+        where payment_id = #{payment.paymentId};
+    </update>
+
+    <delete id="deletePayment" parameterType="Integer" >
+        delete from payment where payment_id = #{paymentId};
+    </delete>
+
+    <!--  _______________________以下为用户缴费模块用到的查询___________________________  -->
+    <select id="getPaymentCountForUser"   resultType="Integer">
+        select count(payment_id) from payment where household_id = #{householdId} ;
+    </select>
+
+
+    <select id="getPaymentListForUser"  resultMap="BaseResultMap" parameterType="com.example.test.entity.Payment">
+        select * from payment where household_id = #{householdId}
+        limit #{page},#{limit}
+    </select>
+
+
+    <select id="getPaymentListByIdForUser"  resultMap="BaseResultMap" parameterType="com.example.test.entity.Payment">
+        select * from payment where payment_id = #{paymentId} and household_id = #{householdId}
+        limit #{page},#{limit}
+    </select>
+
+
+
+
+
+</mapper>

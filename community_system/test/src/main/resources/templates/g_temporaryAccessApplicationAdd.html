@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>临时出入申请</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script th:src="@{/layui/layui.js}"></script>
+    <script th:src="@{/jquery-3.3.1/jquery-3.3.1.js}"></script>
+</head>
+
+<body>
+   <form class="layui-form"  th:action="@{/edit}" th:object="${temporaryAccessApplication}" id="temporaryAccessApplicationFrom"  method="post">
+
+	    
+		<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">本人手机号：</label>
+           <div class="layui-input-block">
+			<input type="text" name="phoneNumber" id="phoneNumber" style="width: 400px;" placeholder="请输入申请人的手机号码"  class="layui-input">
+           </div>
+       </div>
+	   
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">进入车辆牌号：</label>
+           <div class="layui-input-block">
+			<input type="text" name="carNumber" id="carNumber" style="width: 400px;" placeholder="请输入车牌号(不开车进入则不填)" class="layui-input">
+           </div>
+       </div>
+	   
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">申请原因：</label>
+           <div class="layui-input-block">
+			<input type="text" name="reason" id="reason" style="width: 400px;" placeholder="请输入申请原因" class="layui-input">
+           </div>
+       </div>
+	   
+	   <div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">预计进入时间：</label>
+           <div class="layui-input-block">
+			<input type="datetime-local" name="estimatedEnterTime" id="estimatedEnterTime" style="width: 400px;" placeholder="请输入预计进入小区的时间" class="layui-input">
+           </div> 
+       </div>
+	  
+	   <div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">预计离开时间：</label>
+           <div class="layui-input-block">
+			<input type="datetime-local" name="estimatedLeaveTime" id="estimatedLeaveTime" style="width: 400px;" placeholder="请输入预计离开小区的时间" class="layui-input">
+           </div> 
+       </div>
+	   
+
+       <div class="layui-form-item">
+           <div class="layui-input-block">
+               <button type="button" class="layui-btn"  th:onclick="'javascript:save()'">确认</button>
+               <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+           </div>
+       </div>
+    </form>
+
+</body>
+
+<script th:inline="javascript">
+    var personId = [[${session.guestPersonId}]];
+	var personName = [[${session.guestPersonName}]];
+</script>
+
+<script>
+
+    function save(){
+		var phoneNumber = $("#phoneNumber").val(); // 申请人手机号
+		var carNumber = $("#carNumber").val(); // 进入车辆牌号(没有则为"")
+		var reason = $("#reason").val(); // 申请原因
+		var estimatedEnterTime = $("#estimatedEnterTime").val(); // 预计进入时间
+		var estimatedLeaveTime = $("#estimatedLeaveTime").val(); // 预计离开时间
+		
+		 if (personName==""){
+			alert('无申请人姓名！请重新游客登录');
+            parent.layer.msg("无申请人姓名！请重新游客登");
+            return;
+        }
+        if(personId==""){
+			alert('无申请人身份证号！请重新游客登录！')
+            parent.layer.msg("无申请人身份证号！请重新游客登录！");
+            return;
+        }
+		
+		
+		if (phoneNumber==""){
+			alert('请输入申请人手机号！');
+            parent.layer.msg("请输入申请人手机号");
+            return;
+        }
+		if (reason==""){
+			alert('请输入申请理由！');
+            parent.layer.msg("请输入申请理由");
+            return;
+        }
+		if (estimatedEnterTime=="" || estimatedEnterTime==null){
+			alert('请输入预计进入时间！');
+            parent.layer.msg("请输入预计进入时间");
+            return;
+        }
+		if (estimatedLeaveTime=="" || estimatedLeaveTime==null){
+			alert('请输入预计离开时间！');
+            parent.layer.msg("请输入预计离开时间");
+            return;
+        }
+		
+        $.ajax({
+            url: "/temporaryAccessApplicationAdd",
+            type: "POST",
+            data:{"personId":personId, "personName":personName, "phoneNumber":phoneNumber, "carNumber":carNumber,
+				  "reason":reason, "estimatedEnterTime":estimatedEnterTime, "estimatedLeaveTime":estimatedLeaveTime },
+            dataType: "json",
+            success: function(data){
+                if(data==1){
+                    var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                    parent.layer.close(index);  // 关闭layer
+                    parent.layer.msg("新增成功", {icon: 6});
+                    parent.location.reload();
+                }else{
+                    parent.layer.msg("新增失败", {icon: 5});
+                }
+            }
+        });
+    }
+
+</script>
+</html>

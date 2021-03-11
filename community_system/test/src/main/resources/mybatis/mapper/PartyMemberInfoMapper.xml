@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.test.mapper.PartyMemberInfoMapper">
+    <resultMap id="BaseResultMap" type="com.example.test.entity.PartyMemberInfo" >
+        <id column="id" property="partyMemberId" jdbcType="VARCHAR" />  <!--主键，col="id"表示党员的身份证号-->
+        <result column="full_name" property="fullName" jdbcType="VARCHAR" />
+        <result column="unit_id" property="unitId" jdbcType="INTEGER" />
+        <result column="sex" property="sex" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <select id="getPartyMemberInfoList"  resultMap="BaseResultMap" parameterType="com.example.test.entity.PartyMemberInfo">
+        SELECT * FROM party_member_info
+        WHERE full_name LIKE Concat('%' , #{fullName} , '%')
+        ORDER BY unit_id
+        LIMIT #{page}, #{limit};
+    </select>
+
+
+    <select id="getPartyMemberInfoCount"   resultType="Integer">
+        SELECT COUNT(id) FROM party_member_info;
+    </select>
+
+    <select id="getPartyMemberInfoById" parameterType="String" resultMap="BaseResultMap" >
+        SELECT * FROM party_member_info
+        WHERE id = #{partyMemberId};
+    </select>
+
+    <insert id="addPartyMemberInfo" parameterType="com.example.test.entity.PartyMemberInfo" >
+        INSERT INTO party_member_info(
+            id,
+            full_name,
+            unit_id,
+            sex
+        )
+        VALUES(
+                  #{partyMemberInfo.partyMemberId},
+                  #{partyMemberInfo.fullName},
+                  #{partyMemberInfo.unitId},
+                  #{partyMemberInfo.sex}
+              );
+
+    </insert>
+
+    <update id="updatePartyMemberInfo" parameterType="com.example.test.entity.PartyMemberInfo" >
+        UPDATE party_member_info SET
+            full_name = #{partyMemberInfo.fullName},
+            unit_id = #{partyMemberInfo.unitId},
+            sex = #{partyMemberInfo.sex}
+        WHERE id = #{partyMemberInfo.partyMemberId};
+    </update>
+
+
+
+    <delete id="deletePartyMemberInfo" parameterType="String" >
+        DELETE FROM party_member_info
+        WHERE id = #{partyMemberId};
+    </delete>
+
+
+</mapper>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.test.mapper.VolunteerTotalDurationMapper">
+    <resultMap id="BaseResultMap" type="com.example.test.entity.VolunteerTotalDuration" >
+        <result column="vid" property="vid" jdbcType="VARCHAR" />
+        <result column="full_name" property="fullName" jdbcType="VARCHAR" />
+        <result column="tot_hour" property="totHour" jdbcType="DOUBLE" />
+    </resultMap>
+
+    <select id="getVolunteerTotalDurationTop3List"  resultMap="BaseResultMap" >
+        SELECT m.id, m.full_name, IFNULL(sum(actual_duration),0) AS tot_hour
+        FROM party_member_info m LEFT OUTER JOIN activity_participation p ON (p.vid = m.id)
+        WHERE p.attendance = 'Yes'
+        GROUP BY (m.id)
+        ORDER BY tot_hour DESC, m.id
+        Limit 3;
+    </select>
+
+</mapper>

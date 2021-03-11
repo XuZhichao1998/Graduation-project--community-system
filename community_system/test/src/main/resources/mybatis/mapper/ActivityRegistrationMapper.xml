@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.test.mapper.ActivityRegistrationMapper">
+    <resultMap id="BaseResultMap" type="com.example.test.entity.ActivityRegistration" >
+        <result column="pid" property="pid" jdbcType="INTEGER" />  <!--主键，col="pid"表示活动的编号-->
+        <result column="pName" property="pName" jdbcType="VARCHAR" />
+        <result column="volunteer_id" property="volunteerId" jdbcType="VARCHAR" />
+        <result column="volunteer_name" property="volunteerName" jdbcType="VARCHAR" />
+        <result column="approval" property="approval" jdbcType="VARCHAR" />
+        <result column="volunteer_regist_time" property="volunteerRegistTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <select id="getActivityRegistrationList"  resultMap="BaseResultMap" ><!-- parameterType="com.example.test.entity.ActivityRegistration"-->
+        SELECT tb1.pid, project_name AS pName, volunteer_name, volunteer_id, volunteer_regist_time, approval
+        FROM activity_registration AS tb1 JOIN service_activity AS tb2 ON tb1.pid = tb2.pid
+        <where>
+            <if test="pid!=null">
+                AND tb1.pid = #{pid}
+            </if>
+            <if test="volunteerName != null and volunteerName !='' ">
+                AND volunteer_name LIKE Concat('%',#{volunteerName},'%')
+            </if>
+        </where>
+        ORDER BY tb1.pid, volunteer_id
+        LIMIT #{page}, #{limit};
+
+    </select>
+
+
+    <select id="getActivityRegistrationCount" resultType="Integer" >
+        SELECT COUNT(*) FROM activity_registration;
+    </select>
+
+    <select id="getActivityRegistrationByIds" resultMap="BaseResultMap" >
+        SELECT activity_registration.pid, project_name as pName, volunteer_name, volunteer_id, volunteer_regist_time, approval
+        FROM activity_registration INNER JOIN service_activity ON activity_registration.pid = service_activity.pid
+        WHERE activity_registration.pid = #{pid}
+          AND volunteer_id = #{volunteerId};
+    </select>
+
+    <insert id="addActivityRegistration" parameterType="com.example.test.entity.ActivityRegistration" >
+        INSERT INTO activity_registration(
+            pid,
+            volunteer_id,
+            volunteer_name
+        )
+        VALUES(
+                  #{activityRegistration.pid},
+                  #{activityRegistration.volunteerId},
+                  #{activityRegistration.volunteerName}
+              );
+    </insert>
+
+
+    <update id="updateActivityRegistration" parameterType="com.example.test.entity.ActivityRegistration" >
+        UPDATE activity_registration
+        SET approval = #{activityRegistration.approval}
+        WHERE pid = #{activityRegistration.pid} AND volunteer_id = #{activityRegistration.volunteerId};
+    </update>
+
+
+
+
+
+    <delete id="deleteActivityRegistration"  >
+        DELETE FROM activity_registration
+        WHERE pid = #{pid}
+          AND volunteer_id = #{volunteerId};
+    </delete>
+
+
+
+    <!-- 党员志愿者访问本人已经报名的活动用到的查询 -->
+    <select id="getActivityRegistrationListForVolunteer" resultMap="BaseResultMap">
+        SELECT tb1.pid, project_name AS pName, volunteer_name, volunteer_id, volunteer_regist_time, approval
+        FROM activity_registration AS tb1 JOIN service_activity AS tb2 ON tb1.pid = tb2.pid
+        WHERE volunteer_id = #{volunteerId}
+        ORDER BY tb1.pid DESC
+        LIMIT #{page}, #{limit};
+    </select>
+
+
+    <select id="getActivityRegistrationCountForVolunteer" resultType="Integer" parameterType="String">
+        SELECT COUNT(*) FROM activity_registration
+        WHERE volunteer_id = #{volunteerId};
+    </select>
+
+</mapper>

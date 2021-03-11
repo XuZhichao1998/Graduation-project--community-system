@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <title>活动列表</title>
+    <script>
+        function deleteServiceActivity(pid) {
+            alert(pid)
+        }
+    </script>
+
+</head>
+
+<body>
+<div style="text-align: center">
+    <h1>活动列表</h1>
+    <br/>
+    <table align="center" border="1px" cellspacing="0" width="500px" style="text-align: center;margin:0 auto;">
+        <tr>
+            <th>编号</th>
+            <th>活动名称</th>
+            <th>活动内容</th>
+            <th>活动开始时间</th>
+			<th>报名截止时间</th>
+			<th>招募人数</th>
+			<th>报名要求</th>
+			<th>活动状态</th>
+			<th>是否报名</th>
+            <th colspan="2">操作</th>
+        </tr>
+		
+		<tr th:each="serviceActivity : ${serviceActivityList}">
+            <td th:text="${serviceActivity.pid}"></td>
+			<td th:text="${serviceActivity.projectName}"></td>
+            <td th:text="${serviceActivity.content}"></td>
+            <td th:text="${serviceActivity.beginTime}"></td>
+            <td th:text="${serviceActivity.registrationDeadline}"></td>
+			<td th:text="${serviceActivity.recruitmentNumbers}"></td>
+			<td th:text="${serviceActivity.requirement}"></td>
+			<td th:text="${serviceActivity.projectStatus}"></td>
+			<td th:text="${serviceActivity.hasRegist}"></td>
+			<!--
+            <td>
+                <button type="button"  th:onclick="'javascript:updateServiceActivity('+${serviceActivity.pid}+')' ">修改</button>
+            </td>
+			
+            <td>
+                <button type="button"  th:onclick="'javascript:deleteServiceActivity('+${serviceActivity.pid}+')' ">删除</button>
+            </td>
+			-->
+        </tr>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.test.mapper.CooperationUnitMapper">
+    <resultMap id="BaseResultMap" type="com.example.test.entity.CooperationUnit" >
+        <id column="unit_id" property="unitId" jdbcType="INTEGER" />
+        <result column="unit_name" property="unitName" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <select id="getCooperationUnitList"  resultMap="BaseResultMap" parameterType="com.example.test.entity.CooperationUnit">
+        SELECT * FROM cooperation_unit
+        WHERE unit_name LIKE Concat('%' , #{unitName} , '%')
+        LIMIT #{page}, #{limit};
+    </select>
+
+    <select id="getCooperationUnitListById"  resultMap="BaseResultMap" parameterType="com.example.test.entity.CooperationUnit">
+        SELECT * FROM cooperation_unit
+        WHERE 1 = 1 AND unit_id = #{unitId}
+        LIMIT #{page}, #{limit};
+    </select>
+
+    <select id="getCooperationUnitCount"   resultType="Integer">
+        SELECT COUNT(unit_id) FROM cooperation_unit;
+    </select>
+
+    <select id="getCooperationUnitById" parameterType="Integer" resultMap="BaseResultMap" >
+        SELECT * FROM cooperation_unit
+        WHERE 1 = 1 AND unit_id = #{unitId}
+    </select>
+
+    <insert id="addCooperationUnit" parameterType="com.example.test.entity.CooperationUnit" >
+        INSERT INTO cooperation_unit(unit_name) VALUES(#{cooperationUnit.unitName});
+
+    </insert>
+
+
+    <delete id="deleteCooperationUnit" parameterType="Integer" >
+        DELETE FROM cooperation_unit
+        WHERE unit_id = #{unitId};
+    </delete>
+
+
+</mapper>

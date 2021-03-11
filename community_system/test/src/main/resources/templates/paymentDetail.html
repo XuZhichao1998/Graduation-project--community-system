@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>收费表详情查看</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script th:src="@{/layui/layui.js}"></script>
+</head>
+
+<body>
+   <form class="layui-form"  th:action="@{/edit}" th:object="${payment}"  method="post">
+
+
+       <div class="layui-form-item" style="margin-top: 20px;">
+	   
+	   
+	   <label class="layui-form-label">缴费编号：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="paymentId" id="paymentId"  th:value="*{paymentId}" style="width: 400px;" placeholder="缴费流水号"  class="layui-input">
+           </div>
+       </div>
+
+       <label class="layui-form-label">住户编号：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="householdId" id="householdId"  th:value="*{householdId}" style="width: 400px;" placeholder="住户编号"  class="layui-input">
+           </div>
+       </div>
+
+        <div class="layui-form-item" style="margin-top: 20px;">
+
+            <label class="layui-form-label">应缴金额：</label>
+            <div class="layui-input-block">
+                <input type="text" readonly="readonly" name="paymentAmount" id="paymentAmount"  th:value="*{paymentAmount}" style="width: 400px;" placeholder="应缴金额"  class="layui-input">
+            </div>
+        </div>
+
+       <div class="layui-form-item">
+           <label class="layui-form-label">缴费类型：</label>
+           <div class="layui-input-block">
+               <input type="text" step="0.01" readonly="readonly" name="paymentType" id="paymentType"  th:value="*{paymentType}" style="width: 400px;" placeholder="缴费类型"  class="layui-input">
+           </div>
+       </div>
+
+		<div class="layui-form-item">
+           <label class="layui-form-label">通知日期：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="paymentSendDate" id="paymentSendDate"  th:value="*{paymentSendDate}" style="width: 400px;" placeholder="缴费通知日期"  class="layui-input">
+           </div>
+       </div>
+
+
+       <div class="layui-form-item">
+           <label class="layui-form-label">截止日期：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="paymentDeadline" id="paymentDeadline"  th:value="*{paymentDeadline}" style="width: 400px;" placeholder="缴费截止日期"  class="layui-input">
+           </div>
+       </div>
+
+       <div class="layui-form-item">
+           <label class="layui-form-label">缴费状态：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="paymentState" id="paymentState"  th:value="*{paymentState}" style="width: 400px;" placeholder="缴费状态"  class="layui-input">
+           </div>
+       </div>
+
+       <div class="layui-form-item">
+           <label class="layui-form-label">完成日期：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="paymentFinishTime" id="paymentFinishTime"  th:value="*{paymentFinishTime}" style="width: 400px;" placeholder="尚未缴费"  class="layui-input">
+           </div>
+       </div>
+
+
+   </form>
+
+</body>
+</html>

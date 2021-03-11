@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.test.mapper.TemporaryAccessApplicationMapper">
+    <resultMap id="BaseResultMap" type="com.example.test.entity.TemporaryAccessApplication" >
+        <id column="application_id" property="applicationId" jdbcType="INTEGER" />
+        <result column="person_id" property="personId" jdbcType="VARCHAR" />
+        <result column="person_name" property="personName" jdbcType="VARCHAR" />
+        <result column="phone_number" property="phoneNumber" jdbcType="VARCHAR" />
+        <result column="reason" property="reason" jdbcType="VARCHAR" />
+        <result column="car_number" property="carNumber" jdbcType="VARCHAR" />
+        <result column="estimated_enter_time" property="estimatedEnterTime" jdbcType="TIMESTAMP" />
+        <result column="estimated_leave_time" property="estimatedLeaveTime" jdbcType="TIMESTAMP" />
+        <result column="apply_commit_time" property="applyCommitTime" jdbcType="TIMESTAMP" />
+        <result column="approval" property="approval" jdbcType="VARCHAR" />
+        <result column="approval_manager_name" property="approvalManagerName" jdbcType="VARCHAR" />
+        <result column="actual_enter_time" property="actualEnterTime" jdbcType="TIMESTAMP" />
+        <result column="actual_leave_time" property="actualLeaveTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <select id="getTemporaryAccessApplicationList"  resultMap="BaseResultMap" parameterType="com.example.test.entity.TemporaryAccessApplication">
+        SELECT * FROM temporary_access_application
+        WHERE person_name LIKE CONCAT('%',#{personName},'%')
+        ORDER BY apply_commit_time DESC
+        LIMIT #{page},#{limit};
+    </select>
+
+
+
+    <select id="getTemporaryAccessApplicationCount"   resultType="Integer">
+        SELECT COUNT(application_id) FROM temporary_access_application;
+    </select>
+
+    <select id="getTemporaryAccessApplicationById" parameterType="Integer" resultMap="BaseResultMap" >
+        SELECT * FROM temporary_access_application
+        WHERE application_id = #{applicationId};
+    </select>
+
+    <insert id="addTemporaryAccessApplication" parameterType="com.example.test.entity.TemporaryAccessApplication" >
+        INSERT INTO temporary_access_application(
+            person_id,
+            person_name,
+            phone_number,
+            reason,
+            car_number,
+            estimated_enter_time,
+            estimated_leave_time,
+            apply_commit_time
+        )
+        VALUES(
+                  #{temporaryAccessApplication.personId},
+                  #{temporaryAccessApplication.personName},
+                  #{temporaryAccessApplication.phoneNumber},
+                  #{temporaryAccessApplication.reason},
+                  #{temporaryAccessApplication.carNumber},
+                  #{temporaryAccessApplication.estimatedEnterTime},
+                  #{temporaryAccessApplication.estimatedLeaveTime},
+                  Now()
+              );
+
+    </insert>
+
+    <update id="updateTemporaryAccessApplication" parameterType="com.example.test.entity.TemporaryAccessApplication" >
+        UPDATE temporary_access_application
+        <set>
+            <if test="temporaryAccessApplication.approval!=null and temporaryAccessApplication.approval!='' ">
+                approval = #{temporaryAccessApplication.approval},
+            </if>
+            <if test="temporaryAccessApplication.approvalManagerName!=null and temporaryAccessApplication.approvalManagerName!='' ">
+                approval_manager_name = #{temporaryAccessApplication.approvalManagerName},
+            </if>
+        </set>
+        WHERE application_id = #{temporaryAccessApplication.applicationId};
+    </update>
+
+    <delete id="deleteTemporaryAccessApplication" parameterType="Integer" >
+        DELETE FROM temporary_access_application
+        WHERE application_id = #{applicationId};
+    </delete>
+
+    <!-- 临时游客调用的sql,查询临时游客的所有申请信息，添加申请 -->
+    <select id="getApplicationListForGuest"  resultMap="BaseResultMap" >
+        SELECT * FROM temporary_access_application
+        WHERE person_name = #{personName}
+        AND person_id = #{personId}
+        ORDER BY apply_commit_time DESC
+        LIMIT #{page},#{limit};
+    </select>
+
+
+    <select id="getApplicationCountForGuest"   resultType="Integer">
+        SELECT COUNT(*) FROM temporary_access_application
+        WHERE person_name = #{personName}
+          AND person_id = #{personId};
+    </select>
+
+
+
+
+</mapper>

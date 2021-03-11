@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>合作单位详情查看</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script th:src="@{/layui/layui.js}"></script>
+</head>
+
+<body>
+   <form class="layui-form"  th:action="@{/edit}" th:object="${cooperationUnit}"  method="post">
+
+
+       <div class="layui-form-item" style="margin-top: 20px;">
+
+           <label class="layui-form-label">编号：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="unitId" id="unitId"  th:value="*{unitId}" style="width: 400px;" class="layui-input">
+           </div>
+       </div>
+	   
+	   
+	    <div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">合作单位名称：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="unitName" id="unitName"  th:value="*{unitName}" style="width: 400px;" placeholder="--"  class="layui-input">
+           </div>
+       </div>
+	   
+   </form>
+
+</body>
+</html>

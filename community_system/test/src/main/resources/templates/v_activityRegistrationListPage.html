@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        /* x7blog.com 社会主义核心价值观 */
+        var a_idx = 0;jQuery(document).ready(function($) {$("body").click(function(e) {var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正" ,"法治", "爱国", "敬业", "诚信", "友善");var $i = $("<span/>").text(a[a_idx]);
+            a_idx = (a_idx + 1) % a.length;var x = e.pageX,y = e.pageY;$i.css({"font-size":30,"z-index": 100000000,"top": y - 20,"left": x,"position": "absolute","font-weight": "bold","color": "#ff6651"});$("body").append($i);$i.animate({"top": y - 180,"opacity": 0},1500,function() {$i.remove();});});});
+    </script>
+    <meta charset="UTF-8">
+    <title>个人志愿活动报名信息查看</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script th:src="@{/layui/layui.js}"></script>
+    <!-- Meta -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Portal - Bootstrap 5 Admin Dashboard Template For Developers">
+    <meta name="author" content="Xiaoying Riley at 3rd Wave Media">
+    <link rel="shortcut icon" th：href="favicon.ico">
+
+    <!-- 动画效果-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- FontAwesome JS-->
+    <script defer th:src="@{/assets/plugins/fontawesome/js/all.min.js}"></script>
+
+    <!-- App CSS -->
+    <link id="theme-style" rel="stylesheet" th:href="@{/assets/css/portal.css}">
+</head>
+
+<body class="app">
+
+
+<div class="app-wrapper">
+
+    <div class="app-content pt-3 p-md-3 p-lg-4">
+        <div class="container-xl">
+    <div style="text-align: center">
+        <h2>个人志愿活动报名信息表</h2>
+        <div>
+            <a href="v_serviceActivityList1">去查看党员”下沉“活动信息</a>
+        </div>
+        <br/>
+        <div class="demoTable">
+            <!--
+            <div class="layui-inline">
+            搜索活动编号：
+				<input class="layui-input" name="searchPid" id="searchPid" autocomplete="off">
+			搜索参与者姓名：
+				<input class="layui-input" name="searchVolunteerName" id="searchVolunteerName" autocomplete="off">
+            </div>
+            <button class="layui-btn" data-type="reload">搜索</button>
+            <button class="layui-btn" id="add" onclick="toSave()">新增</button>
+			-->
+		</div>
+
+        <!--class="layui-hide"-->
+        <table  id="test" lay-filter="test" style="margin: 0 auto;text-align: center"></table>
+        <!--操作列-->
+        <script type="text/html" id="action">
+            <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+			<!--
+            <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+			-->
+		</script>
+             </div>
+        </div>
+    </div>
+</div>
+    <script>
+        function toSave() {
+
+            layer.open({  // 党员志愿者在该页面只能查看，不会添加
+                type: 2,
+                title:"添加活动报名信息"
+                ,area: ['700px', '500px']
+                ,id: 'toAdd' //防止重复弹出
+                ,content: "/toActivityRegistration"
+                //,btn: ['确认', '取消']
+                ,btnAlign: 'c' //按钮居中
+                ,shade: 0.1 //不显示遮罩
+                ,yes: function(){
+                    layer.closeAll();
+                },
+                success: function(layero, index){
+                    console.log(layero, index);
+                }
+            });
+        }
+        layui.use('table', function(){
+            var table = layui.table;
+            table.render({
+                elem: '#test'
+                ,url:'/v_getActivityRegistrationList'   
+                ,page: true
+                ,id: 'testReload'
+                ,width:1100
+                ,cols: [
+                    [
+                        {field:'pid', width:100, title: '活动编号',align: 'center'},
+                        {field:'pName', width:220, title: '活动名称',align: 'center'},
+                        {field:'volunteerName', width:100, title: '党员姓名',align: 'center'},
+                        {field:'volunteerId', width:205, title: '党员身份证号',align: 'center'},
+						{field:'volunteerRegistTime', width:140, title: '报名时间',align: 'center'},
+						{field:'approval', width:115, title: '审核状态',align: 'center'},
+                        {field:'', title: '操作', align: 'center',width:180,toolbar:"#action"}
+                    ]
+                ]
+            });
+
+            /*重新加载数据表格*/
+            var $ = layui.$, active = {
+                reload: function(){
+                    var seaPid = $('#searchPid');
+					var seaVolunteerName = $('#searchVolunteerName');
+				   
+                    table.reload('testReload', {
+                        where: {
+                            pid : seaPid.val(),
+                            volunteerName : seaVolunteerName.val(), 
+                        }
+                    });
+                }
+            };
+
+            /*绑定搜索点击事件*/
+            $('.demoTable .layui-btn').on('click', function(){
+                var type = $(this).data('type');
+                active[type] ? active[type].call(this) : '';
+            });
+            //监听工具条
+            table.on('tool(test)', function(obj){
+                var data = obj.data;
+                if(obj.event === 'detail'){
+                    layer.open({
+                        type: 2,
+                        title:"查看详情"
+                        ,area: ['700px', '500px']
+                        ,id: 'toDetail' //防止重复弹出
+                        ,content: "/toActivityRegistrationDetail?pid="+data.pid+"&volunteerId="+data.volunteerId
+                        ,btnAlign: 'c' //按钮居中
+                        ,shade: 0.1 //不显示遮罩
+                        ,yes: function(){
+                            layer.closeAll();
+                        },
+                        success: function(layero, index){
+                            console.log(layero, index);
+                        }
+                    });
+                } else if(obj.event === 'del'){
+                    layer.confirm('真的删除行么', function(index){
+                        //console.log(data);
+                        $.ajax({
+                            url: "/deleteActivityRegistration",
+                            type: "POST",
+                            data:{"pid":data.pid,"volunteerId":data.volunteerId},
+                            dataType: "json",
+                            success: function(data){
+                                if(data==1){
+                                    layer.msg("删除成功", {icon: 6});
+                                    /*重新加载数据表格*/
+                                    var seaPid = $('#searchPid');
+									var seaVolunteerName = $('#searchVolunteerName');
+                                    table.reload('testReload', {
+                                        where: {
+                                            pid : seaPid.val(),
+											volunteerName : seaVolunteerName.val(), 
+                                        }
+                                    });
+                                }else{
+                                    layer.msg("删除失败", {icon: 5});
+                                }
+                            }
+
+                        });
+                    });
+                } else if(obj.event === 'edit'){
+                    layer.open({
+                        type: 2,
+                        title:"审核报名信息"
+                        ,area: ['700px', '500px']
+                        ,id: 'toUpdate' //防止重复弹出
+                        ,content: "/toUpdateActivityRegistration?pid="+data.pid+"&volunteerId="+data.volunteerId
+                        //,btn: ['确认', '取消']
+                        ,btnAlign: 'c' //按钮居中
+                        ,shade: 0.1 //不显示遮罩
+                        ,yes: function(){
+                            layer.closeAll();
+                        },
+                        success: function(layero, index){
+                            console.log(layero, index);
+                        }
+                    });
+
+                }
+            });
+        });
+    </script>
+    <!--草——自然生长-->
+    <script src="grow/js/index.js"></script>
+</body>
+</html>

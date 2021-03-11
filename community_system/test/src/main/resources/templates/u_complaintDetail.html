@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>投诉详情查看</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script th:src="@{/layui/layui.js}"></script>
+</head>
+
+<body>
+   <form class="layui-form"  th:action="@{/edit}" th:object="${complaint}"  method="post">
+
+
+       <div class="layui-form-item" style="margin-top: 20px;">
+
+           <label class="layui-form-label">投诉编号：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="complaintId" id="complaintId"  th:value="*{complaintId}" style="width: 400px;" placeholder="请输入投诉编号"  class="layui-input">
+           </div>
+       </div>
+	   
+	   
+	    <div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">投诉者用户名：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="complaintUserId" id="complaintUserId"  th:value="*{complaintUserId}" style="width: 400px;" placeholder="请输入投诉者用户名"  class="layui-input">
+           </div>
+       </div>
+	   
+
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">投诉类型：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="complaintType" id="complaintType"  th:value="*{complaintType}" style="width: 400px;" placeholder="请输入投诉类型"  class="layui-input">
+           </div>
+       </div>
+	   
+	   
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">投诉内容：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="complaintMessage" id="complaintMessage"  th:value="*{complaintMessage}" style="width: 400px;" placeholder="请输入投诉内容"  class="layui-input">
+           </div>
+       </div>
+	   
+	   
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">联系方式：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="phoneNumber" id="phoneNumber"  th:value="*{phoneNumber}" style="width: 400px;" placeholder="请输入联系方式"  class="layui-input">
+           </div>
+       </div>	
+
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">投诉日期：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="complaintDate" id="complaintDate"  th:value="*{complaintDate}" style="width: 400px;" placeholder="请输入投诉日期"  class="layui-input">
+           </div>
+       </div>	  
+
+		<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">投诉状态：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="complaintState" id="complaintState"  th:value="*{complaintState}" style="width: 400px;" placeholder="请输入投诉状态"  class="layui-input">
+           </div>
+       </div>	 
+
+       
+
+   </form>
+
+</body>
+</html>

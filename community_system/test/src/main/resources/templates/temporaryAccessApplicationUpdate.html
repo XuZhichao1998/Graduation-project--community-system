@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>申请信息审核</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script th:src="@{/layui/layui.js}"></script>
+    <script th:src="@{/jquery-3.3.1/jquery-3.3.1.js}"></script>
+</head>
+
+<body>
+
+   <form class="layui-form"  th:action="@{/edit}" th:object="${temporaryAccessApplication}" id="temporaryAccessApplicationForm"  method="post">
+
+       <input type="hidden" name="applicationId" id="applicationId" th:value="*{applicationId}" /><!--申请编号-->
+	   
+	   
+	    <div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">申请人姓名：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="personName" id="personName"  th:value="*{personName}" style="width: 400px;" class="layui-input">
+           </div>
+       </div>
+
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">申请人身份证号：</label>
+           <div class="layui-input-block">
+           <input type="text" readonly="readonly" name="personId" id="personId"  th:value="*{personId}" style="width: 400px;"  class="layui-input">
+		   </div>
+       </div>
+	   
+	   
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">申请人手机号：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="phoneNumber" id="phoneNumber"  th:value="*{phoneNumber}" style="width: 400px;" class="layui-input">
+           </div>
+       </div>
+	   
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">车辆牌号：</label>
+           <div class="layui-input-block">
+               <input type="test" readonly="readonly" name="carNumber" id="carNumber"  th:value="*{carNumber}" style="width: 400px;" placeholder="无"  class="layui-input">
+           </div>
+       </div>
+	   
+	   <div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">申请原因：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="reason" id="reason"  th:value="*{reason}" style="width: 400px;" class="layui-input">
+           </div>
+       </div>
+	   
+	   <div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">预计进入时间：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="estimatedEnterTime" id="estimatedEnterTime"  th:value="*{estimatedEnterTime}" style="width: 400px;" class="layui-input">
+           </div>
+       </div>   
+	   
+	   
+	   
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">预计离开时间：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="estimatedLeaveTime" id="estimatedLeaveTime"  th:value="*{estimatedLeaveTime}" style="width: 400px;"  class="layui-input">
+           </div>
+       </div>	
+	   
+	    <div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">审核状态：</label>
+           <div class="layui-input-block">
+               <input type="text" name="approval" id="approval"  th:value="*{approval}" style="width: 400px;" placeholder="待审核/通过/不通过[理由]"  class="layui-input">
+           </div>
+       </div>
+	   	  
+       <div class="layui-form-item">
+           <div class="layui-input-block">
+               <button type="button" class="layui-btn"  th:onclick="'javascript:save()'">确认</button>
+               <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+           </div>
+       </div>
+    </form>
+
+</body>
+
+<script>
+
+    function save(){
+		var applicationId = $("#applicationId").val(); // 申请流水号
+        var approval = $("#approval").val(); // 审核状态
+		if (approval == "") {
+			alert("审核状态不能为空！(待审核/通过/不通过[理由])");
+			return false;
+		}
+		
+    
+        $.ajax({
+            url: "/temporaryAccessApplicationUpdate",
+            type: "POST",
+            data: {"applicationId":applicationId, "approval":approval},
+            dataType: "json",
+            success: function(data){
+                if(data==1){
+                    var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                    parent.layer.close(index);  // 关闭layer
+                    parent.layer.msg("修改成功", {icon: 6});
+                    parent.location.reload();
+                }else{
+                    parent.layer.msg("修改失败", {icon: 5});
+                }
+            }
+        });
+    }
+
+</script>
+</html>

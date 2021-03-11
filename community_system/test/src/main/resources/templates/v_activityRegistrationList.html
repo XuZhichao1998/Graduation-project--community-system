@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <title>个人志愿活动报名信息查看</title>
+    <script>
+        function deleteActivityRegistration(pid, volunteerId) {
+            alert(pid+volunteerId)
+        }
+    </script>
+
+</head>
+
+<body>
+<div style="text-align: center">
+    <h2>个人志愿活动报名信息表</h2>
+    <br/>
+    <table align="center" border="1px" cellspacing="0" width="500px" style="text-align: center;margin:0 auto;">
+        <tr>
+            <th>活动编号</th>
+            <th>活动名称</th>
+            <th>党员姓名</th>
+            <th>党员身份证号</th>
+			<th>报名时间</th>
+			<th>审核状态</th>
+            <th colspan="2">操作</th>
+        </tr>
+        <tr th:each="activityRegistration : ${activityRegistrationList}">
+			<td th:text="${activityRegistration.pid}"></td>
+            <td th:text="${activityRegistration.pName}"</td>
+            <td th:text="${activityRegistration.volunteerName}"></td>
+            <td th:text="${activityRegistration.volunteerId}"></td>
+            <td th:text="${activityRegistration.volunteerRegistTime}"></td>
+			<td th:text="${activityRegistration.approval}"></td>
+			
+			<!--
+            <td>
+                <button type="button"  th:onclick="'javascript:updateActivityRegistration('+${activityRegistration.pid}+','+${activityRegistration.volunteerId}+')' ">修改</button>
+            </td>
+			
+            <td>
+                <button type="button"  th:onclick="'javascript:deleteActivityRegistration('+${activityRegistration.pid}+','+${activityRegistration.volunteerId}+')' ">删除</button>
+            </td>
+			-->
+        </tr>
+    </table>
+</div>
+</body>
+</html>

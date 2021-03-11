@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.test.mapper.ProductMapper">
+    <resultMap id="BaseResultMap" type="com.example.test.entity.Product" >
+        <id column="product_id" property="productId" jdbcType="VARCHAR" />
+        <result column="product_name" property="productName" jdbcType="VARCHAR" />
+        <result column="unit_price" property="unitPrice" jdbcType="NUMERIC" />
+        <result column="unit" property="unit" jdbcType="VARCHAR" />
+        <result column="category_id" property="categoryId" jdbcType="INTEGER" />
+        <result column="category_name" property="categoryName" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <select id="getProductList"  resultMap="BaseResultMap" parameterType="com.example.test.entity.Product">
+        select product_id,product_name,unit_price,unit,tb1.category_id,category_name
+        from product as tb1 left join product_category as tb2 on tb1.category_id=tb2.category_id
+        where 1=1 and product_name like concat(concat('%',#{0}),'%')
+            limit #{1},#{2}
+    </select>
+    <!--SELECT * FROM user WHERE name = #{name} AND password = #{password}-->
+
+    <select id="getProductCount"   resultType="java.lang.Integer">
+        select count(product_id) from product;
+    </select>
+
+    <select id="getProductById" parameterType="java.lang.String" resultMap="BaseResultMap" >
+        select * from product where product_id = #{productId}
+    </select>
+
+    <select id="getProductByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select * from product where product_name = #{productName}
+    </select>
+
+    <insert id="addProduct" parameterType="com.example.test.entity.Product" >
+        insert into product values(#{productId}, #{productName}, #{unitPrice}, #{unit}, #{categoryId})
+    </insert>
+
+    <update id="updateProduct" parameterType="com.example.test.entity.Product" >
+        update product set unit_price = #{unitPrice} where product_id = #{productId};
+    </update>
+
+    <delete id="deleteProduct" parameterType="java.lang.String" >
+        delete from product where product_id = #{productId};
+    </delete>
+
+
+</mapper>

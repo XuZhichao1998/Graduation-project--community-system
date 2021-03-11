@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>公告详情查看</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script th:src="@{/layui/layui.js}"></script>
+</head>
+
+<body>
+   <form class="layui-form"  th:action="@{/edit}" th:object="${announcement}"  method="post">
+
+
+       <div class="layui-form-item" style="margin-top: 20px;">
+
+           <label class="layui-form-label">公告编号：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="announcementId" id="announcementId"  th:value="*{announcementId}" style="width: 400px;" class="layui-input">
+           </div>
+       </div>
+	   
+	   
+	    <div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">公告内容：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="announcementContent" id="announcementContent"  th:value="*{announcementContent}" style="width: 400px;" placeholder="公告内容不详"  class="layui-input">
+           </div>
+       </div>
+
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">发布日期：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="announcementDate" id="announcementDate"  th:value="*{announcementDate}" style="width: 400px;" placeholder="公告日期不详"  class="layui-input">
+           </div>
+       </div>
+	   
+   </form>
+
+</body>
+</html>

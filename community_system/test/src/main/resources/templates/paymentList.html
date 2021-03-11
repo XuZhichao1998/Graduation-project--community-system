@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <title>缴费列表</title>
+    <script>
+        function deletePayment(paymentId) {
+            alert(paymentId)
+        }
+    </script>
+
+</head>
+
+<body>
+<div style="text-align: center">
+    <h1>缴费列表</h1>
+    <br/>
+    <table align="center" border="1px" cellspacing="0" width="500px" style="text-align: center;margin:0 auto;">
+        <tr>
+            <th>缴费编号</th>
+            <th>住户编号</th>
+            <th>应缴金额</th>
+			<th>缴费类型</th>
+			<th>通知日期</th>
+			<th>截止日期</th>
+			<th>缴费状态</th>
+			<th>完成日期</th>
+            <th colspan="2">操作</th>
+        </tr>
+        <tr th:each="payment : ${paymentList}">
+            <td th:text="${payment.paymentId}"></td>
+            <td th:text="${payment.householdId}"></td>
+            <td th:text="${payment.paymentAmount}"></td>
+			<td th:text="${payment.paymentType}"></td>
+			<td th:text="${payment.paymentSendDate}"></td>
+			<td th:text="${payment.paymentDeadline}"></td>
+			<td th:text="${payment.paymentState}"></td>
+			<td th:text="${payment.paymentFinishTime}"></td>
+			
+            <td>
+               <!-- <a th:href="@{/toEdit(id=${payment.paymentId})}">修改</a>-->
+                <button type="button"  th:onclick="'javascript:updatePayment('+${payment.paymentId}+')' ">修改</button>
+            </td>
+            <!--  <td><a th:href="@{/delete(id=${product.productId})}">删除</a></td>-->
+            <td>
+                <button type="button"  th:onclick="'javascript:deletePayment('+${payment.paymentId}+')' ">删除</button>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

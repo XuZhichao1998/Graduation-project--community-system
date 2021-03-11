@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>报修信息更新</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script th:src="@{/layui/layui.js}"></script>
+    <script th:src="@{/jquery-3.3.1/jquery-3.3.1.js}"></script>
+</head>
+
+<body>
+
+   <form class="layui-form"  th:action="@{/edit}" th:object="${reportRepair}" id="reportRepairFrom"  method="post">
+
+       <input type="hidden" name="reportRepairId" id="reportRepairId" th:value="*{reportRepairId}" /><!--报修编号-->
+	   
+	   
+	    <div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">报修用户名：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="reportUserId" id="reportUserId"  th:value="*{reportUserId}" style="width: 400px;" placeholder="请输入报修者用户名"  class="layui-input">
+           </div>
+       </div>
+
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">报修问题：</label>
+           <div class="layui-input-block">
+               <input type="text" name="reportProblem" id="reportProblem"  th:value="*{reportProblem}" style="width: 400px;" placeholder="请输入报修问题"  class="layui-input">
+           </div>
+       </div>
+	   
+	   
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">上报时间：</label>
+           <div class="layui-input-block">
+               <input type="text" readonly="readonly" name="reportDatetime" id="reportDatetime"  th:value="*{reportDatetime}" style="width: 400px;" placeholder="请输上报的时间"  class="layui-input">
+           </div>
+       </div>
+	   
+	   
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">处理状态：</label>
+           <div class="layui-input-block">
+               <input type="text" name="reportState" id="reportState"  th:value="*{reportState}" style="width: 400px;" placeholder="请输入报修的处理状态"  class="layui-input">
+           </div>
+       </div>	
+
+	   	<div class="layui-form-item" style="margin-top: 20px;">
+           <label class="layui-form-label">上门维修日期：</label>
+           <div class="layui-input-block">
+               <input type="date" name="repairFinishDatetime" id="repairFinishDatetime"  th:value="*{repairFinishDatetime}" style="width: 400px;" placeholder="上门维修日期，没确定可以不填"  class="layui-input">
+           </div>
+       </div>	  
+
+
+       <div class="layui-form-item">
+           <div class="layui-input-block">
+               <button type="button" class="layui-btn"  th:onclick="'javascript:save()'">确认</button>
+               <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+           </div>
+       </div>
+    </form>
+
+</body>
+
+<script>
+
+    function save(){
+        var reportRepairId = $("#reportRepairId").val(); //报修流水号
+        var reportUserId = $("#reportUserId").val(); //报修用户名
+        var reportProblem = $("#reportProblem").val(); //报修的问题
+        var reportDatetime = $("#reportDatetime").val(); //上报的时间
+		var reportState = $("#reportState").val(); //报修的处理状态
+		var repairFinishDatetime = $("#repairFinishDatetime").val(); //上门维修时间
+	
+        //alert('Id:'+complaintId+",uid:"+complaintUserId+",type:"+complaintType+",msg:"+complaintMessage+",phone:"+phoneNumber+",date:"+complaintDate+",state:"+complaintState);
+        $.ajax({
+            url: "/reportRepairUpdate",
+            type: "POST",
+            data: {"reportRepairId":reportRepairId,"reportUserId":reportUserId,"reportProblem":reportProblem,"reportDatetime":reportDatetime,"reportState":reportState,"repairFinishDatetime":repairFinishDatetime},
+            dataType: "json",
+            success: function(data){
+                if(data==1){
+                    var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                    parent.layer.close(index);  // 关闭layer
+                    parent.layer.msg("修改成功", {icon: 6});
+                    parent.location.reload();
+                }else{
+                    parent.layer.msg("修改失败", {icon: 5});
+                }
+            }
+        });
+    }
+
+</script>
+</html>

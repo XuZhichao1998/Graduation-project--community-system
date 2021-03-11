@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>用户投诉详情查看</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script th:src="@{/layui/layui.js}"></script>
+    <script th:src="@{/jquery-3.3.1/jquery-3.3.1.js}"></script>
+</head>
+
+<body>
+   <form class="layui-form"  th:action="@{/edit}" th:object="${complaint}" id="complaintFrom"  method="post">
+
+        <div class="layui-form-item" style="margin-top: 20px;">
+            <label class="layui-form-label">投诉类型：</label>
+            <div class="layui-input-block">
+                <input type="text" name="complaintType" id="complaintType"  style="width: 400px;"   placeholder="请输入投诉类型(服务投诉/价格投诉/诚信投诉/意外事故投诉):"  class="layui-input">
+            </div>
+        </div>
+       <div class="layui-form-item">
+           <label class="layui-form-label">投诉内容：</label>
+           <div class="layui-input-block">
+               <input type="text" name="complaintMessage" id="complaintMessage"  style="width: 400px;"  placeholder="请输入您要投诉的问题"  class="layui-input">
+           </div>
+       </div>
+	   
+	   <div class="layui-form-item">
+           <label class="layui-form-label">联系方式：</label>
+           <div class="layui-input-block">
+               <input type="number" name="phoneNumber" id="phoneNumber"  style="width: 400px;"  placeholder="请输入您的手机号以便于我们联系您解决问题"  class="layui-input">
+           </div>
+       </div>
+	 
+       <div class="layui-form-item">
+           <div class="layui-input-block">
+               <button type="button" class="layui-btn"  th:onclick="'javascript:save()'">确认</button>
+               <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+           </div>
+       </div>
+    </form>
+
+</body>
+
+<script th:inline="javascript">
+    var curUserId = [[${session.curUserId}]];
+</script>
+
+<script>
+
+    function save() {
+		var complaintUserId = curUserId;
+		var complaintType = $("#complaintType").val(); //投诉类型描述
+		var complaintMessage = $("#complaintMessage").val(); //投诉的内容
+		var phoneNumber = $("#phoneNumber").val(); //联系方式
+        if(complaintType==""){
+            alert("请输入投诉类型");
+            parent.layer.msg("请输入投诉类型");
+            return;
+        }
+        if(complaintMessage==""){
+            alert("请输入投诉内容");
+            parent.layer.msg("请输入投诉内容");
+            return;
+        }
+        if(phoneNumber=="") {
+            alert("请输入您的联系方式");
+            parent.layer.msg("请输入您的联系方式");
+            return;
+        }
+       // alert("数据校验无误");
+		
+        $.ajax({
+            url: "/u_complaintAdd",
+            type: "POST",
+            data:{"complaintUserId":complaintUserId,"complaintType":complaintType,"complaintMessage":complaintMessage,"phoneNumber":phoneNumber},
+            dataType: "json",
+            success: function(data){
+                if(data==1){
+                    var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                    parent.layer.close(index);  // 关闭layer
+                    parent.layer.msg("新增成功", {icon: 6});
+                    parent.location.reload();
+                }else{
+                    parent.layer.msg("新增失败", {icon: 5});
+                }
+            }
+        });
+    }
+
+</script>
+</html>

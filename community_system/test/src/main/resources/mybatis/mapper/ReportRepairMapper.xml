@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.test.mapper.ReportRepairMapper">
+    <resultMap id="BaseResultMap" type="com.example.test.entity.ReportRepair" >
+        <id column="report_repair_id" property="reportRepairId" jdbcType="INTEGER" />
+        <result column="report_user_id" property="reportUserId" jdbcType="VARCHAR" />
+        <result column="report_problem" property="reportProblem" jdbcType="VARCHAR" />
+        <result column="report_datetime" property="reportDatetime" jdbcType="TIMESTAMP" /> <!--text CLOB-->
+        <result column="report_state" property="reportState" jdbcType="VARCHAR" />
+        <result column="repair_finish_datetime" property="repairFinishDatetime" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <select id="getReportRepairList"  resultMap="BaseResultMap" parameterType="com.example.test.entity.ReportRepair">
+        select * from report_repair
+        limit #{page},#{limit}
+    </select>
+
+    <select id="getReportRepairListById"  resultMap="BaseResultMap" parameterType="com.example.test.entity.ReportRepair">
+        select * from report_repair where report_repair_id = #{reportRepairId}
+        limit #{page},#{limit}
+    </select>
+
+    <select id="getReportRepairCount"   resultType="Integer">
+        select count(report_repair_id) from report_repair;
+    </select>
+
+    <select id="getReportRepairById" parameterType="Integer" resultMap="BaseResultMap" >
+        select * from report_repair where report_repair_id = #{reportRepairId}
+    </select>
+
+    <insert id="addReportRepair" parameterType="com.example.test.entity.ReportRepair" >
+        insert into report_repair values(null,#{reportRepair.reportUserId},#{reportRepair.reportProblem},now(),'待处理',null);
+    </insert>
+
+    <update id="updateReportRepair" parameterType="com.example.test.entity.ReportRepair" >
+        update report_repair set report_user_id = #{reportRepair.reportUserId},report_problem = #{reportRepair.reportProblem},
+                                 report_state = #{reportRepair.reportState},repair_finish_datetime = #{reportRepair.repairFinishDatetime}
+        where report_repair_id = #{reportRepair.reportRepairId};
+    </update>
+
+    <delete id="deleteReportRepair" parameterType="Integer" >
+        delete from report_repair where report_repair_id = #{reportRepairId};
+    </delete>
+
+    <!-- _________________________________以下是用户报修模块调用的查询__________________________________  -->
+
+    <select id="getReportRepairCountForUser"   resultType="Integer">
+        select count(report_repair_id) from report_repair where report_user_id = #{reportUserId};
+    </select>
+
+
+    <select id="getReportRepairListForUser"  resultMap="BaseResultMap" parameterType="com.example.test.entity.ReportRepair">
+        select * from report_repair where report_user_id = #{reportUserId}
+        limit #{page},#{limit}
+    </select>
+
+
+    <select id="getReportRepairListByIdForUser"  resultMap="BaseResultMap" parameterType="com.example.test.entity.ReportRepair">
+        select * from report_repair where report_repair_id = #{reportRepairId} and report_user_id = #{reportUserId}
+        limit #{page},#{limit}
+    </select>
+
+
+
+</mapper>

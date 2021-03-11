@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.test.mapper.ParkingMapper">
+    <resultMap id="BaseResultMap" type="com.example.test.entity.Parking" >
+        <id column="parking_id" property="parkingId" jdbcType="INTEGER" />
+        <result column="parking_place_description" property="parkingPlaceDescription" jdbcType="VARCHAR" />
+        <result column="parking_car_number" property="parkingCarNumber" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <select id="getParkingList"  resultMap="BaseResultMap" parameterType="com.example.test.entity.Parking">
+        select parking_id,parking_place_description,parking_car_number
+        from parking
+        where 1=1 and parking_car_number like concat(concat('%',#{0}),'%')
+            limit #{1},#{2}
+    </select>
+
+
+    <select id="getParkingCount"   resultType="java.lang.Integer">
+        select count(parking_id) from parking;
+    </select>
+
+    <select id="getParkingById" parameterType="java.lang.String" resultMap="BaseResultMap" >
+        select * from parking where parking_id = #{parkingId}
+    </select>
+
+    <!--
+    <select id="getParkingByCarNumber" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select * from parking where  parking_car_number= #{parkingCarNumber}
+    </select>
+    -->
+
+    <update id="updateParking" parameterType="com.example.test.entity.Parking" >
+        update parking set parking_car_number = #{parkingCarNumber} where parking_id = #{parkingId};
+    </update>
+
+
+
+</mapper>

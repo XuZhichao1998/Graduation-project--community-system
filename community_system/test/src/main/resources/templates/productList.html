@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <title>商品列表</title>
+    <script>
+        function deleteProduct(productId) {
+            alert(productId)
+        }
+    </script>
+
+</head>
+
+<body>
+<div style="text-align: center">
+    <h1>商品列表</h1>
+    <br/>
+    <table align="center" border="1px" cellspacing="0" width="500px" style="text-align: center;margin:0 auto;">
+        <tr>
+            <th>商品编号</th>
+            <th>商品名称</th>
+            <th>商品单价</th>
+			<th>计量单位</th>
+			<th>类别编号</th>
+            <th colspan="2">操作</th>
+        </tr>
+        <tr th:each="product : ${productList}">
+            <td th:text="${product.productId}"></td>
+            <td th:text="${product.productName}"></td>
+            <td th:text="${product.unitPrice}"></td>
+			<td th:text="${product.unit}"></td>
+			<td th:text="${product.categoryId}"></td>
+            <td>
+               <!-- <a th:href="@{/toEdit(id=${product.productId})}">修改</a>-->
+                <button type="button"  th:onclick="'javascript:updateProduct('+${product.productId}+')' ">修改</button>
+            </td>
+            <!--  <td><a th:href="@{/delete(id=${product.productId})}">删除</a></td>-->
+            <td>
+                <button type="button"  th:onclick="'javascript:deleteProduct('+${product.productId}+')' ">删除</button>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

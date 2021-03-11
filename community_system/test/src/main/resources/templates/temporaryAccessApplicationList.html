@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <title>临时出入申请列表</title>
+    <script>
+        function deleteTemporaryAccessApplication(applicationId) {
+            alert(applicationId)
+        }
+    </script>
+
+</head>
+
+<body>
+<div style="text-align: center">
+    <h1>临时出入申请</h1>
+    <br/>
+    <table align="center" border="1px" cellspacing="0" width="500px" style="text-align: center;margin:0 auto;">
+        <tr>
+            <th>申请人姓名</th>
+            <th>申请人身份证号</th>
+            <th>本人手机号</th>
+            <th>车辆牌号</th>
+			<th>申请原因</th>
+			<th>预计进入时间</th>
+			<th>预计离开时间</th>
+			<th>审核状态</th>
+            <th colspan="2">操作</th>
+        </tr>
+		
+		<tr th:each="temporaryAccessApplication : ${temporaryAccessApplicationList}">
+            <td th:text="${temporaryAccessApplication.personName}"></td>
+			<td th:text="${temporaryAccessApplication.personId}"></td>
+            <td th:text="${temporaryAccessApplication.phoneNumber}"></td>
+            <td th:text="${temporaryAccessApplication.carNumber}"></td>
+            <td th:text="${temporaryAccessApplication.reason}"></td>
+			<td th:text="${temporaryAccessApplication.estimatedEnterTime}"></td>
+			<td th:text="${temporaryAccessApplication.estimatedLeaveTime}"></td>
+			<td th:text="${temporaryAccessApplication.approval}"></td>
+            <td>
+                <button type="button"  th:onclick="'javascript:updateTemporaryAccessApplication('+${temporaryAccessApplication.applicationId}+')' ">修改</button>
+            </td>
+			
+            <td>
+                <button type="button"  th:onclick="'javascript:deleteTemporaryAccessApplication('+${temporaryAccessApplication.applicationId}+')' ">删除</button>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

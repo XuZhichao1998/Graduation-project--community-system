@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>缴费表详情查看</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script th:src="@{/layui/layui.js}"></script>
+    <script th:src="@{/jquery-3.3.1/jquery-3.3.1.js}"></script>
+</head>
+
+<body>
+   <form class="layui-form"  th:action="@{/edit}" th:object="${payment}" id="paymentFrom"  method="post">
+	   
+	   <div class="layui-form-item">
+           <label class="layui-form-label">住户编号：</label>
+           <div class="layui-input-block">
+               <input type="number" name="householdId" id="householdId"  style="width: 400px;"  placeholder="请住户编号(1到315)"  class="layui-input">
+           </div>
+       </div>
+	   
+	   <div class="layui-form-item">
+           <label class="layui-form-label">应缴金额：</label>
+           <div class="layui-input-block">
+               <input type="number" step="0.01" name="paymentAmount" id="paymentAmount"  style="width: 400px;"  placeholder="请输入应缴金额"  class="layui-input">
+           </div>
+       </div>
+	   
+	   <div class="layui-form-item">
+           <label class="layui-form-label">缴费类型：</label>
+           <div class="layui-input-block">
+               <input type="text" name="paymentType" id="paymentType"  style="width: 400px;"  placeholder="请输入缴费类型(水费/电费/天然气费/物业费/其它)"  class="layui-input">
+           </div>
+       </div>
+	   
+	   	<div class="layui-form-item">
+           <label class="layui-form-label">缴费截止日期：</label>
+           <div class="layui-input-block">
+               <input type="date" name="paymentDeadline" id="paymentDeadline"  style="width: 400px;"  placeholder="请输入缴费的截止日期"  class="layui-input">
+           </div>
+       </div>
+	   
+	   <!--
+	   <div class="layui-form-item">
+           <label class="layui-form-label">缴费状态：</label>
+           <div class="layui-input-block">
+               <input type="number" name="payment_state" id="payment_state"  style="width: 400px;"  placeholder="请输入类别编号"  class="layui-input">
+           </div>
+       </div>
+	   
+	   	   <div class="layui-form-item">
+           <label class="layui-form-label">实际缴费日期：</label>
+           <div class="layui-input-block">
+               <input type="number" name="categoryId" id="categoryId"  style="width: 400px;"  placeholder="请输入类别编号"  class="layui-input">
+           </div>
+       </div>
+	   -->
+	   
+	   <!--------------------------这是一条分割线哈哈哈哈哈嘻嘻嘻嘻嘻啦啦啦啦啦------------------------------------------------------------------------------->
+	   
+	   
+
+       <div class="layui-form-item">
+           <div class="layui-input-block">
+               <button type="button" class="layui-btn"  th:onclick="'javascript:save()'">确认</button>
+               <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+           </div>
+       </div>
+    </form>
+
+</body>
+
+<script>
+
+    function save(){
+        var householdId = $("#householdId").val();   //住户编号
+        var paymentAmount = $("#paymentAmount").val(); //应缴费金额
+        var paymentType = $("#paymentType").val(); //收费类型(水费/电费/天然气费/物业费...)
+        var paymentDeadline = $("#paymentDeadline").val(); //缴费截止日期 
+		if(isNaN(householdId)) {
+			alert("住户号必须是数字！")
+			parent.layer.msg("住户号必须是数字");
+            return;
+		}
+		if(Number(householdId)>315 || Number(householdId)<1) {
+			alert("住户号必须是[1-315]的整数！");
+			parent.layer.msg("住户号必须是[1-315]的整数");
+		}
+		if(isNaN(paymentAmount)) {
+			alert("缴费金额必须是数字！")
+			parent.layer.msg("缴费金额必须是数字");
+            return;
+		}
+		if(Number(paymentAmount)<=0) {
+			alert("缴费金额必须为正数！")
+			parent.layer.msg("缴费金额必须为正数");
+            return;	
+		}
+		if(paymentType=="") {
+			alert("请输入缴费类型！(水/电/天然气/物业)");
+			parent.layer.msg("缴费金额必须为正数");
+            return;	
+		}
+		
+		if(paymentDeadline==null || paymentDeadline=="") {
+			alert("请输入缴费截止日期！");
+			parent.layer.msg("请输入缴费截止日期");
+			return;
+		}
+		
+        $.ajax({
+            url: "/paymentAdd",
+            type: "POST",
+            data:{"householdId":householdId,"paymentAmount":paymentAmount,"paymentType":paymentType,"paymentDeadline":paymentDeadline},
+            dataType: "json",
+            success: function(data){
+                if(data==1){
+                    var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                    parent.layer.close(index);  // 关闭layer
+                    parent.layer.msg("新增成功", {icon: 6});
+                    parent.location.reload();
+                }else{
+                    parent.layer.msg("新增失败", {icon: 5});
+                }
+            }
+        });
+    }
+
+</script>
+</html>
