@@ -1,6 +1,7 @@
 package com.example.test.controller;
 
 import com.example.test.entity.UserInfo;
+import com.example.test.service.PartyMemberInfoService;
 import com.example.test.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,9 @@ public class LoginController {
     //将Service注入Web层
     @Autowired
     UserInfoService userInfoService1;
+
+    @Autowired
+    private PartyMemberInfoService partyMemberInfoService;
 
     @RequestMapping("/login")
     public String show(){
@@ -78,6 +82,10 @@ public class LoginController {
         if (vname=="" || vname==null || vid=="" || vid==null) {
             System.out.println("党员志愿者姓名或者身份证号为空，不能登录！");
             return "404"; //跳转到404.html
+        }
+        if (partyMemberInfoService.partyMemberLogin(vid, vname) == 0) {
+            System.out.println("党员志愿者姓名或者身份证号输入错误，不能登录！");
+            return "404";
         }
         else {
             request.getSession().setAttribute("curvolunteerid", vid);

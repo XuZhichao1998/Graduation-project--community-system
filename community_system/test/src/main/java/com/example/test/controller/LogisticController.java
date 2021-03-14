@@ -29,7 +29,7 @@ public class LogisticController {
     public String logisticList1(HttpServletRequest request) {
         if(request.getSession().getAttribute("curAdminName")==null)
         {
-            return "404"; //没有管理员登陆，妄图访问投诉管理页面，直接跳到404
+            return "404_admin_login_expired"; //没有管理员登陆，妄图访问投诉管理页面，直接跳到404
         }
         return "logisticListPage";
     }
@@ -219,7 +219,7 @@ public class LogisticController {
     public String u_logisticList1(HttpServletRequest request) {
         if(request.getSession().getAttribute("curUserId")==null)
         {
-            return "404"; //用户没登陆就想通过url进入物流信息查看界面，被禁止
+            return "404_user_login_expired"; //用户没登陆就想通过url进入物流信息查看界面，被禁止
         }
         return "u_logisticListPage";
     }

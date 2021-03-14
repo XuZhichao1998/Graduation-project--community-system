@@ -16,4 +16,6 @@ public interface PartyMemberInfoService {
     int updatePartyMemberInfo(PartyMemberInfo partyMemberInfo);
 
     int deletePartyMemberInfo(String partyMemberId);
+
+    int partyMemberLogin(String volunteerId, String fullName);
 }

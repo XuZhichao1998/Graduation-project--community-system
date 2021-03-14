@@ -43,4 +43,9 @@ public class PartyMemberInfoServiceImpl implements PartyMemberInfoService {
     public int deletePartyMemberInfo(String partyMemberId) {
         return partyMemberInfoMapper.deletePartyMemberInfo(partyMemberId);
     }
+
+    @Override
+    public int partyMemberLogin(String volunteerId, String fullName) {
+        return partyMemberInfoMapper.partyMemberLogin(volunteerId, fullName);
+    }
 }

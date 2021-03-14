@@ -46,4 +46,5 @@ public interface PartyMemberInfoMapper {
 
 //    @Delete("DELETE FROM party_member_info WHERE id = #{partyMemberId};")
     int deletePartyMemberInfo(@Param("partyMemberId") String partyMemberId);
+    int partyMemberLogin(@Param("volunteerId") String volunteerId, @Param("fullName") String fullName);
 }

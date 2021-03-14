@@ -20,6 +20,12 @@
         SELECT COUNT(id) FROM party_member_info;
     </select>
 
+    <select id="partyMemberLogin" resultType="Integer">
+        SELECT COUNT(*) FROM party_member_info
+        WHERE full_name = #{fullName}
+            AND id = #{volunteerId};
+    </select>
+
     <select id="getPartyMemberInfoById" parameterType="String" resultMap="BaseResultMap" >
         SELECT * FROM party_member_info
         WHERE id = #{partyMemberId};

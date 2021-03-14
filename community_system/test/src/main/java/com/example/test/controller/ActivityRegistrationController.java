@@ -27,7 +27,7 @@ public class ActivityRegistrationController {
     public String activityRegistrationList1(HttpServletRequest request) {
         if(request.getSession().getAttribute("curAdminName")==null)
         {
-            return "404"; //没有管理员登陆，妄图访问投诉管理页面，直接跳到404
+            return "404_admin_login_expired"; //没有管理员登陆，妄图访问投诉管理页面，直接跳到404
         }
         return "activityRegistrationListPage";
     }
@@ -191,7 +191,7 @@ public class ActivityRegistrationController {
     @RequestMapping("/v_activityRegistrationList1")
     public String v_activityRegistrationList1(HttpServletRequest request) {
         if(request.getSession().getAttribute("curvolunteerid")==null) {
-            return "404"; //没有党员志愿者登陆，不能访问相应的页面
+            return "404_volunteer_login_expired"; //没有党员志愿者登陆，不能访问相应的页面
         }
         return "v_activityRegistrationListPage";
     }

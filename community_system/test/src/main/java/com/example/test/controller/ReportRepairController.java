@@ -1,7 +1,6 @@
 package com.example.test.controller;
 
 import com.example.test.entity.ReportRepair;
-import com.example.test.entity.ServiceActivity;
 import com.example.test.service.ReportRepairService;
 import com.example.test.util.LayuiData;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +30,7 @@ public class ReportRepairController {
     public String reportRepairList1(HttpServletRequest request) {
         if(request.getSession().getAttribute("curAdminName")==null)
         {
-            return "404"; //没有管理员登陆，妄图访问投诉管理页面，直接跳到404
+            return "404_admin_login_expired"; //没有管理员登陆，妄图访问投诉管理页面，直接跳到404
         }
         return "reportRepairListPage";
     }
@@ -167,7 +166,7 @@ public class ReportRepairController {
     public String u_reportRepairList1(HttpServletRequest request) {
         if(request.getSession().getAttribute("curUserId")==null)
         {
-            return "404"; //没有用户登录，无法访问页面，直接跳到404
+            return "404_user_login_expired"; //没有用户登录，无法访问页面，直接跳到404
         }
         return "u_reportRepairListPage";
     }

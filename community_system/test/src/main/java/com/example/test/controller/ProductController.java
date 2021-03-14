@@ -29,7 +29,7 @@ public class ProductController {
     public String prodcutList1(HttpServletRequest request) {
         if(request.getSession().getAttribute("curAdminName")==null)
         {
-            return "404"; //没有管理员登陆，妄图访问投诉管理页面，直接跳到404
+            return "404_admin_login_expired"; //没有管理员登陆，妄图访问投诉管理页面，直接跳到404
         }
         return "productListPage";
     }
@@ -160,11 +160,4 @@ public class ProductController {
         return num;
     }
 
-    /*
-    @RequestMapping(value="productUpdate",method= RequestMethod.POST)
-    public int productUpdate(@RequestBody Product product) {
-        System.out.println("id:"+product.getProductId()+",name:"+product.getProductName()+",price:"+product.getUnitPrice()+",unit:"+product.getUnitPrice()+",cid:"+product.getCategoryId());
-        int num = productService.updateProduct(product);
-        return num;
-    }*/
 }

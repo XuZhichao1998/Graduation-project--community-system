@@ -27,7 +27,7 @@ public class CooperationUnitController {
     @RequestMapping("/cooperationUnitList1")
     public String cooperationUnitList1(HttpServletRequest request) {
         if(request.getSession().getAttribute("curAdminName")==null) {
-            return "404"; //没有管理员登陆，妄图访问投诉管理页面，直接跳到404
+            return "404_admin_login_expired"; //没有管理员登陆，妄图访问投诉管理页面，直接跳到404
         }
         return "cooperationUnitListPage";
     }

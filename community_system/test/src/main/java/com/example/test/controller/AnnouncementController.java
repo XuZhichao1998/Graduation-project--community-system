@@ -28,7 +28,7 @@ public class AnnouncementController {
     public String announcementList1(HttpServletRequest request) {
         if(request.getSession().getAttribute("curAdminName")==null)
         {
-            return "404"; //没有管理员登陆，妄图访问投诉管理页面，直接跳到404
+            return "404_admin_login_expired"; //没有管理员登陆，妄图访问投诉管理页面，直接跳到404_admin_login_expired.html
         }
         return "announcementListPage";
     }
@@ -131,7 +131,7 @@ public class AnnouncementController {
     public String u_announcementList1(HttpServletRequest request) {
         if(request.getSession().getAttribute("curUserId")==null)
         {
-            return "404"; //用户没登录，直接跳到404
+            return "404_user_login_expired"; //用户没登录，直接跳到404
         }
         return "u_announcementListPage";
     }

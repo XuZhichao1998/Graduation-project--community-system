@@ -31,7 +31,7 @@ public class PaymentController {
     public String paymentList1(HttpServletRequest request) {
         if(request.getSession().getAttribute("curAdminName")==null)
         {
-            return "404"; //没有管理员登陆，妄图访问投诉管理页面，直接跳到404
+            return "404_admin_login_expired"; //没有管理员登陆，妄图访问投诉管理页面，直接跳到404
         }
         return "paymentListPage";
     }
@@ -181,7 +181,7 @@ public class PaymentController {
     public String u_paymentList1(HttpServletRequest request) {
         if(request.getSession().getAttribute("curUserInfo")==null)
         {
-            return "404"; //没有管理员登陆，妄图访问投诉管理页面，直接跳到404
+            return "404_user_login_expired"; //没有管理员登陆，妄图访问投诉管理页面，直接跳到404
         }
         return "u_paymentListPage";
     }
